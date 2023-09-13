@@ -6,4 +6,5 @@ export type UiFieldLayoutProps = PropsWithChildren<{
   e2e?: string;
   label?: ReactNode;
   error?: ReactNode;
+  hint?: ReactNode;
 }>;

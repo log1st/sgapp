@@ -1,0 +1,49 @@
+@import "../../../assets/utils";
+
+
+@layer components {
+
+    .root {
+        --background-color: var(--gray-200);
+      
+        position: absolute;
+        inset-inline-end: 0;
+      
+        padding: rm(5);
+      
+        cursor: pointer;
+
+        user-select: none;
+      
+        &::after {
+            content: "";
+            display: block;
+            inline-size: rm(5);
+            block-size: 100%;
+
+            border-radius: rm(20);
+            background: var(--background-color);
+          
+            transition: background-color 0.15s ease;
+        }
+    }
+}
+
+@layer modifiers {
+
+    .root {
+
+        &:hover,
+        &:focus-visible {
+            --background-color: var(--gray-500);
+        }
+
+        &:active {
+            --background-color: var(--gray-600);
+        }
+      
+        &:not(.active) {
+            display: none;
+        }
+    }
+}

@@ -9,6 +9,7 @@ export function UiFieldLayout({
   e2e,
   error,
   label,
+  hint,
   children,
 }: UiFieldLayoutProps) {
   return (
@@ -20,6 +21,7 @@ export function UiFieldLayout({
       {label && <div className={styles.label}>{label}</div>}
       {children && <div className={styles.field}>{children}</div>}
       {error && <div className={styles.error}>{error}</div>}
+      {hint && <div className={styles.hint}>{hint}</div>}
     </div>
   );
 }

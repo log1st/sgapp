@@ -53,9 +53,16 @@ export function UiSidebar({
 export function UiSidebarGroup({
   children,
   margin,
-}: PropsWithChildren<{ margin?: boolean }>) {
+  noExpanded,
+}: PropsWithChildren<{ margin?: boolean; noExpanded?: boolean }>) {
   return (
-    <div className={clsx([styles.content, margin && styles.margin])}>
+    <div
+      className={clsx([
+        styles.content,
+        margin && styles.margin,
+        noExpanded && styles.noExpanded,
+      ])}
+    >
       {children}
     </div>
   );

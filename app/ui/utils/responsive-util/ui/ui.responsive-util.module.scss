@@ -1,0 +1,51 @@
+@import "../../../assets/utils";
+
+@mixin hide() {
+    display: none;
+}
+
+@layer modifiers {
+    
+    .hidden.mobile {
+
+        &.tighter {
+            @include mobile() {
+                @include hide();
+            }
+        }
+
+        &.wider {
+            @include wider-than-mobile() {
+                @include hide();
+            }
+        }
+    }
+
+    .hidden.tablet {
+
+        &.tighter {
+            @include tablet() {
+                @include hide();
+            }
+        }
+
+        &.wider {
+            @include wider-than-tablet() {
+                @include hide();
+            }
+        }
+    }
+
+    .hidden.desktop {
+
+        &.tighter {
+            @include wider-than-tablet() {
+                @include hide();
+            }
+        }
+
+        &.wider {
+            @include hide();
+        }
+    }
+}

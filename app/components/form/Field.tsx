@@ -28,6 +28,7 @@ export type FieldProps = {
     hasError?: boolean;
   }>;
   label?: ReactNode;
+  hint?: ReactNode;
 
   submitOnBlur?: boolean;
   submitOnChange?: boolean;
@@ -38,6 +39,7 @@ export function Field({
   valuePropName = "value",
   children,
   label,
+  hint,
   submitOnBlur,
   submitOnChange,
 }: FieldProps) {
@@ -55,6 +57,7 @@ export function Field({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       error={error && <UiHint type={UiHintType.danger}>{t(...error)}</UiHint>}
+      hint={hint && <UiHint>{hint}</UiHint>}
     >
       {Children.map(children, (child) =>
         isValidElement(child)
