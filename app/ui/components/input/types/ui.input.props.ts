@@ -35,7 +35,7 @@ export type UiInputProps<Type extends UiInputType> = UiFieldCommonProps & {
   }[Type];
   onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 } & {
-    [UiInputType.password]: never;
+    [UiInputType.password]: {};
     [UiInputType.text]: {
       pattern?: string;
     };

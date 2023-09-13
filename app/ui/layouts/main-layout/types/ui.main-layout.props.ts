@@ -6,4 +6,5 @@ export type UiMainLayoutProps = PropsWithChildren<{
   e2e?: string;
 
   header?: ReactNode;
+  side?: ReactNode;
 }>;

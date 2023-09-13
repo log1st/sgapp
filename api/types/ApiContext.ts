@@ -6,7 +6,7 @@ export type ApiDbContext = {
 };
 
 export type ApiClientContext = {
-  accessToken?: string;
+  token?: string;
 };
 
 export type ApiContext = ApiDbContext & ApiClientContext;

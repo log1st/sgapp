@@ -9,6 +9,7 @@ export function UiMainLayout({
   e2e,
   children,
   header,
+  side,
 }: UiMainLayoutProps) {
   return (
     <div
@@ -17,7 +18,10 @@ export function UiMainLayout({
       className={clsx([styles.root, className])}
     >
       {header && <div className={styles.header}>{header}</div>}
-      <div className={styles.body}>{children}</div>
+      <div className={styles.content}>
+        {side && <div className={styles.side}>{side}</div>}
+        <div className={styles.body}>{children}</div>
+      </div>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import { useToggle } from "react-use";
 
-export const usePending = (mutate?: () => void | Promise<void>) => {
+export const usePending = (mutate?: () => unknown | Promise<unknown>) => {
   const [pending, togglePending] = useToggle(false);
 
-  const customRun = async (customMutate?: () => void | Promise<void>) => {
+  const customRun = async (customMutate?: () => unknown | Promise<unknown>) => {
     if (pending) {
       return;
     }

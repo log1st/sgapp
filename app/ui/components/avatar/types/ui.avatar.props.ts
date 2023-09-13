@@ -18,7 +18,7 @@ export type UiAvatarProps = {
   className?: string;
   e2e?: string;
 
-  image?: string;
+  image?: string | null;
   alt?: string;
   letters?: ReactNode;
   icon?: Icon;

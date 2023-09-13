@@ -1,14 +1,26 @@
 import { PropsWithChildren } from "react";
 import { UiMainLayout } from "@/ui/layouts/main-layout";
-import { isAuthorized } from "@/session/getAccessToken";
+import {
+  getAccessTokenExpirationDate,
+  isAuthorized,
+} from "@/session/getAccessToken";
 import { appRedirect } from "@/utils/router";
+import { RefreshHandle } from "@/app/components/refresh/RefreshHandle";
+import Sidebar from "@/app/components/layout/Sidebar";
 
 export type SignedLayoutProps = PropsWithChildren;
 
-export default function SignedLayout({ children }: SignedLayoutProps) {
+export default async function SignedLayout({ children }: SignedLayoutProps) {
   if (!isAuthorized()) {
     appRedirect("/auth");
   }
 
-  return <UiMainLayout>{children}</UiMainLayout>;
+  const expirationDate = getAccessTokenExpirationDate();
+
+  return (
+    <>
+      <UiMainLayout side={<Sidebar />}>{children}</UiMainLayout>
+      {expirationDate && <RefreshHandle refreshAt={expirationDate} />}
+    </>
+  );
 }

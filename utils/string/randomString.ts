@@ -1,1 +1,1 @@
-export const randomString = () => Math.random().toString(16).substring(2, 9);
+export const randomString = () => crypto.randomUUID();

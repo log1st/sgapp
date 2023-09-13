@@ -11,4 +11,24 @@ model User {
   id Int @id @default(autoincrement())
   login String
   password String /// @encrypted
+
+  avatar String?
+
+  tokens Token[]
+}
+
+enum TokenType {
+  access
+  refresh
+}
+
+model Token {
+  id Int @id @default(autoincrement())
+  token String
+  type TokenType
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

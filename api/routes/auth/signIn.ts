@@ -1,7 +1,10 @@
+"use server";
+
 import { TRPCError } from "@trpc/server";
 import { publicProcedure } from "@/api/trpc";
 import { AuthTokens } from "@/api/types/auth/AuthToken";
 import { authSignInInput } from "@/api/types/auth/AuthSignIn";
+import { generateTokens } from "@/api/services/auth/generateToken";
 
 export const signIn = publicProcedure
   .input(authSignInInput)
@@ -12,18 +15,9 @@ export const signIn = publicProcedure
       },
     });
 
-    if (!existingUser) {
+    if (!existingUser || existingUser.password !== input.password) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
     }
 
-    return {
-      accessToken: {
-        token: "",
-        expiresIn: 60 * 60,
-      },
-      refreshToken: {
-        token: "",
-        expiresIn: 60 * 60,
-      },
-    };
+    return generateTokens(existingUser, db);
   });

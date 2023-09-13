@@ -2,7 +2,7 @@
 
 .root {
   --sidebar-item-background: transparent;
-  --sidebar-item-border: var(----sidebar-item-background);
+  --sidebar-item-border: var(--sidebar-item-background);
   --sidebar-item-icon-color: var(--fg-subtle);
   --sidebar-item-color: var(--fg-subtle);
   --sidebar-item-hint-color: var(--fg-muted);
@@ -10,9 +10,7 @@
   display: flex;
   align-items: center;
   gap: rm(12);
-  padding: rm(6) rm(12);
-
-  inline-size: 100%;
+  padding: var(--sidebar-item-padding);
 
   border: rm(1) solid var(--sidebar-item-border);
   background-color: var(--sidebar-item-background);
@@ -36,6 +34,12 @@
   }
 }
 
+.dangerType {
+  --sidebar-item-icon-color: var(--fg-error);
+  --sidebar-item-color: var(--fg-error);
+  --sidebar-item-hint-color: var(--fg-error);
+}
+
 .icon {
   @include icon(20);
   color: var(--sidebar-item-icon-color);
@@ -43,10 +47,14 @@
 }
 
 .label {
+  display: var(--sidebar-label-display);
+
   @include text-compact-small-plus();
   color: var(--sidebar-item-color);
   flex-grow: 1;
   text-align: left;
+
+  @include ellipsis();
 }
 
 .badge {
@@ -67,4 +75,8 @@
 .before,
 .after {
   flex-shrink: 0;
+}
+
+.after {
+  display: var(--sidebar-after-display);
 }

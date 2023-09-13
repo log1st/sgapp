@@ -4,6 +4,7 @@ import {
   MouseEventHandler,
   PropsWithChildren,
 } from "react";
+import { Route } from "next";
 
 export enum UiPureButtonHtmlType {
   button = "button",
@@ -13,7 +14,7 @@ export enum UiPureButtonHtmlType {
 
 export type UiPureButtonCommonProps = {
   htmlType?: UiPureButtonHtmlType;
-  href?: string;
+  href?: Route;
   target?: string;
 
   disabled?: boolean;

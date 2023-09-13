@@ -15,9 +15,18 @@
   background-color: var(--bg-base);
 }
 
-.body {
+.content {
   flex-grow: 1;
+  display: flex;
+}
 
+.side {
+  flex-shrink: 0;
+
+  display: flex;
+}
+
+.body {
   overflow: auto;
   @include noScrollbars();
 

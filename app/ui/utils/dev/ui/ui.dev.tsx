@@ -7,7 +7,7 @@ import { UiDevProps } from "../index";
 
 import styles from "./ui.dev.module.scss";
 import { UiDialog } from "../../../components/dialog";
-import { useDraggable } from "@/utils";
+import { useDraggable } from "@/hooks";
 
 export function UiDev({ children, title }: UiDevProps) {
   const [min, toggleMin] = useToggle(false);

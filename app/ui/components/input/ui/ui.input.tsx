@@ -92,7 +92,11 @@ export function UiInput<Type extends UiInputType = UiInputType.text>({
       action={
         <>
           {htmlType === UiInputType.password && (
-            <UiPureButton className={styles.toggle} onClick={toggleVisibility}>
+            <UiPureButton
+              tabIndex={-1}
+              className={styles.toggle}
+              onClick={toggleVisibility}
+            >
               <UiIcon
                 icon={visible ? Icon.eye1 : Icon.eyeSlash1}
                 className={styles.icon}
@@ -102,7 +106,11 @@ export function UiInput<Type extends UiInputType = UiInputType.text>({
           {clearable &&
             value !== clearValue &&
             typeof value !== "undefined" && (
-              <UiPureButton className={styles.clear} onClick={clear}>
+              <UiPureButton
+                tabIndex={-1}
+                className={styles.clear}
+                onClick={clear}
+              >
                 <UiIcon icon={Icon.xMarkMini} className={styles.icon} />
               </UiPureButton>
             )}

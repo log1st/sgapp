@@ -1,5 +1,7 @@
+"use client";
+
 import { clsx } from "@clsx";
-import { UiSidebarItemProps } from "..";
+import { UiSidebarItemProps, UiSidebarItemType } from "..";
 
 import styles from "./ui.sidebar-item.module.scss";
 import { UiPureButton } from "../../pure-button";
@@ -14,6 +16,7 @@ export function UiSidebarItem({
   badge,
   hint,
   appendIcon,
+  type = UiSidebarItemType.primary,
   ...pureButtonProps
 }: UiSidebarItemProps) {
   return (
@@ -23,6 +26,7 @@ export function UiSidebarItem({
         styles.root,
         className,
         pureButtonProps.active && styles.active,
+        styles[`${type}Type`],
       ])}
     >
       {icon && (
