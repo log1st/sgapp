@@ -1,0 +1,17 @@
+@import "../../../assets/utils";
+
+.root {
+    display: flex;
+    align-items: center;
+    padding: 0 rm(1);
+    gap: rm(1);
+    background-color: var(--border-base);
+}
+
+.tab {
+    position: relative;
+  
+    &:focus-visible {
+        z-index: 1;
+    }
+}

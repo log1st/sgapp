@@ -1,0 +1,22 @@
+@use "sass:math";
+
+@function rm($size, $em: false, $baseFontSize: 16px) {
+    @if (type-of($size) == "number") {
+        $size: $size + 0px;
+    }
+    @if ($size == 1px or $size == -1px) {
+        @return $size;
+    }
+
+    $remSize: math.div($size, $baseFontSize);
+
+    @if ($em) {
+        @return $remSize + 0em;
+    } @else {
+        @return $remSize + 0rem;
+    }
+}
+
+@function vh($size) {
+    @return calc(var(--vh, 1vh) * #{$size});
+}

@@ -1,0 +1,110 @@
+@import "../../../assets/utils";
+
+.root {
+  --field-background: transparent;
+  --field-border: transparent;
+  --field-shadow: transparent;
+  --field-text-color: transparent;
+  --field-placeholder-color: transparent;
+  --field-icon-color: transparent;
+
+  display: flex;
+  align-items: center;
+
+  background-color: var(--field-background);
+  border: rm(1) solid var(--field-border);
+  box-shadow: var(--field-shadow);
+  border-radius: var(--border-radius-small);
+}
+
+.before,
+.after {
+  flex-shrink: 0;
+
+  @include text-compact-medium();
+  color: var(--field-icon-color);
+}
+
+.icon {
+  @include icon(20);
+}
+
+.loader {
+  @include icon(20);
+  color: var(--field-icon-color);
+}
+
+.content {
+  color: var(--field-text-color);
+  @include text-compact-medium();
+  flex-grow: 1;
+
+  @include ellipsis();
+}
+
+.baseSize {
+  padding: rm(9) rm(12);
+  gap: rm(4);
+}
+
+.smallSize {
+  padding: rm(5) rm(8);
+  gap: rm(4);
+}
+
+.readOnly {
+  border-style: dashed;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: rm(4);
+
+  @include text-compact-medium();
+  color: var(--field-icon-color);
+}
+
+.primaryType {
+  --field-background: var(--bg-field);
+  --field-border: var(--border-base);
+  --field-icon-color: var(--fg-muted);
+  --field-text-color: var(--fg-base);
+  --field-placeholder-color: var(--fg-muted);
+  --field-shadow: var(--buttons-neutral);
+
+  &:not(.disabled) {
+    &:hover {
+      --field-background: var(--bg-field-hover);
+    }
+    &.touched.hasError {
+      --field-border: var(--border-error);
+      --field-shadow: var(--borders-error);
+    }
+    &:focus-visible,
+    &:focus-within,
+    &.focused {
+      --field-border: var(--border-interactive);
+      --field-shadow: var(--borders-active);
+    }
+  }
+
+  &.disabled {
+    --field-background: var(--bg-disabled);
+    --field-placeholder-color: var(--fg-disabled);
+    --field-text-color: var(--fg-disabled);
+    --field-icon-color: var(--fg-disabled);
+  }
+}
+
+.centeredModifier {
+  .content {
+    text-align: center;
+  }
+}
+
+.noElevationModifier {
+  &:not(:where(.hasError, :focus-visible, :focus-within, .focused)) {
+    box-shadow: none;
+  }
+}

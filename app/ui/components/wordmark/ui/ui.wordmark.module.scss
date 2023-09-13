@@ -1,0 +1,6 @@
+@import "../../../assets/utils";
+
+.root {
+    @include headers-webs-h2();
+    color: var(--fg-base);
+}

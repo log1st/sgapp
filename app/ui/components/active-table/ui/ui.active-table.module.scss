@@ -1,0 +1,101 @@
+@import "../../../assets/utils";
+
+.root {
+    display: grid;
+
+    position: relative;
+
+    overflow: auto;
+    @include noScrollbars();
+}
+
+.primaryType {
+  
+    gap: rm(16) 0;
+
+    .cell {
+        --active-table-row-line-background: transparent;
+      
+        gap: rm(12);
+      
+        min-block-size: rm(48);
+        padding: rm(10) rm(6);
+
+        &.first {
+            padding-inline-start: rm(32);
+        }
+      
+        &.last {
+            padding-inline-end: rm(32);
+        }
+
+        &.interactive {
+
+            &:not(.actions) {
+                cursor: pointer;
+            }
+
+            ~ .rowLine {
+                background-color: var(--active-table-row-line-background);
+            }
+
+            &:hover,
+            &:focus-visible {
+
+                ~ .rowLine {
+                    --active-table-row-line-background: var(--bg-base-hover);
+
+                    + .cell ~ .rowLine {
+                        --active-table-row-line-background: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    .column {
+        @include text-compact-small-plus();
+        color: var(--fg-subtle);
+    }
+  
+    .row {
+        @include text-compact-small();
+        color: var(--fg-base);
+    }
+  
+    .rowLine {
+        border-radius: rm(3);
+    }
+}
+
+.cell {
+  
+    display: flex;
+    align-items: center;
+
+    &.ellipsis {
+        @include ellipsis();
+    }
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.row {
+
+    .content {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+.check {
+    position: relative;
+    z-index: 2;
+}
+
+.rowLine {
+    z-index: 1;
+    pointer-events: none;
+}

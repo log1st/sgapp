@@ -1,0 +1,28 @@
+@import "../../../assets/utils";
+
+.root {
+    display: flex;
+    align-items: center;
+  
+    gap: rm(6);
+}
+
+.normalType {
+    color: var(--fg-subtle);
+}
+
+.disabledType {
+    color: var(--fg-disabled);
+}
+
+.dangerType {
+    color: var(--fg-error);
+}
+
+.icon {
+    @include icon(20);
+}
+
+.label {
+    @include text-compact-xsmall();
+}

@@ -1,0 +1,18 @@
+import { clsx } from "@cv/common";
+import { Ui{{ pascalCase name }}Props } from "..";
+
+import styles from "./ui.{{ kebabCase name }}.module.scss";
+
+export function Ui{{ pascalCase name }}({
+className,
+style,
+e2e,
+}: Ui{{ pascalCase name }}Props) {
+return (
+<div
+        data-e2e={e2e}
+        style={style}
+        className={clsx([styles.root, className])}
+/>
+);
+}

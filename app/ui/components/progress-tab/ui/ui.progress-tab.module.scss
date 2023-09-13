@@ -1,0 +1,55 @@
+@import "../../../assets/utils";
+
+.root {
+    --progress-tab-background: var(--bg-subtle);
+    --progress-tab-text-color: var(--fg-muted);
+    --progress-tab-icon-color: var(--fg-muted);
+    --progress-tab-border: transparent;
+    
+    display: flex;
+    align-items: center;
+  
+    border: rm(1) solid var(--progress-tab-border);
+  
+    padding: rm(0) rm(16);
+    gap: rm(12);
+    block-size: rm(56);
+  
+    background-color: var(--progress-tab-background);
+
+    &:not(.disabled) {
+        cursor: pointer;
+
+        &:not(.selected) {
+
+            &:hover {
+                --progress-tab-background: var(--bg-subtle-hover);
+            }
+        }
+
+        &:focus-visible {
+            --progress-tab-border: var(--border-interactive);
+            box-shadow: var(--borders-focus);
+        }
+    }
+
+    &.selected {
+        --progress-tab-icon-color: var(--fg-subtle);
+        --progress-tab-text-color: var(--fg-base);
+        --progress-tab-background: var(--bg-base);
+    }
+
+    &.active {
+        --progress-tab-icon-color: var(--fg-interactive);
+    }
+}
+
+.icon {
+    @include icon(20);
+    color: var(--progress-tab-icon-color);
+}
+
+.label {
+    @include text-compact-small-plus();
+    color: var(--progress-tab-text-color);
+}

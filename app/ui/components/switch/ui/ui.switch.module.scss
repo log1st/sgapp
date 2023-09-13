@@ -1,0 +1,117 @@
+@import "../../../assets/utils";
+
+.root {
+    --switch-background: var(--bg-switch-off);
+    --switch-shadow: var(--details-switch-background);
+    --switch-handle-background: var(--fg-on-color);
+    --switch-handle-shadow: var(--details-switch-handle);
+
+    --switch-padding: #{rm(14)};
+  
+    background: var(--switch-background);
+    box-shadow: var(--switch-shadow);
+    border-radius: var(--border-radius-xlarge);
+
+    position: relative;
+  
+    //transition: background-color 0.15s ease-in-out;
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+    
+        inset-block-start: rm(2);
+        inset-block-end: rm(2);
+      
+        background: var(--switch-handle-background);
+        box-shadow: var(--switch-handle-shadow);
+      
+        border-radius: var(--border-radius-xlarge);
+    }
+  
+    &::before {
+        content: "";
+        display: block;
+        inset: 0;
+        position: absolute;
+        border-radius: inherit;
+    }
+  
+    &.checked {
+
+        &::after {
+            inset-inline-end: rm(2);
+            inset-inline-start: var(--switch-padding);
+
+            //transition: inset-inline-end 0.1s ease-in-out, inset-inline-start 0.15s ease-in-out;
+        }
+      
+        --switch-background: var(--bg-interactive);
+
+        &:not(.disabled) {
+
+            &:active {
+
+                &::after {
+                    inset-inline-start: calc(var(--switch-padding) - #{rm(2)});
+                }
+            }
+        }
+    }
+  
+    &:not(.checked) {
+
+        &::after {
+            inset-inline-start: rm(2);
+            inset-inline-end: var(--switch-padding);
+          
+            //transition: inset-inline-start 0.1s ease-in-out, inset-inline-end 0.15s ease-in-out;
+        }
+
+
+        &:not(.disabled) {
+
+            &:hover {
+                --switch-background: var(--bg-switch-off-hover);
+            }
+
+            &:active {
+
+                &::after {
+                    inset-inline-end: calc(var(--switch-padding) - #{rm(2)});
+                }
+            }
+        }
+    }
+  
+    &:not(.disabled) {
+        cursor: pointer;
+
+        &:focus-visible {
+
+            &::before {
+                box-shadow: var(--details-switch-background-focus);
+            }
+        }
+    }
+  
+    &.disabled {
+        --switch-background: var(--bg-disabled);
+        --switch-handle-background: var(--fg-disabled);
+      
+        &::after {
+            --switch-handle-shadow: none;
+        }
+    }
+}
+
+.baseSize {
+    --switch-padding: #{rm(14)};
+    @include size(20, 32);
+}
+
+.smallSize {
+    --switch-padding: #{rm(10)};
+    @include size(20, 28);
+}

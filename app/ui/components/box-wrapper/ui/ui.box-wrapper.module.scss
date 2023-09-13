@@ -1,0 +1,123 @@
+@import "../../../assets/utils";
+
+.root {
+    --box-wrapper-panel-background: var(--bg-base);
+    --box-wrapper-panel-shadow: var(--elevation-card-rest);
+    --box-wrapper-panel-border: transparent;
+
+
+    --box-wrapper-box-background: var(--bg-base);
+    --box-wrapper-box-shadow: var(--borders-base-with-shadow);
+    --box-wrapper-box-color: var(--fg-on-color);
+    --box-wrapper-box-text-shadow: var(--details-contrast-on-bg-interactive);
+
+    display: flex;
+    flex-direction: column;
+    gap: rm(2);
+
+    &.panel {
+        padding: rm(12);
+        border-radius: var(--border-radius-medium);
+      
+        background-color: var(--box-wrapper-panel-background);
+        box-shadow: var(--box-wrapper-panel-shadow);
+        border: rm(1) solid var(--box-wrapper-panel-border);
+
+        &:not(.disabled) {
+
+            &:not(.active):not(.hasError) {
+
+                &:hover {
+                    --box-wrapper-panel-border: var(--bg-base-hover);
+                    --box-wrapper-panel-shadow: var(--elevation-card-hover);
+                }
+            }
+
+            &:has(input:focus-visible) {
+                --box-wrapper-panel-shadow: var(--borders-interactive-with-focus);
+            }
+        }
+
+        &.touched.hasError {
+            --box-wrapper-panel-border: var(--border-error);
+            --box-wrapper-panel-shadow: var(--borders-error);
+        }
+
+        &.active {
+            --box-wrapper-panel-border: var(--bg-interactive);
+            --box-wrapper-panel-shadow: var(--borders-interactive-with-shadow);
+        }
+
+        &.disabled {
+            --box-wrapper-panel-border: var(--border-base);
+            --box-wrapper-panel-shadow: none;
+            --box-wrapper-panel-background: var(--bg-disabled);
+        }
+    }
+  
+    &:not(.disabled) {
+        cursor: pointer;
+      
+        &:not(.active) {
+
+            &:hover {
+                --box-wrapper-box-background: var(--bg-base-hover);
+            }
+        }
+
+        &.touched.hasError {
+            --box-wrapper-panel-border: var(--border-error);
+            --box-wrapper-box-shadow: var(--borders-error);
+        }
+
+        &.active {
+            --box-wrapper-box-background: var(--bg-interactive);
+            --box-wrapper-box-shadow: var(--borders-interactive);
+        }
+
+        &:has(input:focus-visible) {
+            --box-wrapper-box-shadow: var(--borders-interactive-with-focus);
+        }
+    }
+
+    &.disabled {
+        --box-wrapper-box-background: var(--bg-disabled);
+        --box-wrapper-box-shadow: var(--borders-base);
+        --box-wrapper-box-text-shadow: none;
+        --box-wrapper-box-color: var(--fg-disabled);
+
+        .label {
+            color: var(--fg-disabled);
+        }
+
+        .hint {
+            color: var(--fg-disabled);
+        }
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: rm(12);
+}
+
+.box {
+    @include size(20);
+    flex-shrink: 0;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.label {
+    @include text-compact-medium-plus();
+    color: var(--fg-base);
+}
+
+.hint {
+    @include text-compact-medium();
+    color: var(--fg-subtle);
+    padding-inline-start: rm(32);
+}

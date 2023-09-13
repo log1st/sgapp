@@ -1,0 +1,87 @@
+@import "../../../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+
+  padding: rm(8) rm(12) rm(8) rm(40);
+  gap: rm(8);
+
+  border-radius: var(--border-radius-small);
+
+  &:has(.check, .icon) {
+    padding-inline-start: rm(12);
+  }
+
+  &.checked {
+    .label {
+      @include text-compact-small-plus();
+    }
+  }
+
+  &:not(.disabled) {
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--bg-base-hover);
+    }
+
+    &:active {
+      background-color: var(--bg-base-pressed);
+    }
+  }
+
+  &.disabled {
+    .check {
+      color: var(--fg-disabled);
+    }
+
+    .label {
+      color: var(--fg-disabled);
+    }
+
+    .hint {
+      color: var(--fg-disabled);
+    }
+
+    .icon {
+      color: var(--fg-disabled);
+    }
+  }
+
+  &.danger {
+    .label, .icon {
+      color: var(--fg-error);
+    }
+  }
+}
+
+.check {
+  flex-shrink: 0;
+  @include icon(20);
+  color: var(--fg-base);
+}
+
+.icon {
+  flex-shrink: 0;
+  @include icon(20);
+  color: var(--fg-subtle);
+}
+
+.label {
+  flex-grow: 1;
+  @include text-compact-small();
+  color: var(--fg-base);
+  text-align: left;
+}
+
+.hint {
+  flex-shrink: 0;
+  @include text-compact-small();
+  color: var(--fg-subtle);
+}
+
+.badge {
+  flex-shrink: 0;
+}

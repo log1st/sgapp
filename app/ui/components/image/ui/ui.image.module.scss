@@ -1,0 +1,17 @@
+@import "../../../assets/utils";
+
+.image {
+    display: block;
+  
+    block-size: 100%;
+    inline-size: 100%;
+}
+
+
+.containFit {
+    object-fit: contain;
+}
+
+.coverFit {
+    object-fit: cover;
+}

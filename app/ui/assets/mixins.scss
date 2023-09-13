@@ -1,0 +1,92 @@
+@import "./functions";
+
+@mixin tighter($width) {
+    @media (max-width: #{$width - 1}px) {
+        @content;
+    }
+}
+
+@mixin wider($width) {
+    @media (min-width: #{$width}px) {
+        @content;
+    }
+}
+
+$small: 520;
+$mobile: 768;
+$tablet: 992;
+
+@mixin small() {
+    @include tighter($small) {
+        @content;
+    }
+}
+
+@mixin mobile() {
+    @include tighter($mobile) {
+        @content;
+    }
+}
+
+@mixin wider-than-mobile {
+    @include wider($mobile) {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    @include tighter($tablet) {
+        @content;
+    }
+}
+
+@mixin wider-than-tablet() {
+    @include wider($tablet) {
+        @content;
+    }
+}
+
+@mixin container-tighter($width, $container: "") {
+    @container #{$container} (max-width: #{$width - 1}px) {
+        @content;
+    }
+}
+
+@mixin container-wider($width, $container: "") {
+    @container #{$container} (min-width: #{$width}px) {
+        @content;
+    }
+}
+
+@mixin container-small() {
+    @include container-tighter($small) {
+        @content;
+    }
+}
+
+@mixin container-mobile() {
+    @include container-tighter($mobile) {
+        @content;
+    }
+}
+
+@mixin container-wider-than-mobile {
+    @include container-wider($mobile) {
+        @content;
+    }
+}
+
+@mixin container-tablet() {
+    @include container-tighter($tablet) {
+        @content;
+    }
+}
+
+@mixin size($height, $width: $height) {
+    block-size: rm($height);
+    inline-size: rm($width);
+}
+
+@mixin icon($size) {
+    @include size($size);
+}

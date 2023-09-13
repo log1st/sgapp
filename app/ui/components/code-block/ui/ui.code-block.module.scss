@@ -1,0 +1,139 @@
+@import "../../../assets/utils";
+
+.root {
+    --code-block-background: transparent;
+    --code-block-header-background: transparent;
+    --code-block-content-color: transparent;
+    --code-block-content-line-color: transparent;
+    --code-block-border: transparent;
+    --code-block-active-pill-background: transparent;
+    --code-block-active-pill-border: transparent;
+    --code-block-active-pill-color: transparent;
+    --code-block-pill-color: transparent;
+    --code-block-title-color: transparent;
+    --code-block-icon: transparent;
+  
+    background-color: var(--code-block-background);
+    border-radius: var(--border-radius-medium);
+    border: rm(1) solid var(--code-block-border);
+
+    &.loudTheme {
+        --code-block-background: var(--code-bg-base);
+        --code-block-header-background: var(--code-bg-header);
+        --code-block-content-color: var(--code-text-base);
+        --code-block-content-line-color: var(--code-text-subtle);
+        --code-block-border: var(--code-border);
+        --code-block-active-pill-background: var(--code-bg-base);
+        --code-block-active-pill-border: var(--code-border);
+        --code-block-active-pill-color: var(--code-text-base);
+        --code-block-pill-color: var(--code-text-subtle);
+        --code-block-title-color: var(--code-text-subtle);
+        --code-block-icon: var(--code-icon);
+    }
+
+    &.subtleTheme {
+        --code-block-background: var(--bg-subtle);
+        --code-block-header-background: var(--bg-base);
+        --code-block-content-color: var(--fg-subtle);
+        --code-block-content-line-color: var(--fg-muted);
+        --code-block-border: var(--border-base);
+        --code-block-active-pill-background: var(--bg-subtle);
+        --code-block-active-pill-border: var(--border-base);
+        --code-block-active-pill-color: var(--fg-base);
+        --code-block-pill-color: var(--fg-muted);
+        --code-block-title-color: var(--fg-muted);
+        --code-block-icon: var(--fg-muted);
+    }
+  
+    &.simpleType {
+
+        .body {
+            display: flex;
+            align-items: center;
+            padding: rm(8) rm(16);
+            gap: rm(16);
+        }
+    }
+  
+    &.advancedType {
+
+        .header {
+            display: flex;
+            align-items: center;
+          
+            padding: rm(12) rm(16);
+            gap: rm(16);
+          
+            background-color: var(--code-block-header-background);
+            border-block-end: rm(1) solid var(--code-block-border);
+            border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+        }
+
+        .pills {
+            display: flex;
+            align-items: center;
+            gap: rm(4);
+          
+            flex-grow: 1;
+        }
+      
+        .title {
+            @include text-compact-small-plus();
+            color: var(--code-block-title-color);
+        }
+
+        .body {
+            position: relative;
+            padding: rm(16) 0 rm(24);
+        }
+      
+        .content {
+            padding: 0 rm(84) 0 rm(16);
+        }
+      
+        .actions {
+            position: absolute;
+            inset-inline-end: rm(16);
+            inset-block-start: rm(16);
+        }
+
+        .pill {
+            display: flex;
+            align-items: center;
+            padding: rm(4) rm(12);
+            border-radius: var(--border-radius-xlarge);
+            color: var(--code-block-pill-color);
+            @include text-compact-small-plus();
+          
+            cursor: pointer;
+            border: rm(1) solid transparent;
+          
+            &.active {
+                background-color: var(--code-block-active-pill-background);
+                border: rm(1) solid var(--code-block-active-pill-border);
+                color: var(--code-block-active-pill-color);
+            }
+        }
+    }
+}
+
+.content {
+    @include code-blocks-body();
+    color: var(--code-block-content-color);
+    flex-grow: 1;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: rm(12);
+}
+
+.action {
+    cursor: pointer;
+}
+
+.actionIcon {
+    @include icon(20);
+    color: var(--code-block-icon);
+}

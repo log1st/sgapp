@@ -1,0 +1,36 @@
+@import "../../../assets/utils";
+
+.root {
+  position: fixed;
+  z-index: 999;
+
+  transform-origin: top left;
+
+  inset-block-start: 0;
+  inset-inline-start: 0;
+
+  resize: both;
+  overflow: auto;
+
+  @include noScrollbars();
+
+  display: flex;
+  flex-direction: column;
+
+  max-height: rm(500);
+}
+
+.title {
+  cursor: move;
+  margin: rm(-24);
+  padding: rm(24);
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.min {
+  block-size: fit-content;
+  inline-size: fit-content;
+}

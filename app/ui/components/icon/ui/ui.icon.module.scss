@@ -1,0 +1,32 @@
+@import "../../../assets/utils";
+@import "../../../assets/fonts/icons/icons";
+
+.root {
+    display: block;
+    pointer-events: none;
+
+    position: relative;
+
+    font-family: icons, sans-serif;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
+    fill: currentColor;
+}
+
+
+.spin {
+    @keyframes iconSpin {
+
+        0% {
+            rotate: 0deg;
+        }
+
+        100% {
+            rotate: 360deg;
+        }
+    }
+
+    animation: iconSpin 1s linear infinite forwards;
+}

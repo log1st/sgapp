@@ -1,0 +1,22 @@
+@import "../../../assets/utils";
+
+.root {
+    display: flex;
+    align-items: center;
+    gap: rm(4);
+}
+
+.label {
+    @include text-compact-medium-plus();
+    color: var(--fg-base);
+}
+
+.hint {
+    @include text-compact-medium();
+    color: var(--fg-muted);
+}
+
+.icon {
+    @include icon(20);
+    color: var(--fg-muted);
+}

@@ -1,0 +1,154 @@
+@import "../../../assets/utils";
+
+.root {
+
+    --toast-icon-color: transparent;
+    --toast-primary-color: transparent;
+  
+    display: flex;
+    align-items: center;
+
+    border: rm(1) solid var(--border-base);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--elevation-flyout);
+    background-color: var(--bg-base);
+}
+
+.infoStatus {
+    --toast-icon-color: var(--fg-base);
+    --toast-primary-color: var(--fg-base);
+}
+
+.errorStatus {
+    --toast-icon-color: var(--fg-error);
+    --toast-primary-color: var(--fg-error);
+}
+
+.warningStatus {
+    --toast-primary-color: var(--fg-base);
+    --toast-icon-color: var(--tag-orange-icon);
+}
+
+.successStatus {
+    --toast-primary-color: var(--fg-base);
+    --toast-icon-color: var(--tag-green-icon);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: rm(2);
+    padding: rm(16);
+
+    &:has(.icon) {
+
+        .message {
+            padding-inline-start: rm(32);
+        }
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: rm(12);
+}
+
+.icon {
+    @include icon(20);
+    color: var(--toast-icon-color);
+}
+
+.title {
+    @include text-compact-small-plus();
+    color: var(--fg-base);
+}
+
+.message {
+    @include text-compact-small();
+    color: var(--fg-subtle);
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    border-inline-start: rm(1) solid var(--border-base);
+    gap: rm(1);
+    background-color: var(--border-base);
+    align-self: normal;
+    border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
+  
+    flex-shrink: 0;
+}
+
+.action {
+    flex-grow: 1;
+  
+    color: var(--fg-base);
+
+    background-color: var(--bg-base);
+
+    padding: rm(4) rm(24);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+  
+    @include text-compact-small-plus();
+  
+    &.primary {
+        color: var(--toast-primary-color);
+    }
+  
+    &:not(:where(.loading, .disabled)) {
+        cursor: pointer;
+      
+        &:hover,
+        &:focus-visible {
+            background-color: var(--bg-base-hover);
+        }
+      
+        &:active {
+            background-color: var(--bg-base-pressed);
+        }
+    }
+  
+    &.disabled {
+        background-color: var(--bg-disabled);
+    }
+  
+    &.loading {
+
+        .actionLabel {
+            opacity: 0;
+        }
+    }
+  
+    &:first-child {
+        border-top-right-radius: var(--border-radius-medium);
+    }
+
+    &:last-child {
+        border-bottom-right-radius: var(--border-radius-medium);
+    }
+}
+
+.actionIcon {
+    @include icon(20);
+}
+
+.loader {
+    position: absolute;
+    inset: 0;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loaderIcon {
+    @include icon(20);
+}

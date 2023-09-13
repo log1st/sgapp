@@ -1,0 +1,105 @@
+@import "../../../assets/utils";
+
+.largePlusCompact {
+  @include text-large-plus-compact();
+}
+
+.compactLarge {
+  @include text-compact-large();
+}
+
+.compactMediumPlus {
+  @include text-compact-medium-plus();
+}
+
+.compactMedium {
+  @include text-medium();
+}
+
+.compactSmallPlus {
+  @include text-compact-small-plus();
+}
+
+.compactSmall {
+  @include text-compact-small();
+}
+
+.compactXSmallPlus {
+  @include text-compact-xsmall-plus();
+}
+
+.compactXSmall {
+  @include text-compact-xsmall();
+}
+
+.xLargePlus {
+  @include text-xlarge-plus();
+}
+
+.xLarge {
+  @include text-xlarge();
+}
+
+.largePlus {
+  @include text-large-plus-compact();
+}
+
+.large {
+  @include text-large();
+}
+
+.mediumPlus {
+  @include text-medium-plus();
+}
+
+.medium {
+  @include text-medium();
+}
+
+.coreH1 {
+  @include headers-core-h1();
+}
+
+.coreH2 {
+  @include headers-core-h2();
+}
+
+.coreH3 {
+  @include headers-core-h3();
+}
+
+.websH1 {
+  @include headers-webs-h1();
+}
+
+.websH2 {
+  @include headers-webs-h2();
+}
+
+.websH3 {
+  @include headers-webs-h3();
+}
+
+.websH4 {
+  @include headers-webs-h4();
+}
+
+.docsH1 {
+  @include headers-core-h1();
+}
+
+.docsH2 {
+  @include headers-core-h2();
+}
+
+.docsH3 {
+  @include headers-core-h3();
+}
+
+.codeBlocksLabel {
+  @include code-blocks-label();
+}
+
+.codeBlocksBody {
+  @include code-blocks-body();
+}

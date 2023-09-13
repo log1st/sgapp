@@ -1,0 +1,17 @@
+@import "../../../assets/utils";
+
+.root {
+    min-block-size: rm(20);
+    min-inline-size: rm(20);
+    border-radius: var(--border-radius-small);
+    padding: 0 rm(4);
+    @include text-compact-xsmall-plus();
+    color: var(--tag-neutral-text);
+    background: var(--tag-neutral-bg);
+    border: rm(1) solid var(--tag-neutral-border);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

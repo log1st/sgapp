@@ -1,0 +1,42 @@
+@import "../../../assets/utils";
+
+.root {
+  cursor: text;
+}
+
+.input {
+  inline-size: 100%;
+
+  color: var(--field-text-color);
+
+  &::placeholder {
+    color: var(--field-placeholder-color);
+  }
+
+  &:placeholder-shown {
+    @include ellipsis();
+  }
+}
+
+.readOnly {
+  resize: none;
+}
+
+.toggle,
+.clear {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  @include icon(20);
+}
+
+.centeredModifier {
+  .input {
+    text-align: center;
+  }
+}

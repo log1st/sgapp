@@ -1,0 +1,12 @@
+@import "../../../assets/utils";
+
+.root {
+    display: flex;
+    align-items: center;
+    background-color: var(--tag-neutral-bg);
+    border: rm(1) solid var(--tag-neutral-border);
+    color: var(--tag-neutral-text);
+    padding: 0 rm(6);
+    @include code-blocks-label();
+    border-radius: var(--border-radius-small);
+}

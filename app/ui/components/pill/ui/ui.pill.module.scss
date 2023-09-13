@@ -1,0 +1,40 @@
+@import "../../../assets/utils";
+
+.root {
+    --pill-text-color: var(--fg-subtle);
+    --pill-shadow: none;
+    --pill-border: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding: rm(6) rm(12);
+    border-radius: var(--border-radius-xlarge);
+  
+    border: rm(1) solid var(--pill-border);
+  
+    color: var(--pill-text-color);
+  
+    box-shadow: var(--pill-shadow);
+
+    @include text-compact-small-plus();
+
+    &:not(.disabled) {
+        cursor: pointer;
+
+        &:hover {
+            --pill-text-color: var(--fg-base);
+        }
+      
+        &:focus-visible {
+            --pill-border: var(--border-interactive);
+            --pill-shadow: var(--borders-focus);
+        }
+    }
+
+    &.selected {
+        --pill-text-color: var(--fg-base);
+        --pill-shadow: var(--elevation-card-rest);
+    }
+}

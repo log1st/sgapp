@@ -1,0 +1,134 @@
+@import "functions";
+
+$defaultWF: 400;
+
+@mixin t($fontFamily, $fs, $lh: 1, $wf: $defaultWF, $ls: 0) {
+    font-family: $fontFamily;
+    font-size: rm($fs);
+    @if($lh == #{$lh}) {
+        line-height: $lh;
+    } @else {
+        line-height: rm($lh);
+    }
+    font-weight: $wf;
+    letter-spacing: $ls;
+}
+
+@mixin ellipsis($nowrap: true) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @if($nowrap) {
+        white-space: nowrap;
+    }
+}
+
+@mixin noScrollbars() {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    scrollbar-width: none;
+}
+
+@mixin text-large-plus-compact() {
+    @include t("Inter", 16, 20, 500);
+}
+
+@mixin text-compact-large() {
+    @include t("Inter", 16, 20, 400);
+}
+
+@mixin text-compact-medium-plus() {
+    @include t("Inter", 14, 20, 500);
+}
+
+@mixin text-compact-medium() {
+    @include t("Inter", 14, 20, 400);
+}
+
+@mixin text-compact-small-plus() {
+    @include t("Inter", 13, 20, 500);
+}
+
+@mixin text-compact-small() {
+    @include t("Inter", 13, 20, 400);
+}
+
+@mixin text-compact-xsmall-plus() {
+    @include t("Inter", 12, 20, 500);
+}
+
+@mixin text-compact-xsmall() {
+    @include t("Inter", 12, 20, 400);
+}
+
+@mixin text-xlarge-plus() {
+    @include t("Inter", 18, 32, 500);
+}
+
+@mixin text-xlarge() {
+    @include t("Inter", 18, 32, 400);
+}
+
+@mixin text-large-plus() {
+    @include t("Inter", 16, 28, 500);
+}
+
+@mixin text-large() {
+    @include t("Inter", 16, 28, 400);
+}
+
+@mixin text-medium-plus() {
+    @include t("Inter", 14, 24, 500);
+}
+
+@mixin text-medium() {
+    @include t("Inter", 14, 24, 400);
+}
+
+@mixin headers-core-h1() {
+    @include t("Inter", 20, 32, 500, -1%);
+}
+
+@mixin headers-core-h2() {
+    @include t("Inter", 16, 24, 500, -1%);
+}
+
+@mixin headers-core-h3() {
+    @include t("Inter", 14, 20, 500, -1%);
+}
+
+@mixin headers-webs-h1() {
+    @include t("Inter", 72, 88, 500, -1%);
+}
+
+@mixin headers-webs-h2() {
+    @include t("Inter", 32, 44, 500, -1%);
+}
+
+@mixin headers-webs-h3() {
+    @include t("Inter", 24, 32, 500, -1%);
+}
+
+@mixin headers-webs-h4() {
+    @include t("Inter", 18, 28, 500, -1%);
+}
+
+@mixin headers-docs-h1() {
+    @include t("Inter", 32, 44, 500, -1%);
+}
+
+@mixin headers-docs-h2() {
+    @include t("Inter", 24, 32, 500, -1%);
+}
+
+@mixin headers-docs-h3() {
+    @include t("Inter", 18, 18, 500, -1%);
+}
+
+@mixin code-blocks-label {
+    @include t("Roboto Mono", 13, 20, 400);
+}
+
+@mixin code-blocks-body {
+    @include t("Roboto Mono", 13, 24, 400);
+}

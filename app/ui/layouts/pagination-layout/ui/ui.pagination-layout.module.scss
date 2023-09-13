@@ -1,0 +1,11 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: rm(10);
+}
+
+.field {
+  inline-size: rm(100);
+}

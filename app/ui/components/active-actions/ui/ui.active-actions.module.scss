@@ -1,0 +1,27 @@
+@import "../../../assets/utils";
+
+
+.root {
+    display: flex;
+    align-items: center;
+
+    .action {
+        flex-grow: 1;
+    }
+}
+
+.baseSize {
+    gap: rm(5);
+}
+
+.largeSize {
+    gap: rm(8);
+}
+
+.xLargeSize {
+    gap: rm(10);
+}
+
+.block {
+    flex-grow: 1;
+}

@@ -1,0 +1,112 @@
+@import "../../../assets/utils";
+
+.root {
+    --avatar-background: var(--bg-base);
+    --avatar-content-background: var(--bg-component);
+    --avatar-border: var(--border-base);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--avatar-background);
+    border: rm(1) solid var(--avatar-border);
+}
+
+.roundedType {
+    border-radius: var(--border-radius-xlarge);
+  
+    .content {
+        border-radius: var(--border-radius-xlarge);
+    }
+}
+
+.squaredType {
+    border-radius: var(--border-radius-medium);
+  
+    .content {
+        border-radius: var(--border-radius-xsmall);
+    }
+
+    .icon {
+        @include icon(16);
+    }
+}
+
+.smallSize {
+    --avatar-border: var(--avatar-content-background);
+    @include size(28);
+  
+    .letters {
+        @include text-compact-small-plus();
+    }
+  
+    .icon {
+        @include icon(20);
+    }
+}
+
+.baseSize {
+    @include size(32);
+    padding: rm(3);
+
+    .letters {
+        @include text-compact-small-plus();
+    }
+
+    .icon {
+        @include icon(20);
+    }
+}
+
+.largeSize {
+    @include size(40);
+    padding: rm(3);
+
+    .letters {
+        @include text-compact-medium-plus();
+    }
+
+    .icon {
+        @include icon(24);
+    }
+}
+
+.xLargeSize {
+    @include size(48);
+    padding: rm(4);
+
+    .letters {
+        @include text-large-plus-compact();
+    }
+
+    .icon {
+        @include icon(26);
+    }
+}
+
+.content {
+    background-color: var(--avatar-content-background);
+
+    block-size: 100%;
+    inline-size: 100%;
+  
+    color: var(--fg-subtle);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    overflow: hidden;
+}
+
+.image {
+    block-size: 100%;
+    inline-size: 100%;
+}
+
+.letters {
+    @include text-compact-small-plus();
+    color: var(--fg-subtle);
+    text-transform: uppercase;
+}

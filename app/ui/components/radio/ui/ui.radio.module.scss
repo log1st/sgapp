@@ -1,0 +1,34 @@
+@import "../../../assets/utils";
+
+.box {
+    background-color: var(--box-wrapper-box-background);
+    box-shadow: var(--box-wrapper-box-shadow);
+    color: var(--box-wrapper-box-color);
+
+    @include size(14);
+    border-radius: var(--border-radius-xlarge);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    background-color: var(--box-wrapper-box-color);
+
+    box-shadow: var(--box-wrapper-box-text-shadow);
+
+    @include size(6);
+  
+    flex-shrink: 0;
+
+    border-radius: var(--border-radius-xlarge);
+}
+
+.input {
+    position: absolute;
+    block-size: 0;
+    inline-size: 0;
+    opacity: 0;
+    pointer-events: none;
+}

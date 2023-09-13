@@ -1,0 +1,43 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: rm(12);
+
+  &.card {
+    padding: rm(12) rm(16);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--bg-base);
+    box-shadow: var(--elevation-card-rest);
+
+    &.interactive {
+      cursor: pointer;
+      &:hover {
+        background-color: var(--bg-base-hover);
+        box-shadow: var(--elevation-card-hover);
+      }
+
+      &:focus-visible {
+        box-shadow: var(--borders-interactive-with-focus);
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+}
+
+.title {
+  @include text-compact-small-plus();
+  color: var(--fg-base);
+}
+
+.hint {
+  @include text-compact-small();
+  color: var(--fg-subtle);
+}

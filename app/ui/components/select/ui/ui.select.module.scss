@@ -1,0 +1,43 @@
+@import "../../../assets/utils";
+
+.root {
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+}
+
+.readOnly {
+  resize: none;
+}
+
+.clear {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  @include icon(20);
+}
+
+.value {
+  color: var(--field-text-color);
+}
+
+.placeholder {
+  color: var(--field-placeholder-color);
+}
+
+.value,
+.placeholder {
+  @include ellipsis();
+}
+
+.dropdown {
+  max-block-size: rm(200);
+  overflow: auto;
+
+  @include noScrollbars();
+}

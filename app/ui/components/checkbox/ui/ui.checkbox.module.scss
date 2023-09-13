@@ -1,0 +1,33 @@
+@import "../../../assets/utils";
+
+.box {
+    background-color: var(--box-wrapper-box-background);
+    box-shadow: var(--box-wrapper-box-shadow);
+    color: var(--box-wrapper-box-color);
+
+    @include size(14);
+    border-radius: var(--border-radius-2-5xsmall);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    color: var(--box-wrapper-box-color);
+
+    //noinspection CssInvalidFunction
+    filter: drop-shadow(var(--box-wrapper-box-text-shadow));
+  
+    @include icon(20);
+  
+    flex-shrink: 0;
+}
+
+.input {
+    position: absolute;
+    block-size: 0;
+    inline-size: 0;
+    opacity: 0;
+    pointer-events: none;
+}

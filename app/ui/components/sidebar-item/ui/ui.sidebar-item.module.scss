@@ -1,0 +1,70 @@
+@import "../../../assets/utils";
+
+.root {
+  --sidebar-item-background: transparent;
+  --sidebar-item-border: var(----sidebar-item-background);
+  --sidebar-item-icon-color: var(--fg-subtle);
+  --sidebar-item-color: var(--fg-subtle);
+  --sidebar-item-hint-color: var(--fg-muted);
+
+  display: flex;
+  align-items: center;
+  gap: rm(12);
+  padding: rm(6) rm(12);
+
+  inline-size: 100%;
+
+  border: rm(1) solid var(--sidebar-item-border);
+  background-color: var(--sidebar-item-background);
+  border-radius: var(--border-radius-small);
+
+  &:not(.disabled) {
+    cursor: pointer;
+
+    &:not(.active) {
+      &:hover,
+      &:focus-visible {
+        --sidebar-item-background: var(--bg-base-hover);
+      }
+    }
+  }
+
+  &.active {
+    --sidebar-item-background: var(--bg-base-pressed);
+    --sidebar-item-border: var(--border-base);
+    --sidebar-item-color: var(--fg-base);
+  }
+}
+
+.icon {
+  @include icon(20);
+  color: var(--sidebar-item-icon-color);
+  flex-shrink: 0;
+}
+
+.label {
+  @include text-compact-small-plus();
+  color: var(--sidebar-item-color);
+  flex-grow: 1;
+  text-align: left;
+}
+
+.badge {
+  flex-shrink: 0;
+}
+
+.hint {
+  @include text-compact-small-plus();
+  color: var(--sidebar-item-hint-color);
+}
+
+.appendIcon {
+  @include icon(20);
+  flex-shrink: 0;
+  color: var(--sidebar-item-icon-color);
+}
+
+.before,
+.after {
+  flex-shrink: 0;
+}

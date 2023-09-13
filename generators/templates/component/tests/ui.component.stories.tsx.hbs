@@ -1,0 +1,22 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { Ui{{ pascalCase name }} } from "../index";
+
+const meta = {
+title: "{{pascalCase type}}s/Ui{{ pascalCase name }}",
+component: Ui{{ pascalCase name }},
+parameters: {
+layout: "centered",
+},
+argTypes: {},
+} satisfies Meta<typeof Ui{{ pascalCase name }}>;
+
+    export const Story = {
+    args: {
+    e2e: "some-e2e",
+    className: "some-class",
+    style: {},
+    },
+    name: "Ui{{ pascalCase name }}",
+    } satisfies StoryObj<typeof meta>;
+
+        export default meta;

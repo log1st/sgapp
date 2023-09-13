@@ -1,0 +1,61 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  padding: rm(0) rm(8);
+  gap: rm(12);
+  min-block-size: rm(32);
+
+  &.labelType {
+    .label {
+      @include text-compact-xsmall-plus();
+      color: var(--fg-subtle);
+    }
+  }
+
+  &.headerType {
+    border-radius: var(--border-radius-small);
+    .label {
+      @include text-compact-xsmall-plus();
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--bg-base-hover);
+    }
+  }
+
+  &.shortcutType {
+    border-radius: var(--border-radius-small);
+    .label {
+      @include text-compact-xsmall-plus();
+      color: var(--fg-subtle);
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--bg-base-hover);
+    }
+  }
+}
+
+.icon {
+  @include icon(20);
+  color: var(--fg-muted);
+}
+
+.label {
+  flex-grow: 1;
+}
+
+.appendIcon {
+  @include icon(20);
+  color: var(--fg-muted);
+}
+
+.noIconAfter {
+  margin-inline-end: rm(-8);
+}

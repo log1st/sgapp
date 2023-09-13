@@ -1,0 +1,10 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-base);
+  box-shadow: var(--elevation-flyout);
+  border-radius: var(--border-radius-medium);
+  padding: rm(4);
+}
