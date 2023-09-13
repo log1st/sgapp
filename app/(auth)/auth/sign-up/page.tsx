@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getServerTranslation } from "@/i18n/getServerTranslation";
 import { UiDialog } from "@/ui/components/dialog";
 import { UiInput, UiInputType } from "@/app/ui/components/input";
@@ -6,6 +7,16 @@ import { Field, Form, FormError, Submit } from "@/app/components/form";
 import { UiAuthSignUpFormLayout } from "@/ui/layouts/auth-sign-up-form-layout";
 import { UiCheckbox } from "@/ui/components/checkbox";
 import { signUpAction } from "@/app/api/auth/signUpAction";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { t } = await getServerTranslation(["auth", "meta"]);
+
+  return {
+    title: t("meta:title", {
+      title: t("auth:signUp.title"),
+    }),
+  };
+};
 
 export default async function AuthSignUpPage() {
   const {

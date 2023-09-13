@@ -1,5 +1,5 @@
 export default {
   language: "Русский",
-  title: "{title} | Игры StopGames",
-  pureTitle: "Игры StopGames",
+  title: "{title} | Игры",
+  pureTitle: "Игры",
 };

@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import { Metadata } from "next";
 import { UiMainLayout } from "@/ui/layouts/main-layout";
 import {
   getAccessTokenExpirationDate,
@@ -7,6 +8,15 @@ import {
 import { appRedirect } from "@/utils/router";
 import { RefreshHandle } from "@/app/components/refresh/RefreshHandle";
 import Sidebar from "@/app/components/layout/Sidebar";
+import { getServerTranslation } from "@/i18n/getServerTranslation";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { t } = await getServerTranslation(["auth", "meta"]);
+
+  return {
+    title: t("meta:pureTitle"),
+  };
+};
 
 export type SignedLayoutProps = PropsWithChildren;
 
