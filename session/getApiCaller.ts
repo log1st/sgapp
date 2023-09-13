@@ -1,5 +1,5 @@
 import { getAccessToken } from "./getAccessToken";
-import { createApiCaller } from "@/api/client/createApiCaller";
+import { createApiCaller } from "@/api";
 
 export const getApiCaller = (accessToken = getAccessToken()) =>
   createApiCaller({

@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "gen:cti": "cti create ./utils ./hooks -w -b",
+    "gen:cti": "cti create ./utils ./hooks ./api/client ./api/types -w -b",
     "gen:component": "turbo gen component",
     "prisma:studio": "prisma studio",
     "storybook:dev": "storybook dev -c storybook -p 6006",

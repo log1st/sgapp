@@ -11,27 +11,16 @@
   position: sticky;
   top: 0;
 
-  padding: 0 rm(15);
-
   border-block-end: rm(1) solid var(--border-base);
   background-color: var(--bg-base);
 }
 
 .body {
   flex-grow: 1;
-  padding: 0 rm(15);
 
   overflow: auto;
   @include noScrollbars();
 
   display: flex;
   flex-direction: column;
-}
-
-.container {
-  max-inline-size: rm(1170);
-  inline-size: 100dvw;
-  margin: 0 auto;
-
-  min-block-size: 100%;
 }

@@ -16,14 +16,8 @@ export function UiMainLayout({
       style={style}
       className={clsx([styles.root, className])}
     >
-      {header && (
-        <div className={styles.header}>
-          <div className={styles.container}>{header}</div>
-        </div>
-      )}
-      <div className={styles.body}>
-        <div className={styles.container}>{children}</div>
-      </div>
+      {header && <div className={styles.header}>{header}</div>}
+      <div className={styles.body}>{children}</div>
     </div>
   );
 }

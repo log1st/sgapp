@@ -2,6 +2,7 @@
 const nextConfig = {
   experimental: {
     serverActions: true,
+    typedRoutes: true,
   },
   poweredByHeader: false,
   transpilePackages: ["@cv/ui", "@cv/common"],
