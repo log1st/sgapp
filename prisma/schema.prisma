@@ -57,5 +57,10 @@ model Room {
   createdAt DateTime @default(now())
   finishedAt DateTime?
 
+  title String
+
+  password String? ///@encrypted
+  private Boolean @default(false)
+
   status RoomStatus @default(new)
 }

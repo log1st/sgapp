@@ -79,22 +79,6 @@ export function Field({
               onBlur: ((event) => {
                 onBlur?.(event);
 
-                if (event.target instanceof HTMLInputElement) {
-                  if (valuePropName === "value") {
-                    if (String(event.target.value) === String(value)) {
-                      return;
-                    }
-                  }
-                  if (valuePropName === "checked") {
-                    if (
-                      event.target.checked === checked &&
-                      event.target.value === value
-                    ) {
-                      return;
-                    }
-                  }
-                }
-
                 if (submitOnBlur) {
                   submitForm();
                 }

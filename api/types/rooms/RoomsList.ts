@@ -1,15 +1,36 @@
-import { Room } from "@prisma/client";
-import {
-  getListingRequest,
-  ListingResponse,
-} from "@/api/types/listing/ListingRequest";
+import { z } from "zod";
+import { Room, RoomStatus, RoomType } from "@prisma/client";
+import { getListingRequest } from "@/api/types/listing/ListingRequest";
 import { AppRouterInput, AppRouterOutput } from "@/api/apiRouter";
+import { omit } from "@/utils";
 
-export const roomsListRequest = getListingRequest({});
-
-export type RoomsListResponse = ListingResponse<Room>;
+export const roomsListRequest = getListingRequest({
+  filter: z
+    .object({
+      type: z.array(z.nativeEnum(RoomType)).optional().default([]),
+      status: z.array(z.nativeEnum(RoomStatus)).optional().default([]),
+      query: z.string().optional(),
+      password: z
+        .array(
+          z.union([
+            z.enum(["true", "false"]).transform((i) => i === "true"),
+            z.coerce.boolean(),
+          ]),
+        )
+        .optional()
+        .default([]),
+    })
+    .optional()
+    .default({
+      type: [],
+      password: [],
+      status: [],
+    }),
+});
 
 export type RoomsListInput = AppRouterInput["rooms"]["list"];
 export type RoomsListOutput = AppRouterOutput["rooms"]["list"];
+
+export type ListedRoom = NonNullable<RoomsListOutput["data"]>[number];
 
 export { type Room, RoomType, RoomStatus } from "@prisma/client";

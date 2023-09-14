@@ -9,11 +9,15 @@ export function UiTypography({
   e2e,
   type = UiTypographyType.medium,
   children,
+  color,
 }: UiTypographyProps) {
   return (
     <span
       data-e2e={e2e}
-      style={style}
+      style={{
+        ...style,
+        color: color && `var(--${color})`,
+      }}
       className={clsx([styles.root, className, styles[type]])}
     >
       {children}

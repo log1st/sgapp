@@ -1,0 +1,17 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: rm(10);
+}
+
+.type,
+.status,
+.password {
+  inline-size: rm(200);
+}
+
+.query {
+  flex-grow: 1;
+}

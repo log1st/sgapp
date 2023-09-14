@@ -1,2 +1,1 @@
-export * from './getRecordDataIndex';
-export * from './omit';
+export * from "./getRecordDataIndex";

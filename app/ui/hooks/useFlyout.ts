@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Modifier, PopperProps, usePopper } from "react-popper";
 import { Options } from "@popperjs/core/lib/modifiers/offset";
+import { useTimeoutFn } from "react-use";
 import { filteredArray } from "@/utils";
 
 export type UseFlyoutOptions = {
@@ -72,11 +73,18 @@ export const useFlyout = ({
   );
 
   const portalTarget = useRef<HTMLDivElement | HTMLBodyElement | null>(null);
-  useEffect(() => {
+
+  const [, cancel, reset] = useTimeoutFn(() => {
     portalTarget.current = document.querySelector<
       HTMLDivElement | HTMLBodyElement
     >("[data-app-popper]");
-  }, []);
+
+    if (!portalTarget.current) {
+      reset();
+    } else {
+      cancel();
+    }
+  });
 
   return {
     popperElement,

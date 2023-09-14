@@ -1,41 +1,43 @@
 import { ReadonlyURLSearchParams } from "next/dist/client/components/navigation";
 import { z } from "zod";
-import { convertURLSearchParamsToObject } from "./convertURLSearchParamsToObject";
-import { convertObjectToURLSearchParams } from "./convertObjectToURLSearchParams";
+import qs from "qs";
+import { merge, keyBy } from "lodash";
+import { DataIndex, getRecordDataIndex, setRecordDataIndex } from "@/utils";
 
-export class SearchParams {
-  private params: URLSearchParams = new URLSearchParams();
+export class SearchParams<Type extends Record<string, unknown>> {
+  private params: Type = {} as Type;
 
   constructor(
     initial?:
       | URLSearchParams
-      | SearchParams
+      | SearchParams<Type>
       | ReadonlyURLSearchParams
       | Record<string, unknown>
       | string,
   ) {
-    this.params = new URLSearchParams(
+    this.params = (
       initial instanceof SearchParams
-        ? initial.asIs()
-        : (initial as Record<string, string>),
-    );
+        ? initial.raw()
+        : initial instanceof URLSearchParams ||
+          initial instanceof ReadonlyURLSearchParams
+        ? qs.parse(initial.toString())
+        : typeof initial === "string"
+        ? qs.parse(initial)
+        : initial
+    ) as Type;
   }
 
-  set(key: string, value: string | number): this {
-    this.params.set(key, String(value));
+  set(key: DataIndex<Type>, value: string | number): this {
+    setRecordDataIndex(this.params, key, value);
     return this;
   }
 
-  get(key: string): string | null {
-    return this.params.get(key);
+  get<Output>(key: DataIndex<typeof this.params>) {
+    return getRecordDataIndex<Output>(this.params, key);
   }
 
-  asIs(): URLSearchParams {
+  raw() {
     return this.params;
-  }
-
-  raw<Type>(): Type {
-    return convertURLSearchParamsToObject(this.asIs());
   }
 
   merge(
@@ -43,49 +45,48 @@ export class SearchParams {
       | URLSearchParams
       | ReadonlyURLSearchParams
       | Record<string, unknown>
-      | SearchParams
+      | SearchParams<Type>
       | string,
   ): this {
-    const newParams = new URLSearchParams(this.params);
+    const newParams = this.clone().raw();
+
     const convertedParams =
       params instanceof URLSearchParams
-        ? params
+        ? qs.parse(params.toString())
         : params instanceof SearchParams
-        ? params.asIs()
-        : convertObjectToURLSearchParams(params as Record<string, unknown>);
+        ? params.raw()
+        : (params as Record<string, unknown>);
 
-    convertedParams.forEach((value, key) => {
-      newParams.append(key, value);
-    });
-
-    this.params = newParams;
+    this.params = merge(keyBy(newParams), keyBy(convertedParams)) as Type;
 
     return this;
   }
 
-  validate<Type>(schema: z.ZodTypeAny): Type {
+  validate<NewType>(schema: z.ZodTypeAny): NewType {
     const result = schema.safeParse(this.raw());
 
     if (result.success) {
-      return result.data as Type;
+      return result.data as NewType;
     }
 
-    return {} as Type;
+    return {} as NewType;
   }
 
-  clone(): SearchParams {
-    return new SearchParams(this.asIs());
+  clone(): SearchParams<Type> {
+    return new SearchParams<Type>(JSON.parse(JSON.stringify(this.params)));
   }
 
   toString(): string {
-    return this.params.toString();
+    return qs.stringify(this.raw());
   }
 }
 
-export const newSearchParams = (
+export const newSearchParams = <
+  Type extends Record<string, unknown> = Record<string, unknown>,
+>(
   initial?:
     | URLSearchParams
-    | SearchParams
+    | SearchParams<Type>
     | ReadonlyURLSearchParams
     | Record<string, unknown>
     | string,

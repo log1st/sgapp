@@ -15,9 +15,9 @@ import {
   useState,
 } from "react";
 import { useToggle } from "react-use";
+import dynamic from "next/dynamic";
 import { FormProvider } from "./FormContext";
 import { transformResponseError, TranslatedResponseError } from ".";
-import { FormDev } from "./FormDev";
 import { ApiResponse } from "@/api";
 
 export type FormProps<
@@ -43,6 +43,10 @@ export type FormProps<
   lng?: string;
   dev?: boolean;
 }>;
+
+const FormDev = dynamic(() => import("./FormDev"), {
+  ssr: false,
+});
 
 export function Form<Payload extends FormikValues, Response>({
   initialValues = {} as Payload,

@@ -148,6 +148,11 @@ export function UiSelect<
       return;
     }
     setFocused(false);
+    fieldProps.onBlur?.({
+      target: {
+        name,
+      },
+    } as any);
   };
 
   const prevent = (e: SyntheticEvent) => {

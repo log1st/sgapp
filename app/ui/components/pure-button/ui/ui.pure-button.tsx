@@ -3,32 +3,38 @@
 import { clsx } from "@clsx";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Link from "next/link";
+import { ForwardedRef } from "react";
 import { UiPureButtonHtmlType, UiPureButtonProps } from "..";
 
 import styles from "./ui.pure-button.module.scss";
 
-export function UiPureButton({
-  className,
-  style,
-  e2e,
-  href,
-  target,
-  onClick,
-  htmlType = UiPureButtonHtmlType.button,
-  disabled = false,
-  children,
-  tabIndex,
-  span,
-  link,
-  onMouseOver,
-  onMouseLeave,
-  onFocus,
-  onBlur,
-  active,
-  interactive,
-  prevent,
-  stop,
-}: UiPureButtonProps) {
+export function UiPureButton(
+  {
+    className,
+    style,
+    e2e,
+    href,
+    target,
+    onClick,
+    htmlType = UiPureButtonHtmlType.button,
+    disabled = false,
+    children,
+    tabIndex,
+    span,
+    link,
+    onMouseOver,
+    onMouseLeave,
+    onFocus,
+    onBlur,
+    active,
+    interactive,
+    prevent,
+    stop,
+  }: UiPureButtonProps,
+  r: ForwardedRef<any>,
+) {
+  const ref = (r && "current" in r) || r instanceof Function ? r : null;
+
   const handleOnClick: typeof onClick = (event) => {
     if (prevent) {
       event.preventDefault();
@@ -53,13 +59,18 @@ export function UiPureButton({
   if (span) {
     if (span === "label") {
       return (
-        <label data-e2e={e2e} style={style} className={finalClassName}>
+        <label
+          ref={ref}
+          data-e2e={e2e}
+          style={style}
+          className={finalClassName}
+        >
           {children}
         </label>
       );
     }
     return (
-      <div data-e2e={e2e} style={style} className={finalClassName}>
+      <div ref={ref} data-e2e={e2e} style={style} className={finalClassName}>
         {children}
       </div>
     );
@@ -68,6 +79,7 @@ export function UiPureButton({
   if (link || href) {
     return (
       <Link
+        ref={ref}
         data-e2e={e2e}
         href={href || "#"}
         target={target}
@@ -87,6 +99,7 @@ export function UiPureButton({
 
   return (
     <button
+      ref={ref}
       onMouseOver={onMouseOver}
       onMouseLeave={onMouseLeave}
       onFocus={onFocus}

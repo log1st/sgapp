@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { useSearchParams } from "next/navigation";
-import { newSearchParams } from "./SearchParams";
+import { newSearchParams } from ".";
 
 export const useClientSearch = <
   Type extends z.ZodRawShape,
@@ -10,5 +10,5 @@ export const useClientSearch = <
 ) => {
   const params = useSearchParams();
 
-  return newSearchParams(params).validate<z.infer<Schema>>(schema);
+  return newSearchParams<Type>(params).validate<z.infer<Schema>>(schema);
 };

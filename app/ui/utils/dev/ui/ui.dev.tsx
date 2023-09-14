@@ -3,11 +3,13 @@
 import { useRef } from "react";
 import { useToggle } from "react-use";
 import { clsx } from "@clsx";
+import { createPortal } from "react-dom";
 import { UiDevProps } from "../index";
 
 import styles from "./ui.dev.module.scss";
 import { UiDialog } from "../../../components/dialog";
 import { useDraggable } from "@/hooks";
+import { useFlyout } from "@/ui/hooks/useFlyout";
 
 export function UiDev({ children, title }: UiDevProps) {
   const [min, toggleMin] = useToggle(false);
@@ -15,7 +17,9 @@ export function UiDev({ children, title }: UiDevProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const { dragState, dragging } = useDraggable(ref);
 
-  return (
+  const { portalTarget } = useFlyout();
+
+  return createPortal(
     <UiDialog
       className={clsx([
         styles.root,
@@ -42,6 +46,7 @@ export function UiDev({ children, title }: UiDevProps) {
       ]}
     >
       {!min && children}
-    </UiDialog>
+    </UiDialog>,
+    portalTarget.current || document.body,
   );
 }

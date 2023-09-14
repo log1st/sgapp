@@ -1,0 +1,268 @@
+@import "./functions";
+
+@mixin lightTheme() {
+
+  --bg-subtle: #f9fafb;
+  --bg-subtle-hover: #f3f4f6;
+  --bg-subtle-pressed: #e5e7eb;
+
+  --bg-base: #ffffff;
+  --bg-base-hover: #f9fafb;
+  --bg-base-pressed: #f3f4f6;
+
+  --bg-component: #f1f3f5;
+
+  --bg-switch-off: #e5e7eb;
+  --bg-switch-off-hover: #d1d5db;
+
+  --bg-highlight: #eff6ff;
+  --bg-highlight-hover: #dbeafe;
+
+  --bg-interactive: #3b82f6;
+  --bg-overlay: #03071266;
+  --bg-disabled: #f3f4f6;
+
+  --bg-field: #f9fafb;
+  --bg-field-hover: #f3f4f6;
+
+  --fg-base: #030712;
+  --fg-subtle: #4b5563;
+  --fg-muted: #9ca3af;
+  --fg-disabled: #d1d5db;
+
+  --fg-on-color: #ffffff;
+  --fg-on-inverted: #ffffff;
+
+  --fg-interactive: #3b82f6;
+  --fg-interactive-hover: #2563eb;
+
+  --fg-error: #e11d48;
+
+  --border-base: #e5e7eb;
+  --border-strong: #d1d5db;
+  --border-loud: #030712;
+  --border-interactive: #3b82f6;
+  --border-error: #e11d48;
+  --border-danger: #be123c;
+  --border-transparent: #03071200;
+
+  --button-inverted: linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 100%), #030712;
+  --button-inverted-hover: #1f2937;
+  --button-inverted-pressed: #374151;
+
+  --button-neutral: linear-gradient(to bottom, rgba(3, 7, 18, 0) 0%, rgba(3, 7, 18, 0.03) 100%), #ffffff;
+  --button-neutral-hover: #f9fafb;
+  --button-neutral-pressed: #f3f4f6;
+
+  --button-danger: linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 100%), #e11d48;
+  --button-danger-hover: #e11d48;
+  --button-danger-pressed: #be123c;
+
+  --button-transparent: #ffffff00;
+  --button-transparent-hover: #f9fafb;
+  --button-transparent-pressed: #f3f4f6;
+
+  --code-text-base: #f9fafb;
+  --code-text-subtle: #9ca3af;
+  --code-icon: #6b7280;
+  --code-bg-base: #111827;
+  --code-bg-header: #1f2937;
+  --code-border: #374151;
+
+  --tag-neutral-bg: #f3f4f6;
+  --tag-neutral-bg-hover: #e5e7eb;
+  --tag-neutral-text: #4b5563;
+  --tag-neutral-icon: #6b7280;
+  --tag-neutral-border: #e5e7eb;
+
+  --tag-purple-bg: #ede9fe;
+  --tag-purple-bg-hover: #ddd6fe;
+  --tag-purple-text: #6d28d9;
+  --tag-purple-icon: #7c3aed;
+  --tag-purple-border: #ddd6fe;
+
+  --tag-blue-bg: #dbeafe;
+  --tag-blue-bg-hover: #bfdbfe;
+  --tag-blue-text: #1d4ed8;
+  --tag-blue-icon: #2563eb;
+  --tag-blue-border: #bfdbfe;
+
+  --tag-green-bg: #d1fae5;
+  --tag-green-bg-hover: #a7f3d0;
+  --tag-green-text: #047857;
+  --tag-green-icon: #059669;
+  --tag-green-border: #a7f3d0;
+
+  --tag-orange-bg: #fef4c7;
+  --tag-orange-bg-hover: #fde68a;
+  --tag-orange-text: #b45309;
+  --tag-orange-icon: #d97706;
+  --tag-orange-border: #fde68a;
+
+  --tag-red-bg: #ffe4e6;
+  --tag-red-bg-hover: #fecdd3;
+  --tag-red-text: #be123c;
+  --tag-red-icon: #e11d48;
+  --tag-red-border: #fecdd3;
+
+  --elevation-card-rest: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #03071214, #{rm(0)} #{rm(1)} #{rm(2)} #{rm(-1)} #03071214, #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #03071214;
+  --elevation-card-hover: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #03071214, #{rm(0)} #{rm(1)} #{rm(2)} #{rm(-1)} #03071214, #{rm(0)} #{rm(2)} #{rm(8)} #{rm(0)} #0307121a;
+
+  --elevation-tooltip: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #03071214, #{rm(0)} #{rm(4)} #{rm(8)} #{rm(0)} #03071214;
+  --elevation-flyout: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #03071214, #{rm(0)} #{rm(8)} #{rm(16)} #{rm(0)} #03071214;
+
+  --elevation-modal: inset #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff, inset #{rm(0)} #{rm(0)} #{rm(0)} #{rm(2)} #e5e7eb66, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #03071214, #{rm(0)} #{rm(16)} #{rm(32)} #03071214, #{rm(0)} #{rm(2)} #{rm(24)} #{rm(0)} #03071214;
+
+  --details-switch-background: inset #{rm(0)} #{rm(1)} #{rm(1)} #{rm(0)} #0307120a, #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #0307120a, inset #{rm(0)} #{rm(0)} #{rm(0)} #{rm(0.5)} #0307120f, inset #{rm(0)} #{rm(0)} #{rm(8)} #{rm(0)} #03071205, #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #0307120a;
+  --details-switch-background-focus: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #3b82f699, inset #{rm(0)} #{rm(1)} #{rm(1)} #{rm(0)} #0307120a, inset #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #0307120a, inset #{rm(0)} #{rm(0)} #{rm(0)} #{rm(0.5)} #0307120f, inset #{rm(0)} #{rm(0)} #{rm(8)} #{rm(0)} #03071205, #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #0307120a;
+  --details-switch-handle: inset #{rm(0)} #{rm(0)} #{rm(2)} #{rm(1)} #ffffff, inset #{rm(0)} #{rm(1)} #{rm(0)} #{rm(0)} #ffffff, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(0.5)} #03071205, #{rm(0)} #{rm(5)} #{rm(4)} #{rm(0)} #03071205, #{rm(0)} #{rm(3)} #{rm(3)} #{rm(0)} #0307120a, #{rm(0)} #{rm(1)} #{rm(2)} #{rm(0)} #0307121f, #{rm(0)} #{rm(0)} #{rm(1)} #{rm(0)} #03071214;
+  --details-contrast-on-bg-interactive: #{rm(0)} #{rm(1)} #{rm(2)} #1e3a8a99;
+
+  --borders-focus: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #3b82f699;
+  --borders-active: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #3b82f633;
+  --borders-error: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #e11d4826;
+  --borders-base: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #e5e7eb;
+  --borders-base-with-shadow: #{rm(0)} #{rm(1)} #{rm(2)} #{rm(0)} #03071233, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #e5e7eb;
+  --borders-interactive: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #3b82f6;
+  --borders-interactive-with-focus: #{rm(0)} #{rm(1)} #{rm(2)} #{rm(0)} #1e3a8a80, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #3b82f6, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(2)} #ffffff, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(4)} #3b82f699;
+  --borders-interactive-with-shadow: #{rm(0)} #{rm(1)} #{rm(2)} #{rm(0)} #1e3a8a80, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #3b8af6;
+
+  --buttons-neutral: #{rm(0)} #{rm(0.25)} #{rm(0)} #{rm(0)} #03071229, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(0)} #03071229;
+  --buttons-neutral-focus: #{rm(0)} #{rm(0.25)} #{rm(0)} #{rm(0)} #03071229, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(0)} #03071229, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #3b82f699;
+
+  --buttons-colored: inset #{rm(0)} #{rm(1.75)} #{rm(0)} #{rm(0)} #ffffff29, #{rm(0)} #{rm(0.25)} #{rm(0)} #{rm(0)} #03071229, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(0)} #03071229;
+  --buttons-colored-focus: inset #{rm(0)} #{rm(1.75)} #{rm(0)} #{rm(0)} #ffffff29, #{rm(0)} #{rm(0.25)} #{rm(0)} #{rm(0)} #03071229, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(0)} #03071229, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #3b82f699;
+}
+
+@mixin darkTheme() {
+  --bg-subtle: #18181a;
+  --bg-subtle-hover: #1b1b1f;
+  --bg-subtle-pressed: #27282d;
+
+  --bg-base: #1b1b1f;
+  --bg-base-hover: #27282d;
+  --bg-base-pressed: #2e3035;
+
+  --bg-component: #27282d;
+
+  --bg-switch-off: #35373c;
+  --bg-switch-off-hover: #464b50;
+
+  --bg-highlight: #172554;
+  --bg-highlight-hover: #1e3a8a;
+
+  --bg-interactive: #60a5fa;
+  --bg-overlay: #18181ab3;
+  --bg-disabled: #27282d;
+
+  --bg-field: #27282d;
+  --bg-field-hover: #2e3035;
+
+  --fg-base: #edeef0;
+  --fg-subtle: #adb1b8;
+  --fg-muted: #696e77;
+  --fg-disabled: #3c3f44;
+
+  --fg-on-color: #ffffff;
+  --fg-on-inverted: #18181a;
+
+  --fg-interactive: #60a5fa;
+  --fg-interactive-hover: #3b82f6;
+
+  --fg-error: #fb7185;
+
+  --border-base: #2e3035;
+  --border-strong: #35373c;
+  --border-loud: #edeef0;
+  --border-interactive: #60a5fa;
+  --border-error: #f43f5e;
+  --border-danger: #be123c;
+  --border-transparent: #ffffff00;
+
+  --button-inverted: linear-gradient(to bottom, rgba(24, 24, 26, 0.00) 0%, rgba(24, 24, 26, 0.12) 100%), #edeef0;
+  --button-inverted-hover: #ffffff;
+  --button-inverted-pressed: #edeef0;
+
+  --button-neutral: linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.00) 100%), #27282d;
+  --button-neutral-hover: #35373c;
+  --button-neutral-pressed: #3c3f44;
+
+  --button-danger: linear-gradient(to bottom, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 100%), #9f1239;
+  --button-danger-hover: #be123c;
+  --button-danger-pressed: #e11d48;
+
+  --button-transparent: #ffffff00;
+  --button-transparent-hover: #27282d;
+  --button-transparent-pressed: #2e3035;
+
+  --code-text-base: #edeef0;
+  --code-text-subtle: #696e77;
+  --code-icon: #464b50;
+  --code-bg-base: #1b1b1f;
+  --code-bg-header: #18181a;
+  --code-border: #2e3035;
+
+  --tag-neutral-bg: #2e3035;
+  --tag-neutral-bg-hover: #35373c;
+  --tag-neutral-text: #adb1b8;
+  --tag-neutral-icon: #7d828a;
+  --tag-neutral-border: #3c3f44;
+
+  --tag-purple-bg: #2e1064;
+  --tag-purple-bg-hover: #4c1d95;
+  --tag-purple-text: #a78bfa;
+  --tag-purple-icon: #8b5cf6;
+  --tag-purple-border: #4c1d95;
+
+  --tag-blue-bg: #172554;
+  --tag-blue-bg-hover: #1e2a8a;
+  --tag-blue-text: #60a5fa;
+  --tag-blue-icon: #3b82f6;
+  --tag-blue-border: #1e3a8a;
+
+  --tag-green-bg: #022c22;
+  --tag-green-bg-hover: #064e3b;
+  --tag-green-text: #34d399;
+  --tag-green-icon: #10b981;
+  --tag-green-border: #064e3b;
+
+  --tag-orange-bg: #451a03;
+  --tag-orange-bg-hover: #78350f;
+  --tag-orange-text: #fbbf24;
+  --tag-orange-icon: #f59e0b;
+  --tag-orange-border: #78350f;
+
+  --tag-red-bg: #4c0519;
+  --tag-red-bg-hover: #881337;
+  --tag-red-text: #fb7185;
+  --tag-red-icon: #f43f5e;
+  --tag-red-border: #881337;
+
+  --elevation-card-rest: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff1a, #{rm(0)} #{rm(1)} #{rm(2)} #{rm(-1)} #ffffff29, #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #00000066;
+  --elevation-card-hover: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff1a, #{rm(0)} #{rm(1)} #{rm(2)} #{rm(-1)} #ffffff29, #{rm(0)} #{rm(2)} #{rm(8)} #{rm(0)} #00000066;
+
+  --elevation-tooltip: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff1a, #{rm(0)} #{rm(4)} #{rm(8)} #{rm(0)} #00000052;
+  --elevation-flyout: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff1a, #{rm(0)} #{rm(8)} #{rm(16)} #{rm(0)} #00000052;
+
+  --elevation-modal: inset #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #171717, inset #{rm(0)} #{rm(0)} #{rm(0)} #{rm(2)} #2e303566, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #ffffff1a, #{rm(0)} #{rm(16)} #{rm(32)} #00000052, #{rm(0)} #{rm(2)} #{rm(24)} #{rm(0)} #00000052;
+
+  --details-switch-background: inset #{rm(0)} #{rm(1)} #{rm(1)} #{rm(0)} #0000001a, #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #0000001a, inset #{rm(0)} #{rm(0)} #{rm(0)} #{rm(0.5)} #ffffff29, inset #{rm(0)} #{rm(0)} #{rm(8)} #{rm(0)} #0000001a, #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #00000033;
+  --details-switch-background-focus: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #1b1b1f, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #60a5facc, inset #{rm(0)} #{rm(1)} #{rm(1)} #{rm(0)} #0000001a, inset #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #0000001a, inset #{rm(0)} #{rm(0)} #{rm(0)} #{rm(0.5)} #ffffff29, inset #{rm(0)} #{rm(0)} #{rm(8)} #{rm(0)} #0000001a, #{rm(0)} #{rm(2)} #{rm(4)} #{rm(0)} #00000033;
+  --details-switch-handle: inset #{rm(0)} #{rm(0)} #{rm(2)} #{rm(1)} #ffffff, inset #{rm(0)} #{rm(1)} #{rm(0)} #{rm(0)} #ffffff, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(0.5)} #00000029, #{rm(0)} #{rm(5)} #{rm(4)} #{rm(0)} #0000001a, #{rm(0)} #{rm(3)} #{rm(3)} #{rm(0)} #0000001a, #{rm(0)} #{rm(1)} #{rm(2)} #{rm(0)} #0000001a, #{rm(0)} #{rm(0)} #{rm(1)} #{rm(0)} #0000001a;
+  --details-contrast-on-bg-interactive: #{rm(0)} #{rm(1)} #{rm(2)} #1e3a8a99;
+
+  --borders-focus: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #171717, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #60a5facc;
+  --borders-active: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #3b82f640;
+  --borders-error: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #e11d4840;
+  --borders-base: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #2e3035;
+  --borders-base-with-shadow: #{rm(0)} #{rm(1)} #{rm(2)} #{rm(0)} #ffffff1a, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #2e3035, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(1.5)} #00000066;
+  --borders-interactive: #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #60a5fa;
+  --borders-interactive-with-focus: #{rm(0)} #{rm(1)} #{rm(2)} #{rm(0)} #dbeafe80, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #60a5fa, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(2)} #1b1b1f, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(4)} #60a5facc;
+  --borders-interactive-with-shadow: #{rm(0)} #{rm(1)} #{rm(2)} #{rm(0)} #dbeafe80, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #60a5fa;
+
+  --buttons-neutral: #{rm(0)} #{rm(1.5)} #{rm(0)} #{rm(0)} #ffffff1a, #{rm(0)} #{rm(0.25)} #{rm(0)} #{rm(0)} #00000099, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(0)} #00000099;
+  --buttons-neutral-focus: inset #{rm(0)} #{rm(0)} #{rm(1.5)} #{rm(0)} #ffffff1a, #{rm(0)} #{rm(0.25)} #{rm(0)} #{rm(0)} #00000099, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(0)} #00000099, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #1b1b1f, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #60a5facc;
+
+  --buttons-colored: inset #{rm(0)} #{rm(0.25)} #{rm(0)} #{rm(0)} #00000099, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(0)} #00000099;
+  --buttons-colored-focus: #{rm(0)} #{rm(0.25)} #{rm(0)} #{rm(0)} #00000099, #{rm(0)} #{rm(0.5)} #{rm(0)} #{rm(0)} #00000099, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(1)} #1b1b1f, #{rm(0)} #{rm(0)} #{rm(0)} #{rm(3)} #60a5facc;
+}

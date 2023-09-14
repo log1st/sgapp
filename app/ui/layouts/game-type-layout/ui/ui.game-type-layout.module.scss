@@ -1,5 +1,23 @@
 @import "../../../assets/utils";
 
 .root {
+  display: flex;
+  align-items: center;
 
+  gap: rm(10);
+}
+
+.before {
+  flex-shrink: 0;
+  padding: rm(4);
+  border-radius: var(--border-radius-small);
+  box-shadow: var(--elevation-card-rest);
+}
+
+.icon {
+  @include icon(30);
+}
+
+.label {
+  @include text-compact-small();
 }

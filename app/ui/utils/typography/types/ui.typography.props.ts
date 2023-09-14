@@ -35,4 +35,5 @@ export type UiTypographyProps = PropsWithChildren<{
   e2e?: string;
 
   type?: UiTypographyType;
+  color?: string;
 }>;

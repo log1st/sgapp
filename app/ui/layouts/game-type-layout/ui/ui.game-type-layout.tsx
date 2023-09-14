@@ -20,7 +20,7 @@ export function UiGameTypeLayout({
       <NodeOrIcon className={styles.before} iconClassName={styles.icon}>
         {icon}
       </NodeOrIcon>
-      <div className={styles.type}>{children}</div>
+      <div className={styles.label}>{children}</div>
     </div>
   );
 }
