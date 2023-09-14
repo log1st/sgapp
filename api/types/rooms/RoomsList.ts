@@ -1,8 +1,7 @@
 import { z } from "zod";
-import { Room, RoomStatus, RoomType } from "@prisma/client";
+import { RoomStatus, RoomType } from "@prisma/client";
 import { getListingRequest } from "@/api/types/listing/ListingRequest";
 import { AppRouterInput, AppRouterOutput } from "@/api/apiRouter";
-import { omit } from "@/utils";
 
 export const roomsListRequest = getListingRequest({
   filter: z

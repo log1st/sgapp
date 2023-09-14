@@ -22,6 +22,10 @@
 .label {
     @include text-compact-xsmall-plus();
     color: var(--fg-subtle);
+
+    display: flex;
+    flex-direction: column;
+    gap: rm(4);
 }
 
 .kbds {

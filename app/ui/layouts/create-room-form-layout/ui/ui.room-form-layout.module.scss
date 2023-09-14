@@ -1,0 +1,38 @@
+@import "../../../assets/utils";
+
+.root {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: rm(20);
+}
+
+.type {
+  grid-column: 1 / span 3;
+}
+
+.title {
+  grid-column: 4 / span 6;
+}
+
+.slug {
+  grid-column: 10 / span 3;
+}
+
+.password {
+  grid-column: 1 / span 12;
+}
+
+.privateField {
+  grid-column: 1 / span 12;
+}
+
+.body {
+  border-block-start: rm(1) solid var(--border-base);
+  grid-column: 1 / span 12;
+
+  padding: rm(20) 0 0;
+
+  &:empty {
+    display: none;
+  }
+}

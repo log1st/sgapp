@@ -43,11 +43,17 @@ export default function SidebarMainMenu({ lng }: SidebarMainMenuProps) {
       href: "/rooms",
       icon: Icon.puzzle,
     },
+    {
+      key: "createRoom",
+      label: t("createRoom"),
+      href: "/rooms/create",
+      icon: Icon.plus,
+    },
   ]).map((item) => ({
     ...item,
     active: !!(
       item.href === pathname ||
-      (item.href && routeMatching(item.href, pathname))
+      (item.href && routeMatching(item.href, pathname) === 2)
     ),
   }));
 

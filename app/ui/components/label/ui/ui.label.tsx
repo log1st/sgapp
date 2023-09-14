@@ -2,7 +2,7 @@ import { clsx } from "@clsx";
 import { UiLabelProps } from "..";
 
 import styles from "./ui.label.module.scss";
-import { UiIcon } from "../../icon";
+import { NodeOrIcon } from "@/ui/utils/nodeOrIcon";
 
 export function UiLabel({
   className,
@@ -21,7 +21,9 @@ export function UiLabel({
     >
       <div className={styles.label}>{label || children}</div>
       {hint && <div className={styles.hint}>{hint}</div>}
-      {icon && <UiIcon icon={icon} className={styles.icon} />}
+      <NodeOrIcon className={styles.iconWrapper} iconClassName={styles.icon}>
+        {icon}
+      </NodeOrIcon>
     </div>
   );
 }

@@ -7,5 +7,5 @@ export type UiLabelProps = PropsWithChildren<{
   e2e?: string;
   label?: ReactNode;
   hint?: ReactNode;
-  icon?: Icon;
+  icon?: Icon | ReactNode;
 }>;

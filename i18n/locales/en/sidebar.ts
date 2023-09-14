@@ -5,5 +5,6 @@ export default {
   menu: {
     dashboard: "Dashboard",
     rooms: "Rooms",
+    createRoom: "Create room",
   },
 };

@@ -15,6 +15,7 @@ import { useClientTranslation } from "@/i18n/useClientTranslation";
 import { UiFieldLayout } from "@/ui/layouts/field-layout";
 import { UiLabel } from "@/ui/components/label";
 import { UiHint, UiHintType } from "@/ui/components/hint";
+import { Icon } from "@/ui/components/icon";
 
 export type FieldProps = {
   name: string;
@@ -32,6 +33,8 @@ export type FieldProps = {
 
   submitOnBlur?: boolean;
   submitOnChange?: boolean;
+
+  icon?: Icon | ReactNode;
 };
 
 export function Field({
@@ -42,6 +45,7 @@ export function Field({
   hint,
   submitOnBlur,
   submitOnChange,
+  icon,
 }: FieldProps) {
   const [{ value, onChange, onBlur, checked }, { error, touched }] =
     useField<unknown>(name);
@@ -53,7 +57,7 @@ export function Field({
 
   return (
     <UiFieldLayout
-      label={label && <UiLabel>{label}</UiLabel>}
+      label={label && <UiLabel icon={icon}>{label}</UiLabel>}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       error={error && <UiHint type={UiHintType.danger}>{t(...error)}</UiHint>}

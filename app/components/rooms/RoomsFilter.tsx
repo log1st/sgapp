@@ -1,5 +1,5 @@
 import { RoomsListOutput, roomsListRequest, RoomStatus, RoomType } from "@/api";
-import { Field, Form } from "@/app/components/form";
+import { Field, Form, Submit } from "@/app/components/form";
 import { UiRoomsFilterLayout } from "@/ui/layouts/rooms-filter-layout";
 import { UiSelect } from "@/ui/components/select";
 import { getServerTranslation } from "@/i18n/getServerTranslation";
@@ -11,6 +11,10 @@ import { getRoomTypeIcon } from "@/app/components/rooms/utils/getRoomTypeIcon";
 import { navigateToRoomsList } from "@/app/api/rooms/navigateToRoomsList";
 import { getServerSearch } from "@/session/getServerSearch";
 import { UiTypography } from "@/ui/utils/typography";
+import { UiButton, UiButtonSize } from "@/ui/components/button";
+import { getRoomTypesOptions } from "@/app/components/rooms/utils/getRoomTypesOptions";
+import { getRoomStatusesOptions } from "@/app/components/rooms/utils/getRoomStatusesOptions";
+import { getRoomPasswordOptions } from "@/app/components/rooms/utils/getRoomPasswordOptions";
 
 export type RoomsFilterProps = RoomsListOutput;
 
@@ -21,29 +25,11 @@ export default async function RoomsFilter({
 }: RoomsFilterProps) {
   const { t } = await getServerTranslation("rooms");
 
-  const typesOptions = Object.values(RoomType).map((value) => ({
-    value,
-    label: t(`type.${value}`),
-    hint: <UiIcon icon={getRoomTypeIcon(value)} size={20} />,
-  }));
+  const typesOptions = await getRoomTypesOptions();
 
-  const statusesOptions = Object.values(RoomStatus).map((value) => ({
-    value,
-    label: t(`status.${value}`),
-  }));
+  const statusesOptions = await getRoomStatusesOptions();
 
-  const passwordOptions = Object.values([true, false]).map((value) => ({
-    value,
-    label: t(`password.${value}`),
-    hint: (
-      <UiTypography color={value ? "tag-red-text" : "tag-green-text"}>
-        <UiIcon
-          icon={value ? Icon.lockClosedSolid : Icon.lockOpenSolid}
-          size={16}
-        />
-      </UiTypography>
-    ),
-  }));
+  const passwordOptions = await getRoomPasswordOptions();
 
   return (
     <Form
@@ -52,7 +38,7 @@ export default async function RoomsFilter({
     >
       <UiRoomsFilterLayout
         type={
-          <Field name="filter.type" submitOnBlur>
+          <Field name="filter.type">
             <UiSelect
               placeholder={t("field.status")}
               options={typesOptions}
@@ -62,7 +48,7 @@ export default async function RoomsFilter({
           </Field>
         }
         status={
-          <Field name="filter.status" submitOnBlur>
+          <Field name="filter.status">
             <UiSelect
               placeholder={t("field.status")}
               options={statusesOptions}
@@ -72,7 +58,7 @@ export default async function RoomsFilter({
           </Field>
         }
         query={
-          <Field name="filter.query" submitOnBlur>
+          <Field name="filter.query">
             <UiInput
               placeholder={t("query")}
               modifier={UiFieldModifier.noElevation}
@@ -80,7 +66,7 @@ export default async function RoomsFilter({
           </Field>
         }
         password={
-          <Field name="filter.password" submitOnBlur>
+          <Field name="filter.password">
             <UiSelect
               placeholder={t("field.password")}
               options={passwordOptions}
@@ -88,6 +74,15 @@ export default async function RoomsFilter({
               modifier={UiFieldModifier.noElevation}
             />
           </Field>
+        }
+        submit={
+          <Submit>
+            <UiButton
+              label={t("search")}
+              size={UiButtonSize.large}
+              after={Icon.chevronRight}
+            />
+          </Submit>
         }
         pagination={
           !!(limit && page) && (

@@ -5,7 +5,7 @@
   "packageManager": "yarn@3.6.3",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn gen:icons && next build",
     "start": "next start",
     "lint": "next lint --fix",
     "gen:cti": "cti create ./utils ./hooks ./api/client ./api/types ./app/components/form -w -b",

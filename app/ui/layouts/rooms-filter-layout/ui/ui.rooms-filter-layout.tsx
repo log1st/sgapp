@@ -12,6 +12,7 @@ export function UiRoomsFilterLayout({
   status,
   password,
   pagination,
+  submit,
 }: UiRoomsFilterLayoutProps) {
   return (
     <div
@@ -23,6 +24,7 @@ export function UiRoomsFilterLayout({
       {query && <div className={styles.query}>{query}</div>}
       {status && <div className={styles.status}>{status}</div>}
       {password && <div className={styles.password}>{password}</div>}
+      {submit && <div className={styles.submit}>{submit}</div>}
       {pagination && <div className={styles.pagination}>{pagination}</div>}
     </div>
   );

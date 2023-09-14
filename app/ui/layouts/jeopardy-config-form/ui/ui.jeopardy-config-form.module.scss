@@ -1,0 +1,9 @@
+@import "../../../assets/utils";
+
+.root {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: rm(10);
+
+  align-items: flex-end;
+}

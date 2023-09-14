@@ -10,7 +10,7 @@ export const GET = async (req: NextRequest) => {
   let payload: any;
 
   if (req.method?.toLowerCase() === "get") {
-    const search = newSearchParams(url.search).raw<{ input: string }>();
+    const search = newSearchParams<{ input: string }>(url.search).raw();
     payload = JSON.parse(search!.input || "{}")?.[0]?.json;
   } else if (req.body instanceof ReadableStream) {
     payload = JSON.parse(

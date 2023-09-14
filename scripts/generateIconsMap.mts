@@ -76,11 +76,11 @@ import { fileURLToPath } from "node:url";
 
   const enumString = [
     "export enum Icon {",
-    ...enumsAndKeys.map(([label, key]) => `  ${key} = '${label}',`),
+    ...enumsAndKeys.map(([label, key]) => `  ${key} = "${label}",`),
     "}",
   ].join("\n");
 
-  const arrayString = ["export const icons = Object.values(Icon)"].join("\n");
+  const arrayString = ["export const icons = Object.values(Icon);", ""].join("\n");
 
   await fs.mkdir(path.dirname(iconNamesPath), {
     recursive: true,

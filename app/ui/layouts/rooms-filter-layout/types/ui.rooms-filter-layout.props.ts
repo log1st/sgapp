@@ -9,4 +9,5 @@ export type UiRoomsFilterLayoutProps = {
   query?: ReactNode;
   status?: ReactNode;
   pagination?: ReactNode;
+  submit?: ReactNode;
 };

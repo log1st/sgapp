@@ -63,4 +63,44 @@ model Room {
   private Boolean @default(false)
 
   status RoomStatus @default(new)
+
+  jeopardyConfigId Int?
+  jeopardyConfig JeopardyConfig? @relation(fields: [jeopardyConfigId], references: [id], onDelete: SetNull)
+}
+
+enum JeopardyAnswerType {
+  voice
+  text
+}
+
+model JeopardyConfig {
+  id Int @id @default(autoincrement())
+
+  room Room[]
+
+  maxPlayers Int
+  answerType JeopardyAnswerType @default(voice)
+  partialText Boolean
+  falseStarts Boolean @default(false)
+  previewAnswers Boolean
+  stepByStep Boolean @default(true)
+  appellations Boolean @default(false)
+  noPenalty Boolean @default(false)
+  awaitSync Boolean @default(true)
+  preloadMedia Boolean @default(true)
+  readingSpeed Int @default(20)
+
+  choosingQuestionTime Int @default(30)
+  thinkingOnQuestionTime Int @default(5)
+  answerTime Int @default(25)
+  givingSecretQuestionTime Int @default(30)
+  makingStakeTime Int @default(30)
+  thinkingOnStakeQuestionTime Int @default(30)
+  printingAnswerTime Int @default(2)
+  roundTime Int @default(660)
+  choosingFinalCategoryTime Int @default(30)
+  thinkingOnFinalQuestionTime Int @default(45)
+  answerValidationTime Int @default(30)
+  mediaPauseTime Int @default(0)
+  falseStartTime Int @default(3)
 }

@@ -1,1 +1,1 @@
-export * from "./getRecordDataIndex";
+export * from './getRecordDataIndex';
