@@ -2495,17 +2495,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "@prisma/client@npm:5.2.0"
+"@prisma/client@npm:latest":
+  version: 5.3.0
+  resolution: "@prisma/client@npm:5.3.0"
   dependencies:
-    "@prisma/engines-version": 5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f
+    "@prisma/engines-version": 5.3.0-36.e90b936d84779543cbe0e494bc8b9d7337fad8e4
   peerDependencies:
     prisma: "*"
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: ad523b7a54e31d365ecac7bdb89f5a89f62e616f5f567f5dd5060e86b122253a4652ea778c0ccbab31906e2170110e808839fbae7ee91a4fd16a8282ee86f5f1
+  checksum: 7c12db57dfd07e86841876a7e91ee2307071b6b9e7afed061acac1171ef1f12599fd65ca144abd09ab1e00123304d2103adc9106c73cef61a366cd234ccc9683
   languageName: node
   linkType: hard
 
@@ -2520,10 +2520,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/engines-version@npm:5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f":
-  version: 5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f
-  resolution: "@prisma/engines-version@npm:5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f"
-  checksum: 7a0fde44dad7902aef0035a30073c8e3178bccbaf65f688583cf3db94e36d160fd0a52cae8b6422b670facdbd4201861e1d6e2c7371d57ef27b58a2e1c524213
+"@prisma/engines-version@npm:5.3.0-36.e90b936d84779543cbe0e494bc8b9d7337fad8e4":
+  version: 5.3.0-36.e90b936d84779543cbe0e494bc8b9d7337fad8e4
+  resolution: "@prisma/engines-version@npm:5.3.0-36.e90b936d84779543cbe0e494bc8b9d7337fad8e4"
+  checksum: 7c3680bc4e3147755b7efc094d6b0ad11ba1c59eb0436f81016e8f0b1da886cc7a4bce9dccfe9599811cf986558694ec1b0b60f21c1215bd6cc0e42e3a03569f
   languageName: node
   linkType: hard
 
@@ -9485,7 +9485,7 @@ eslint-plugin-react-hooks@experimental:
   resolution: "games@workspace:."
   dependencies:
     "@popperjs/core": ^2.11.8
-    "@prisma/client": ^5.2.0
+    "@prisma/client": latest
     "@storybook/addon-essentials": ^7.4.1
     "@storybook/addon-interactions": ^7.4.1
     "@storybook/addon-links": ^7.4.1
@@ -9529,6 +9529,7 @@ eslint-plugin-react-hooks@experimental:
     prettier: ^3.0.3
     prisma: ^5.2.0
     prisma-field-encryption: ^1.5.0
+    random-word-slugs: ^0.1.7
     raw-loader: ^4.0.2
     react: experimental
     react-dom: experimental
@@ -13797,6 +13798,13 @@ eslint-plugin-react-hooks@experimental:
   version: 0.29.0
   resolution: "ramda@npm:0.29.0"
   checksum: 9ab26c06eb7545cbb7eebcf75526d6ee2fcaae19e338f165b2bf32772121e7b28192d6664d1ba222ff76188ba26ab307342d66e805dbb02c860560adc4d5dd57
+  languageName: node
+  linkType: hard
+
+"random-word-slugs@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "random-word-slugs@npm:0.1.7"
+  checksum: 4df9c30ee2d97993cd7c9c84b5c500d5f12b560365d64c41eb3e8c0dac69e07ac4984d9d1eaef177055397762e5e1904a64ffb424d233e064c9b2fd8a2e4520b
   languageName: node
   linkType: hard
 

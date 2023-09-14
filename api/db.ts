@@ -2,12 +2,14 @@ import { PrismaClient } from "@prisma/client";
 import { fieldEncryptionExtension } from "prisma-field-encryption";
 import { config } from "@/api/config";
 
-const innerDb = new PrismaClient();
-
-const client = innerDb.$extends(
+export const db = new PrismaClient().$extends(
   fieldEncryptionExtension({
     encryptionKey: config.encryptionKey,
   }),
-);
+) as PrismaClient;
 
-export const db = client as typeof innerDb;
+if (config.isDev) {
+  setTimeout(async () => {
+    await db.$disconnect();
+  }, 3000);
+}

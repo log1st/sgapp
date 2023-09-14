@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
-import { getSessionLanguage } from "@/session/getSessionLanguage";
-import { getSessionTheme } from "@/session/getSessionTheme";
+import { getSessionTheme } from "@/theming/getSessionTheme";
 import { UiRootLayout } from "@/ui/layouts/root";
+import { getSessionLanguage } from "@/i18n/getSessionLanguage";
 
 export type RootLayoutProps = PropsWithChildren;
 

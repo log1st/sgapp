@@ -11,7 +11,7 @@ export type UiSidebarProps = PropsWithChildren<{
   e2e?: string;
 
   avatar?: ReactNode;
-  expandable?: boolean;
+  expandable?: boolean | ReactNode;
   expanded?: boolean;
   changeExpanded?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
   hint?: ReactNode;

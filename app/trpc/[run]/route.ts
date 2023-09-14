@@ -1,9 +1,8 @@
-import { NextApiHandler } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createApiCaller } from "@/api";
 import { newSearchParams } from "@/utils/search/SearchParams";
 
-export const GET: NextApiHandler = async (req) => {
+export const GET = async (req: NextRequest) => {
   const url = new URL(req.url || "");
 
   const [, , route] = url.pathname.split("/");

@@ -13,7 +13,7 @@ export type FormDevProps = {
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 const ReactJson = dynamic(() => import("react-json-view"), {
-  ssr: false
+  ssr: false,
 });
 
 export function FormDev({ title }: FormDevProps) {

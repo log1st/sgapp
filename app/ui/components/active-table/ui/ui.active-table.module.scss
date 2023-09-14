@@ -68,6 +68,56 @@
     }
 }
 
+.roomsType {
+
+    gap: rm(4) 0;
+
+    .cell {
+        --active-table-row-line-background: transparent;
+
+        gap: rm(12);
+
+        padding: rm(10) rm(20);
+
+        &.interactive {
+
+            &:not(.actions) {
+                cursor: pointer;
+            }
+
+            ~ .rowLine {
+                background-color: var(--active-table-row-line-background);
+            }
+
+            &:hover,
+            &:focus-visible {
+
+                ~ .rowLine {
+                    --active-table-row-line-background: var(--bg-base-hover);
+
+                    + .cell ~ .rowLine {
+                        --active-table-row-line-background: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    .column {
+        @include text-compact-small-plus();
+        color: var(--fg-subtle);
+    }
+
+    .row {
+        @include text-compact-small();
+        color: var(--fg-base);
+    }
+
+    .rowLine {
+        border-radius: rm(3);
+    }
+}
+
 .cell {
   
     display: flex;

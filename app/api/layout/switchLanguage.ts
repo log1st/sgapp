@@ -3,7 +3,7 @@
 import {
   getSessionLanguage,
   setServerLanguage,
-} from "@/session/getSessionLanguage";
+} from "@/i18n/getSessionLanguage";
 
 export const switchLanguage = () => {
   setServerLanguage(getSessionLanguage() === "en" ? "ru" : "en");

@@ -1,4 +1,7 @@
+"use client";
+
 import { Fragment, MouseEventHandler } from "react";
+import { Route } from "next";
 import { clsx, getRecordDataIndex } from "@/utils";
 import {
   UiActiveTableProps,
@@ -120,7 +123,15 @@ export function UiActiveTable<Entity extends Record<string, unknown>>({
                   gridColumn: columnIndex + 1,
                 }}
                 onClick={handleRowClick({ record, index, column, columnIndex })}
-                href={getRowHref?.({ record, index, column, columnIndex })}
+                href={
+                  typeof getRowHref === "string"
+                    ? (Object.entries(record).reduce(
+                        (a, [k, value]) =>
+                          a.replaceAll(`[${k}]`, String(value)) as Route,
+                        getRowHref,
+                      ) as unknown as Route)
+                    : getRowHref?.({ record, index, column, columnIndex })
+                }
                 tabIndex={interactive && columnIndex === 0 ? 0 : -1}
                 span={column.key === "__actions__" || !interactive}
               >
@@ -144,15 +155,16 @@ export function UiActiveTable<Entity extends Record<string, unknown>>({
                 </span>
               </UiPureButton>
             ))}
-            {interactive && (
-              <div
-                className={styles.rowLine}
-                style={{
-                  gridRow: index + 2,
-                  gridColumn: `1 / ${computedColumns.length + 1}`,
-                }}
-              />
-            )}
+            <div
+              className={clsx([
+                styles.rowLine,
+                index % 2 ? styles.even : styles.odd,
+              ])}
+              style={{
+                gridRow: index + 2,
+                gridColumn: `1 / ${computedColumns.length + 1}`,
+              }}
+            />
           </Fragment>
         );
       })}

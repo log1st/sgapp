@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEventHandler, PropsWithChildren } from "react";
+import { isValidElement, MouseEventHandler, PropsWithChildren } from "react";
 import { clsx } from "@clsx";
 import { UiSidebarProps } from "..";
 
@@ -8,6 +8,18 @@ import styles from "./ui.sidebar.module.scss";
 import { UiPureButton } from "../../../components/pure-button";
 import { UiIcon, Icon } from "../../../components/icon";
 import { useOptimistic } from "@/hooks";
+
+export type UiSidebarToggleProps = {
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+};
+
+export function UiSidebarToggle({ onClick }: UiSidebarToggleProps) {
+  return (
+    <UiPureButton onClick={onClick} className={styles.toggle}>
+      <UiIcon icon={Icon.barsThree} className={styles.toggleIcon} />
+    </UiPureButton>
+  );
+}
 
 export function UiSidebar({
   className,
@@ -36,11 +48,12 @@ export function UiSidebar({
       {!!(avatar || expandable) && (
         <div className={styles.header}>
           {avatar && <div className={styles.avatar}>{avatar}</div>}
-          {expandable && (
-            <UiPureButton onClick={toggleE} className={styles.toggle}>
-              <UiIcon icon={Icon.barsThree} className={styles.toggleIcon} />
-            </UiPureButton>
-          )}
+          {expandable &&
+            (isValidElement(expandable) ? (
+              expandable
+            ) : (
+              <UiSidebarToggle onClick={toggleE} />
+            ))}
         </div>
       )}
       <div className={styles.hint}>{hint}</div>
@@ -50,11 +63,16 @@ export function UiSidebar({
   );
 }
 
+export type UiSidebarGroupProps = PropsWithChildren<{
+  margin?: boolean;
+  noExpanded?: boolean;
+}>;
+
 export function UiSidebarGroup({
   children,
   margin,
   noExpanded,
-}: PropsWithChildren<{ margin?: boolean; noExpanded?: boolean }>) {
+}: UiSidebarGroupProps) {
   return (
     <div
       className={clsx([

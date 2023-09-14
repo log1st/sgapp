@@ -1,5 +1,5 @@
 import { Children, cloneElement, isValidElement } from "react";
-import { getSessionTheme } from "@/session/getSessionTheme";
+import { getSessionTheme } from "@/theming/getSessionTheme";
 
 export const withTheme = (children: any) =>
   Children.map(children, (child) =>

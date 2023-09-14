@@ -1,7 +1,8 @@
 import { NextMiddleware, NextResponse } from "next/server";
 import acceptLanguage from "accept-language";
 import { urlContextKey } from "@/session/getServerUrl";
-import { localeCookieName } from "@/session/getSessionLanguage";
+
+import { SettingType } from "@/session/settingType";
 
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)"],
@@ -12,7 +13,7 @@ export const middleware: NextMiddleware = (req) => {
   headers.set(urlContextKey, req.url);
 
   const lng =
-    req.cookies.get(localeCookieName)?.value ??
+    req.cookies.get(SettingType.language)?.value ??
     acceptLanguage.get(req.headers.get("Accept-Language")) ??
     "en";
 

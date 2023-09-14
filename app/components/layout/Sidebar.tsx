@@ -5,19 +5,20 @@ import { UiAvatar, UiAvatarSize } from "@/ui/components/avatar";
 import { UiButton, UiButtonVariant } from "@/ui/components/button";
 import LanguageSwitcher from "@/app/components/layout/languageSwitcher/LanguageSwitcher";
 import { withLocale } from "@/i18n/withLocale";
-import { withTheme } from "@/i18n/withTheme";
+import { withTheme } from "@/theming/withTheme";
 import ThemeSwitcher from "@/app/components/layout/themeSwitcher/ThemeSwitcher";
 import SignOut from "@/app/components/layout/signOut/SignOut";
-import { UiSidebarItem } from "@/ui/components/sidebar-item";
-import { UiInput } from "@/ui/components/input";
-import { UiFieldSize } from "@/ui/components/field";
-import { UiSidebarLabel } from "@/ui/components/sidebar-label";
-import { Icon } from "@/ui/components/icon";
+import SidebarToggle from "@/app/components/layout/toggle/SidebarToggle";
+import { getSessionSetting } from "@/session/sessionSetting";
+import { SettingType } from "@/session/settingType";
+import SidebarMainMenu from "@/app/components/layout/mainMenu/SidebarMainMenu";
 
 export default async function Sidebar() {
   const { t } = await getServerTranslation(["meta", "sidebar"]);
 
   const profile = await fetchProfileAction();
+
+  const expanded = getSessionSetting(SettingType.sidebar, true);
 
   return (
     <UiSidebar
@@ -25,26 +26,24 @@ export default async function Sidebar() {
         profile.data ? (
           <UiButton variant={UiButtonVariant.link} href="/profile">
             <UiAvatar
-              size={UiAvatarSize.xLarge}
+              size={UiAvatarSize.large}
               image={profile.data.avatar}
               letters={profile.data.login[0]}
             />
           </UiButton>
         ) : null
       }
-      expandable
+      expanded={expanded}
+      expandable={<SidebarToggle sidebar={expanded} />}
       label={profile.data?.login}
       hint={t("pureTitle")}
     >
-      <UiSidebarGroup>
-        <UiSidebarItem icon={Icon.puzzle} label="Games" />
-        <UiSidebarItem icon={Icon.plus} label="Create room" />
-      </UiSidebarGroup>
-      <UiSidebarGroup noExpanded>
-        <UiSidebarLabel>
-          <UiInput size={UiFieldSize.small} placeholder="Room #" />
-        </UiSidebarLabel>
-      </UiSidebarGroup>
+      {withLocale(<SidebarMainMenu />)}
+      {/* <UiSidebarGroup noExpanded> */}
+      {/*  <UiSidebarLabel> */}
+      {/*    <UiInput size={UiFieldSize.small} placeholder="Room #" /> */}
+      {/*  </UiSidebarLabel> */}
+      {/* </UiSidebarGroup> */}
       <UiSidebarGroup margin>
         {withLocale(withTheme(<ThemeSwitcher />))}
         {withLocale(<LanguageSwitcher />)}

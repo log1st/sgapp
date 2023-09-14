@@ -1,6 +1,6 @@
 "use server";
 
-import { getSessionTheme, setTheme } from "@/session/getSessionTheme";
+import { getSessionTheme, setTheme } from "@/theming/getSessionTheme";
 import { AppTheme } from "@/ui/layouts/root";
 
 export const switchTheme = async () => {

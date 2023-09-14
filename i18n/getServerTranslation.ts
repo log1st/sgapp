@@ -3,7 +3,7 @@ import { initReactI18next } from "react-i18next/initReactI18next";
 import ICU from "i18next-icu";
 import getI18nOptions, { fallbackLng } from "./getI18nOptions";
 import { arrayFrom, filteredArray } from "@/utils";
-import { getSessionLanguage } from "@/session/getSessionLanguage";
+import { getSessionLanguage } from "@/i18n/getSessionLanguage";
 
 const initI18n = async (lng?: string, ns?: string | string[]) => {
   const instance = createInstance({

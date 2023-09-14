@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { renderTrpcPanel } from "trpc-panel";
 import { apiRouter } from "@/api/apiRouter";
 

@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { newSearchParams } from "./SearchParams";
 import { getServerUrl } from "@/session/getServerUrl";
+import { newSearchParams } from "@/utils";
 
 export const getSearchParams = () => new URLSearchParams(getServerUrl().search);
 

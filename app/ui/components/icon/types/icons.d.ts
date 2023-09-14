@@ -1,3 +1,3 @@
 declare module "*.html?raw" {
-  export default string;
+  export default String;
 }

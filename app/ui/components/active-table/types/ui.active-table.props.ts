@@ -1,4 +1,5 @@
 import { CSSProperties, Key, ReactNode } from "react";
+import { Route } from "next";
 import { UiActiveActionConfig } from "../../active-actions";
 import { DataIndex } from "@/utils";
 
@@ -25,6 +26,7 @@ export type UiActiveTableRowPayload<Entity> = {
 
 export enum UiActiveTableType {
   primary = "primary",
+  rooms = "rooms",
 }
 
 export type UiActiveTableProps<Entity> = {
@@ -37,7 +39,7 @@ export type UiActiveTableProps<Entity> = {
   records?: Array<Entity>;
   keyIndex: DataIndex<Entity>;
   onRowClick?(payload: UiActiveTableRowPayload<Entity>): void;
-  getRowHref?(payload: UiActiveTableRowPayload<Entity>): string;
+  getRowHref?: ((payload: UiActiveTableRowPayload<Entity>) => Route) | Route;
 
   type?: UiActiveTableType;
 

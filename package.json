@@ -10,13 +10,14 @@
     "lint": "next lint --fix",
     "gen:cti": "cti create ./utils ./hooks ./api/client ./api/types ./app/components/form -w -b",
     "gen:component": "turbo gen component",
+    "gen:icons": "node --loader=ts-node/esm scripts/generateIconsMap.mts",
     "prisma": "prisma",
     "storybook:dev": "storybook dev -c storybook -p 6006",
     "storybook:build": "storybook build -c storybook -o dist"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@prisma/client": "^5.2.0",
+    "@prisma/client": "latest",
     "@trpc/server": "^10.38.1",
     "accept-language": "^3.0.18",
     "date-fns": "^2.30.0",
@@ -28,6 +29,7 @@
     "next": "13.4.19",
     "pg": "^8.11.3",
     "prisma-field-encryption": "^1.5.0",
+    "random-word-slugs": "^0.1.7",
     "react": "experimental",
     "react-dom": "experimental",
     "react-i18next": "^13.2.2",
