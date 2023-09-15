@@ -4,13 +4,13 @@ import { UiAvatarSize, UiAvatarType } from "..";
 
 import styles from "./ui.avatar.module.scss";
 import { UiImage } from "../../image";
-import { UiIcon } from "../../icon";
+import { Icon, UiIcon } from "../../icon";
 
 export function UiAvatar({
   className,
   style,
   e2e,
-  icon,
+  icon = Icon.user,
   image,
   alt = "avatar",
   type = UiAvatarType.rounded,
@@ -32,10 +32,10 @@ export function UiAvatar({
       <div className={styles.content}>
         {image ? (
           <UiImage alt={alt} className={styles.image} src={image} />
-        ) : icon ? (
-          <UiIcon icon={icon} className={styles.icon} />
-        ) : (
+        ) : letters ? (
           <div className={styles.letters}>{letters}</div>
+        ) : (
+          <UiIcon icon={icon} className={styles.icon} />
         )}
       </div>
     </div>

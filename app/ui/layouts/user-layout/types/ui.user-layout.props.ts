@@ -5,4 +5,5 @@ export type UiUserLayoutProps = PropsWithChildren<{
   className?: string;
   e2e?: string;
   avatar?: ReactNode;
+  side?: ReactNode;
 }>;

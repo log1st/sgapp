@@ -1,6 +1,6 @@
-import { db } from "@/api/db";
-import { apiRouter } from "@/api/apiRouter";
-import { ApiContext } from "@/api";
+import { db } from "../db";
+import { apiRouter } from "../apiRouter";
+import { ApiContext } from "../types/ApiContext";
 
 export const createApiCaller = (context?: Omit<ApiContext, "db">) =>
   apiRouter.createCaller({

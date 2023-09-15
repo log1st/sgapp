@@ -85,6 +85,19 @@
     }
 }
 
+.editorSize {
+  @include size(128);
+  padding: rm(10);
+
+  .letters {
+    @include headers-docs-h1();
+  }
+
+  .icon {
+    @include icon(64);
+  }
+}
+
 .content {
     background-color: var(--avatar-content-background);
 

@@ -4,6 +4,7 @@ import {
   ChangeEventHandler,
   Children,
   cloneElement,
+  CSSProperties,
   FocusEventHandler,
   isValidElement,
   ReactElement,
@@ -27,6 +28,7 @@ export type FieldProps = {
     onBlur?: FocusEventHandler;
     disabled?: boolean;
     hasError?: boolean;
+    style?: CSSProperties;
   }>;
   label?: ReactNode;
   hint?: ReactNode;
@@ -35,6 +37,10 @@ export type FieldProps = {
   submitOnChange?: boolean;
 
   icon?: Icon | ReactNode;
+
+  fixedSize?: number | null;
+
+  style?: CSSProperties;
 };
 
 export function Field({
@@ -46,6 +52,8 @@ export function Field({
   submitOnBlur,
   submitOnChange,
   icon,
+  fixedSize = null,
+  style,
 }: FieldProps) {
   const [{ value, onChange, onBlur, checked }, { error, touched }] =
     useField<unknown>(name);
@@ -62,6 +70,8 @@ export function Field({
       // @ts-ignore
       error={error && <UiHint type={UiHintType.danger}>{t(...error)}</UiHint>}
       hint={hint && <UiHint>{hint}</UiHint>}
+      e2e={error && "has-error"}
+      style={style}
     >
       {Children.map(children, (child) =>
         isValidElement(child)
@@ -88,6 +98,11 @@ export function Field({
                 }
               }) as FocusEventHandler,
               disabled: submitting || disabled,
+              style: fixedSize
+                ? {
+                    blockSize: `${fixedSize}px`,
+                  }
+                : {},
             })
           : child,
       )}

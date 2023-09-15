@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const getListingRequest = <
   Shape extends z.ZodRawShape,
-  Output extends z.ZodObject<Shape>,
+  Output extends z.ZodObject<Shape> = z.ZodObject<Shape>,
 >(
   schema: Shape,
 ) =>
@@ -11,8 +11,13 @@ export const getListingRequest = <
     limit: z.coerce.number().catch(30),
   });
 
+export type ListingRequest<Payload> = z.infer<
+  ReturnType<typeof getListingRequest<Record<keyof Payload, z.ZodTypeAny>>>
+>;
+
 export type ListingResponse<Entity> = {
   page: number;
   total: number;
+  limit: number;
   data: Array<Entity>;
 };

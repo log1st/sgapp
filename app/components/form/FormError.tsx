@@ -13,5 +13,9 @@ export function FormError() {
     return null;
   }
 
-  return <UiHint type={UiHintType.danger}>{t(...error[1])}</UiHint>;
+  return (
+    <UiHint e2e="has-error" type={UiHintType.danger}>
+      {t(...error[1])}
+    </UiHint>
+  );
 }

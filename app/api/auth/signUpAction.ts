@@ -3,7 +3,7 @@
 import { ApiResponse, makeRequest } from "@/api";
 import { getApiCaller } from "@/session/getApiCaller";
 import { setAccessToken, setRefreshToken } from "@/session/getAccessToken";
-import { AuthSignUpInput } from "@/api/types/auth/AuthSignUp";
+import { AuthSignUpInput } from "@/api/types/auth/AuthSignUpRequest";
 
 export const signUpAction = async (
   payload: AuthSignUpInput,

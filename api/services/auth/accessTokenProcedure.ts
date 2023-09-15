@@ -1,6 +1,6 @@
 import { TokenType } from "@prisma/client";
-import { middleware, publicProcedure } from "@/api/trpc";
-import { findUserByToken } from "@/api/services/auth/findUserByToken";
+import { middleware, publicProcedure } from "../../trpc";
+import { findUserByToken } from "./findUserByToken";
 
 export const accessTokenProcedure = publicProcedure.use(
   middleware(async ({ ctx: { token, db }, next }) => {

@@ -238,6 +238,17 @@
     }
 }
 
+.pureVariant {
+    padding: 0;
+    font: inherit;
+    inline-size: fit-content;
+    border: none;
+
+    &.disabled {
+      opacity: .6;
+    }
+}
+
 .before,
 .after {
     flex-shrink: 0;

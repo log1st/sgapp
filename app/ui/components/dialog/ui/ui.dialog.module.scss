@@ -29,12 +29,18 @@
   }
 }
 
+.top {
+  border-radius: calc(var(--border-radius-medium) - #{rm(1)}) calc(var(--border-radius-medium) - #{rm(1)}) 0 0;
+  overflow: hidden;
+}
+
 .header {
   padding: rm(24);
   border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
   display: flex;
   flex-direction: column;
   gap: rm(4);
+  overflow: hidden;
 
   + .footer {
     margin-block-start: rm(-24);

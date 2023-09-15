@@ -27,6 +27,7 @@ export type UiInputProps<Type extends UiInputType> = UiFieldCommonProps & {
   name?: string;
   autoFocus?: boolean;
   placeholder?: string;
+  autoSelect?: boolean;
   value?: {
     [UiInputType.text]: string;
     [UiInputType.password]: string;

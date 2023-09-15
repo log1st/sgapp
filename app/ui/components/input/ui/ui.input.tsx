@@ -26,6 +26,7 @@ export function UiInput<Type extends UiInputType = UiInputType.text>({
   onChange,
   clearable,
   clearValue,
+  autoSelect = false,
   ...fieldProps
 }: UiInputProps<Type>) {
   const handleChange: typeof onChange = (event) => {
@@ -54,7 +55,12 @@ export function UiInput<Type extends UiInputType = UiInputType.text>({
       fieldProps.disabled && styles.disabled,
       fieldProps.readOnly && styles.readOnly,
     ]),
-    onFocus,
+    onFocus: ((event) => {
+      onFocus?.(event);
+      if (autoSelect) {
+        event.target.select();
+      }
+    }) as typeof onFocus,
     onBlur,
     onChange: handleChange,
     name,

@@ -1,14 +1,6 @@
-import { CSSProperties } from "react";
+import { ChangeEventHandler, CSSProperties } from "react";
 
-export type SwitchEventPayload = {
-  name?: string;
-  value?: unknown;
-  checked?: boolean;
-};
-
-export type SwitchChangeEventHandler = (event: {
-  target: SwitchEventPayload;
-}) => void;
+export type SwitchChangeEventHandler = ChangeEventHandler<HTMLInputElement>;
 
 export enum UiSwitchSize {
   base = "base",
@@ -20,7 +12,7 @@ export type UiSwitchProps = {
   className?: string;
   e2e?: string;
 
-  value?: unknown;
+  value?: string;
   checked?: boolean;
   name?: string;
   onChange?: SwitchChangeEventHandler;

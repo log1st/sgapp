@@ -1,10 +1,8 @@
-import { TRPCError } from "@trpc/server";
 import { omit, pick } from "lodash";
-import { JeopardyConfigCreateInput, Prisma } from ".prisma/client";
-import { accessTokenProcedure } from "@/api/services/auth/accessTokenProcedure";
-import { createRoomRequest } from "@/api/types/rooms/CreateRoomRequest";
-import { RoomType } from "@/api";
-import JeopardyConfigCreateArgs = Prisma.JeopardyConfigCreateArgs;
+import { RoomType } from "@prisma/client";
+import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
+import { createRoomRequest } from "../../types/rooms/CreateRoomRequest";
+import { dropCustomValidationError } from "../../utils/dropCustomValidationError";
 
 export const create = accessTokenProcedure
   .input(createRoomRequest)
@@ -16,10 +14,21 @@ export const create = accessTokenProcedure
     });
 
     if (existingSlug) {
-      throw new TRPCError({
-        code: "UNPROCESSABLE_CONTENT",
-        message: "slug.unique",
+      await dropCustomValidationError("unique", "slug", input);
+    }
+
+    if (config.type === RoomType.jeopardy) {
+      const pack = await db.jeopardyQuestionPack.findFirst({
+        where: { id: config.questionPackId },
       });
+
+      if (!pack) {
+        await dropCustomValidationError(
+          "exists",
+          ["config", "questionPackId"],
+          { config },
+        );
+      }
     }
 
     const configModel =

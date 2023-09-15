@@ -1,5 +1,15 @@
 @import "../../../assets/utils";
 
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  opacity: 0;
+  position: absolute;
+}
+
 .root {
     --switch-background: var(--bg-switch-off);
     --switch-shadow: var(--details-switch-background);
@@ -14,7 +24,9 @@
 
     position: relative;
   
-    //transition: background-color 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out;
+
+    display: block;
 
     &::after {
         content: "";
@@ -44,7 +56,7 @@
             inset-inline-end: rm(2);
             inset-inline-start: var(--switch-padding);
 
-            //transition: inset-inline-end 0.1s ease-in-out, inset-inline-start 0.15s ease-in-out;
+            transition: inset-inline-end 0.1s ease-in-out, inset-inline-start 0.15s ease-in-out;
         }
       
         --switch-background: var(--bg-interactive);
@@ -66,7 +78,7 @@
             inset-inline-start: rm(2);
             inset-inline-end: var(--switch-padding);
           
-            //transition: inset-inline-start 0.1s ease-in-out, inset-inline-end 0.15s ease-in-out;
+            transition: inset-inline-start 0.1s ease-in-out, inset-inline-end 0.15s ease-in-out;
         }
 
 
@@ -88,7 +100,8 @@
     &:not(.disabled) {
         cursor: pointer;
 
-        &:focus-visible {
+        &:focus-visible,
+        &:focus-within {
 
             &::before {
                 box-shadow: var(--details-switch-background-focus);

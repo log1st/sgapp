@@ -2,22 +2,36 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-argument */
 import { useToggle } from "react-use";
-import { SyntheticEvent, FocusEventHandler, MouseEventHandler } from "react";
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  MouseEventHandler,
+  SyntheticEvent,
+} from "react";
 import { createPortal } from "react-dom";
+import { useOnClickOutside } from "next/dist/client/components/react-dev-overlay/internal/hooks/use-on-click-outside";
 import {
   arrayFrom,
   clsx,
-  filteredArray,
   contains,
+  filteredArray,
   getRecordDataIndex,
 } from "@/utils";
 import { RichOption, UiSelectProps, UiSelectRenderer } from "..";
 
 import styles from "./ui.select.module.scss";
-import { UiField } from "../../field";
+import { UiField, UiFieldModifier } from "../../field";
 import { Icon, UiIcon } from "../../icon";
-import { UiFlyout, UiFlyoutRow } from "../../flyout";
-import { useFlyout } from "../../../hooks/useFlyout";
+import {
+  UiFlyout,
+  UiFlyoutContent,
+  UiFlyoutContentType,
+  UiFlyoutRow,
+} from "../../flyout";
+import { useFlyout } from "@/ui/hooks/useFlyout";
+import { UiInput } from "@/ui/components/input";
+import { UiActiveActions } from "@/ui/components/active-actions";
+import { UiButtonVariant } from "@/ui/components/button";
 
 export function UiSelect<
   Option extends Record<string, unknown>,
@@ -38,10 +52,6 @@ export function UiSelect<
   value,
   placement = "bottom",
   autoFocus = false,
-  // onQueryChange,
-  // query,
-  // loadMore,
-  // queryPlaceholder,
   before,
   after,
   renderDisplayValue,
@@ -49,6 +59,15 @@ export function UiSelect<
   displayIndex = "label",
   multiple,
   tabIndex = 0,
+
+  query,
+  onQueryChange,
+  queryPlaceholder,
+  loading = false,
+  page = 1,
+  onPageChange,
+  totalPages = 0,
+
   ...fieldProps
 }: UiSelectProps<Option, Value, Multiple>) {
   const handleChange = (val: Multiple extends true ? Array<Value> : Value) => {
@@ -127,7 +146,7 @@ export function UiSelect<
       return;
     }
     handleChange(newValue as any);
-    (document.activeElement as HTMLElement)?.blur();
+    setFocused(false);
   };
 
   const {
@@ -144,6 +163,9 @@ export function UiSelect<
   };
 
   const blur: FocusEventHandler = (event) => {
+    if (!popperElement) {
+      return;
+    }
     if (contains(popperElement, event.relatedTarget)) {
       return;
     }
@@ -165,6 +187,20 @@ export function UiSelect<
     handleChange(clearValue as Multiple extends true ? Array<Value> : Value);
     setFocused(false);
   };
+
+  const handleQueryChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    onQueryChange?.(event.target.value);
+  };
+
+  const handlePage =
+    (newPage: number): MouseEventHandler =>
+    () => {
+      onPageChange?.(Math.min(Math.max(newPage, 0), totalPages));
+    };
+
+  useOnClickOutside(popperElement, () => {
+    setFocused(false);
+  });
 
   return (
     <>
@@ -217,8 +253,53 @@ export function UiSelect<
             style={popperStyles.popper}
             ref={setPopperElement}
             {...attributes.popper}
+            tabIndex={0}
+            role="menuitem"
+            onBlur={blur}
           >
             <UiFlyout className={styles.dropdown}>
+              {typeof query === "string" && (
+                <UiFlyoutRow
+                  span
+                  icon={Icon.magnifyingGlassMini}
+                  interactive={false}
+                >
+                  <UiInput
+                    placeholder={queryPlaceholder}
+                    value={query}
+                    autoFocus
+                    onChange={handleQueryChange}
+                    modifier={UiFieldModifier.noElevation}
+                  />
+                </UiFlyoutRow>
+              )}
+              {loading && (
+                <UiFlyoutContent type={UiFlyoutContentType.loader}>
+                  <UiIcon icon={Icon.spinner} size={20} spin />
+                </UiFlyoutContent>
+              )}
+              {totalPages > 1 && !loading && (
+                <UiFlyoutContent type={UiFlyoutContentType.loader}>
+                  <UiActiveActions
+                    actions={[
+                      {
+                        key: "previous",
+                        label: Icon.arrowLongLeft,
+                        variant: UiButtonVariant.secondary,
+                        disabled: page <= 1,
+                        onClick: handlePage(page - 1),
+                      },
+                      {
+                        key: "next",
+                        label: Icon.arrowLongRight,
+                        variant: UiButtonVariant.secondary,
+                        disabled: page >= totalPages,
+                        onClick: handlePage(page + 1),
+                      },
+                    ]}
+                  />
+                </UiFlyoutContent>
+              )}
               {Array.from(computedOptions.values()).map((option) => (
                 <UiFlyoutRow
                   key={option.value as any}
@@ -227,7 +308,6 @@ export function UiSelect<
                   radio={!multiple}
                   onClick={handleOptionClick(option.value)}
                   tabIndex={0}
-                  onBlur={blur}
                   hint={option.hint}
                 />
               ))}

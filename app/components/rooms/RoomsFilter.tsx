@@ -1,16 +1,14 @@
-import { RoomsListOutput, roomsListRequest, RoomStatus, RoomType } from "@/api";
+import { RoomsListOutput, roomsListRequest } from "@/api";
 import { Field, Form, Submit } from "@/app/components/form";
 import { UiRoomsFilterLayout } from "@/ui/layouts/rooms-filter-layout";
 import { UiSelect } from "@/ui/components/select";
 import { getServerTranslation } from "@/i18n/getServerTranslation";
 import Pagination from "@/app/components/pagination/Pagination";
-import { Icon, UiIcon } from "@/ui/components/icon";
+import { Icon } from "@/ui/components/icon";
 import { UiInput } from "@/ui/components/input";
 import { UiFieldModifier } from "@/ui/components/field";
-import { getRoomTypeIcon } from "@/app/components/rooms/utils/getRoomTypeIcon";
 import { navigateToRoomsList } from "@/app/api/rooms/navigateToRoomsList";
 import { getServerSearch } from "@/session/getServerSearch";
-import { UiTypography } from "@/ui/utils/typography";
 import { UiButton, UiButtonSize } from "@/ui/components/button";
 import { getRoomTypesOptions } from "@/app/components/rooms/utils/getRoomTypesOptions";
 import { getRoomStatusesOptions } from "@/app/components/rooms/utils/getRoomStatusesOptions";

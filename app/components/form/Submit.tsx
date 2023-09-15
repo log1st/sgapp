@@ -3,6 +3,7 @@
 import {
   Children,
   cloneElement,
+  CSSProperties,
   isValidElement,
   PropsWithChildren,
 } from "react";
@@ -14,6 +15,7 @@ export type SubmitProps = PropsWithChildren<{
   typePropName?: string;
   loadingPropName?: string;
   dirtyOnly?: boolean;
+  style?: CSSProperties;
 }>;
 
 export function Submit({
@@ -21,13 +23,10 @@ export function Submit({
   loadingPropName = "loading",
   typePropName = "htmlType",
   dirtyOnly = false,
+  style,
 }: SubmitProps) {
   const { submitting, disabled } = useForm();
   const { dirty } = useFormikContext();
-
-  if (dirtyOnly && !dirty) {
-    return null;
-  }
 
   return (
     <>
@@ -38,7 +37,8 @@ export function Submit({
               [loadingPropName]: submitting,
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
-              disabled,
+              disabled: disabled || (dirtyOnly && !dirty),
+              style,
             })
           : child,
       )}

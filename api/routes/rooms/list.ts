@@ -1,9 +1,9 @@
 import { Prisma, RoomStatus } from "@prisma/client";
 import { addMinutes } from "date-fns";
-import { accessTokenProcedure } from "@/api/services/auth/accessTokenProcedure";
-import { roomsListRequest } from "@/api/types/rooms/RoomsList";
+import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
+import { roomsListRequest } from "../../types/rooms/RoomsListRequest";
 import RoomWhereInput = Prisma.RoomWhereInput;
-import { omit } from "lodash";
+import { omitRoom } from "@/api/utils/omit/omitRoom";
 
 export const list = accessTokenProcedure
   .input(roomsListRequest)
@@ -67,14 +67,22 @@ export const list = accessTokenProcedure
             avatar: true,
           },
         },
+        jeopardyConfig: true,
+        jeopardyUsersOnRooms: {
+          include: {
+            user: {
+              select: {
+                login: true,
+                avatar: true,
+              },
+            },
+          },
+        },
       },
     });
 
     return {
-      data: data.map((room) => ({
-        ...omit(room, "password"),
-        hasPassword: !!room.password,
-      })),
+      data: data.map(omitRoom),
       total,
       page: Math.max(input.page, Math.ceil(total / input.limit)),
       limit: input.limit,

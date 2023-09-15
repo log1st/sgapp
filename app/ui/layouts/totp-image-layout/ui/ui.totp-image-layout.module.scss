@@ -1,0 +1,23 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: rm(24);
+}
+
+.loader {
+  @include icon(24);
+}
+
+.image {
+  @include size(316);
+}
+
+.secret {
+  @include text-large-plus();
+  color: var(--fg-subtle);
+}

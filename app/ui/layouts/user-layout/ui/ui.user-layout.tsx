@@ -9,6 +9,7 @@ export function UiUserLayout({
   e2e,
   children,
   avatar,
+  side,
 }: UiUserLayoutProps) {
   return (
     <div
@@ -17,7 +18,8 @@ export function UiUserLayout({
       className={clsx([styles.root, className])}
     >
       {avatar && <div className={styles.avatar}>{avatar}</div>}
-      <div className={styles.body}>{children}</div>
+      {children && <div className={styles.body}>{children}</div>}
+      {side && <div className={styles.side}>{side}</div>}
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import { PrismaClient, TokenType, User } from "@prisma/client";
 import { addMinutes, differenceInSeconds } from "date-fns";
 import jwt from "jsonwebtoken";
-import { AuthTokens } from "@/api";
-import { config } from "@/api/config";
+import { AuthTokens } from "../../types/auth/AuthToken";
+import { config } from "../../config";
 
 export const generateToken = (user: User, db: PrismaClient, type: TokenType) =>
   db.token.create({
@@ -15,6 +15,7 @@ export const generateToken = (user: User, db: PrismaClient, type: TokenType) =>
         {
           [TokenType.access]: config.jwtAccessTokenSecret,
           [TokenType.refresh]: config.jwtRefreshTokenSecret,
+          [TokenType.totp]: config.jwtAccessTokenSecret,
         }[type],
       ),
       type,
@@ -23,6 +24,7 @@ export const generateToken = (user: User, db: PrismaClient, type: TokenType) =>
         {
           [TokenType.access]: 15,
           [TokenType.refresh]: 3 * 60,
+          [TokenType.totp]: 3 * 60,
         }[type],
       ),
     },

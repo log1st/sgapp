@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { AppRouterInput, AppRouterOutput } from "@/api/apiRouter";
+import { AppRouterInput, AppRouterOutput } from "../../apiRouter";
 
-export const authSignUpInput = z
+export const authSignUpRequest = z
   .object({
     login: z
       .string()

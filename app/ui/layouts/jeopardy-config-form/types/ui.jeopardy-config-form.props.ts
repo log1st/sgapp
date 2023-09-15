@@ -1,4 +1,4 @@
-import { CSSProperties, PropsWithChildren, ReactNode } from "react";
+import { CSSProperties, PropsWithChildren } from "react";
 
 export type UiJeopardyConfigFormProps = PropsWithChildren<{
   style?: CSSProperties;

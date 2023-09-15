@@ -5,7 +5,6 @@ import { getServerTranslation } from "@/i18n/getServerTranslation";
 import RoomForm from "@/app/components/rooms/create/RoomForm";
 import { createRoom } from "@/app/api/rooms/createRoom";
 import { getSessionLanguage } from "@/i18n/getSessionLanguage";
-import RoomFormGameLogo from "@/app/components/rooms/RoomFormGameLogo";
 
 export default async function RoomsCreatePage() {
   const { t } = await getServerTranslation("rooms", {
@@ -28,7 +27,6 @@ export default async function RoomsCreatePage() {
         namespace="rooms"
         keyPrefix="form"
       >
-        <RoomFormGameLogo />
         <UiDialog
           description={t("hint")}
           title={t("title")}

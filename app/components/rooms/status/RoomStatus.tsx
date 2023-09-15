@@ -1,8 +1,11 @@
+"use client";
+
 import { Key, ReactNode } from "react";
+import { Placement } from "@popperjs/core";
 import { filteredArray, formatAgo } from "@/utils";
 import { UiBadge, UiBadgeColor } from "@/ui/components/badge";
 import Flyout from "@/app/components/flyout/Flyout";
-import { ListedRoom } from "@/api";
+import { GetRoomOutput } from "@/api";
 import { useClientTranslation } from "@/i18n/useClientTranslation";
 import { UseFlyoutOptions } from "@/ui/hooks/useFlyout";
 import { UiTooltip } from "@/ui/components/tooltip";
@@ -11,15 +14,23 @@ import { UiRoomStatusLayout } from "@/ui/layouts/room-status-layout";
 import { UiTypography } from "@/ui/utils/typography";
 
 export type RoomStatusProps = {
-  room: ListedRoom;
+  room: Pick<
+    GetRoomOutput,
+    "status" | "finishedAt" | "hasPassword" | "createdAt" | "private"
+  >;
   lng?: string;
+  placement?: Placement;
 };
 
 type RoomStatusFlyout =
   | [Key, ReactNode, ReactNode]
   | [Key, ReactNode, ReactNode, UseFlyoutOptions];
 
-export default function RoomStatus({ room, lng = "en" }: RoomStatusProps) {
+export default function RoomStatus({
+  room,
+  lng = "en",
+  placement,
+}: RoomStatusProps) {
   const { t } = useClientTranslation("rooms", undefined, lng);
 
   const flyOuts = filteredArray<RoomStatusFlyout>([
@@ -49,7 +60,7 @@ export default function RoomStatus({ room, lng = "en" }: RoomStatusProps) {
               includeSeconds: true,
             }),
           }),
-      { placement: "left" },
+      { placement: placement ?? "left" },
     ],
     [
       "hasPassword",
@@ -62,7 +73,7 @@ export default function RoomStatus({ room, lng = "en" }: RoomStatusProps) {
         />
       </UiTypography>,
       t(`password.${room.hasPassword}`),
-      { placement: "top" },
+      { placement: placement ?? "top" },
     ],
     room.private && [
       "private",
@@ -70,7 +81,7 @@ export default function RoomStatus({ room, lng = "en" }: RoomStatusProps) {
         <UiIcon icon={room.private ? Icon.eyeSlash : Icon.eye} size={16} />
       </UiTypography>,
       t(`private.${room.private}`),
-      { placement: "top" },
+      { placement: placement ?? "top" },
     ],
   ]);
 

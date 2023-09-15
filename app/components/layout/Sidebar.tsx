@@ -12,6 +12,7 @@ import SidebarToggle from "@/app/components/layout/toggle/SidebarToggle";
 import { getSessionSetting } from "@/session/sessionSetting";
 import { SettingType } from "@/session/settingType";
 import SidebarMainMenu from "@/app/components/layout/mainMenu/SidebarMainMenu";
+import { Icon } from "@/ui/components/icon";
 
 export default async function Sidebar() {
   const { t } = await getServerTranslation(["meta", "sidebar"]);
@@ -24,11 +25,12 @@ export default async function Sidebar() {
     <UiSidebar
       avatar={
         profile.data ? (
-          <UiButton variant={UiButtonVariant.link} href="/profile">
+          <UiButton variant={UiButtonVariant.pure} href="/settings">
             <UiAvatar
               size={UiAvatarSize.large}
               image={profile.data.avatar}
               letters={profile.data.login[0]}
+              icon={Icon.user}
             />
           </UiButton>
         ) : null

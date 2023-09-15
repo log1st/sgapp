@@ -5,6 +5,7 @@ export default {
     status: "Status",
     title: "Title",
     password: "With password",
+    info: "Game info",
   },
   type: {
     jeopardy: "Jeopardy",
@@ -32,6 +33,9 @@ export default {
     hint: "The game won't start immediately, feel free to edit settings before start on next step",
     submit: "Create game",
   },
+  room: {
+    title: `{type}: <title>{title}</title>`,
+  },
   form: {
     field: {
       type: {
@@ -54,6 +58,9 @@ export default {
       slug: {
         label: "Slug",
         hint: "Used in URL",
+        validation: {
+          unique: "Slug already taken",
+        },
       },
       private: {
         label: "Private",
@@ -210,13 +217,18 @@ export default {
             invalid_type: "Required",
           },
         },
+        questionPackId: {
+          label: "Question pack",
+          query: "Search question pack",
+          validation: {
+            invalid_type: "Required",
+            exists: "Pack not found",
+          },
+        },
       },
     },
     error: {
       validation: "",
-      slug: {
-        unique: "Slug already taken",
-      },
     },
   },
 };

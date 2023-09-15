@@ -14,14 +14,21 @@ model User {
 
   avatar String?
 
+  totpEnabled Boolean @default(false)
+  totpSecret String?
+
   tokens Token[]
 
   createdRooms Room[] @relation(name: "createdRooms")
+  jeopardyQuestionPacks JeopardyQuestionPack[]
+
+  jeopardyUsersOnRooms JeopardyUsersOnRooms[]
 }
 
 enum TokenType {
   access
   refresh
+  totp
 }
 
 model Token {
@@ -66,6 +73,29 @@ model Room {
 
   jeopardyConfigId Int?
   jeopardyConfig JeopardyConfig? @relation(fields: [jeopardyConfigId], references: [id], onDelete: SetNull)
+
+  jeopardyUsersOnRooms JeopardyUsersOnRooms[]
+}
+
+enum JeopardyRole {
+  showman
+  player
+}
+
+model JeopardyUsersOnRooms {
+  roomId Int
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  joinedAt DateTime @default(now())
+
+  role JeopardyRole
+
+  points Int
+
+  @@unique([userId, roomId])
 }
 
 enum JeopardyAnswerType {
@@ -77,6 +107,9 @@ model JeopardyConfig {
   id Int @id @default(autoincrement())
 
   room Room[]
+
+  questionPackId Int?
+  questionPack JeopardyQuestionPack? @relation(fields: [questionPackId], references: [id], onDelete: SetNull)
 
   maxPlayers Int
   answerType JeopardyAnswerType @default(voice)
@@ -103,4 +136,15 @@ model JeopardyConfig {
   answerValidationTime Int @default(30)
   mediaPauseTime Int @default(0)
   falseStartTime Int @default(3)
+}
+
+model JeopardyQuestionPack {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  creatorId Int?
+  creator User? @relation(fields: [creatorId], references: [id], onDelete: SetNull)
+
+  configs JeopardyConfig[]
 }

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { JeopardyAnswerType, RoomType } from "@prisma/client";
 import { generateSlug } from "random-word-slugs";
-import { AppRouterInput, AppRouterOutput } from "@/api/apiRouter";
+import { AppRouterInput, AppRouterOutput } from "../../apiRouter";
 
 export const createRoomRequest = z.object({
   type: z.nativeEnum(RoomType),
@@ -53,6 +53,7 @@ export const createRoomRequest = z.object({
       answerValidationTime: z.number(),
       mediaPauseTime: z.number(),
       falseStartTime: z.number(),
+      questionPackId: z.number(),
     }),
     z.object({
       type: z.literal(RoomType.sixMinds),

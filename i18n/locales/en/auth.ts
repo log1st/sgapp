@@ -22,6 +22,23 @@ export default {
     submit: "Sign in",
     signUp: "Sign up",
   },
+  "2fa": {
+    title: "Two-factor authorization",
+    field: {
+      code: {
+        placeholder: "One-time code",
+        validation: {
+          too_small: "Code must be 6-symbols long",
+          too_big: "Code must be 6-symbols long",
+          invalid: "Code is invalid",
+        },
+      },
+    },
+    error: {
+      validation: "",
+    },
+    submit: "Sign in",
+  },
   signUp: {
     title: "Registration",
     field: {

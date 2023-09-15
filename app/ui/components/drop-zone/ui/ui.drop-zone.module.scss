@@ -1,0 +1,67 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  block-size: rm(200);
+  inline-size: 100%;
+
+  border-radius: var(--border-radius-medium);
+
+  position: relative;
+
+  &:focus-visible {
+    box-shadow: var(--borders-interactive-with-focus);
+  }
+
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+
+  &.disabled {
+    opacity: .7;
+  }
+
+  &.loading {
+    .before,
+    .icon,
+    .label,
+    .hint {
+      opacity: 0;
+    }
+  }
+}
+
+.before {
+
+}
+
+.icon {
+  @include icon(64);
+  color: var(--fg-muted);
+}
+
+.label {
+  @include text-large-plus();
+  color: var(--fg-base);
+}
+
+.hint {
+  @include text-medium();
+  color: var(--fg-subtle);
+}
+
+.loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loaderIcon {
+  @include icon(48);
+  color: var(--fg-subtle);
+}

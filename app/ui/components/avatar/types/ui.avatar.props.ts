@@ -11,6 +11,7 @@ export enum UiAvatarSize {
   base = "base",
   large = "large",
   xLarge = "xLarge",
+  editor = "editor",
 }
 
 export type UiAvatarProps = {

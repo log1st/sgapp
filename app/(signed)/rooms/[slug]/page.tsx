@@ -1,4 +1,6 @@
-import { db } from "@/api/db";
+import { UiRoomPageLayout } from "@/ui/layouts/room-page-layout";
+import { fetchRoom } from "@/app/api/rooms/fetchRoom";
+import RoomHeader from "@/app/components/rooms/room/RoomHeader";
 
 export type RoomSlugPageProps = {
   params: {
@@ -9,19 +11,11 @@ export type RoomSlugPageProps = {
 export default async function RoomSlugPage({
   params: { slug },
 }: RoomSlugPageProps) {
-  const data = await db.room.findFirst({
-    where: {
-      slug,
-    },
-    include: {
-      creator: true,
-      jeopardyConfig: true,
-    },
-  });
+  const data = await fetchRoom({ slug });
 
   return (
-    <pre style={{ overflow: "auto", blockSize: "100dvh", padding: "20px" }}>
+    <UiRoomPageLayout header={<RoomHeader room={data} />}>
       {JSON.stringify(data, null, 2)}
-    </pre>
+    </UiRoomPageLayout>
   );
 }

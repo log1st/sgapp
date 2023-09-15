@@ -10,5 +10,5 @@ export const getSixMindsConfig = (): CreateRoomInput["config"] => ({
 export default function SixMindsConfigForm({
   lng = "en",
 }: SixMindsConfigFormProps) {
-  return <div>six minds</div>;
+  return <div>six minds {lng}</div>;
 }

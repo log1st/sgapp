@@ -1332,7 +1332,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-runtime@npm:^7.22.9":
+"@babel/plugin-transform-runtime@npm:^7.12.1, @babel/plugin-transform-runtime@npm:^7.22.9":
   version: 7.22.15
   resolution: "@babel/plugin-transform-runtime@npm:7.22.15"
   dependencies:
@@ -2428,6 +2428,54 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@otplib/core@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "@otplib/core@npm:12.0.1"
+  checksum: b3c34bc20b31bc3f49cc0dc3c0eb070491c0101e8c1efa83cec48ca94158bd736aaca8187df667fc0c4a239d4ac52076bc44084bee04a50c80c3630caf77affa
+  languageName: node
+  linkType: hard
+
+"@otplib/plugin-crypto@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "@otplib/plugin-crypto@npm:12.0.1"
+  dependencies:
+    "@otplib/core": ^12.0.1
+  checksum: 6867c74ee8aca6c2db9670362cf51e44f3648602c39318bf537421242e33f0012a172acd43bbed9a21d706e535dc4c66aff965380673391e9fd74cf685b5b13a
+  languageName: node
+  linkType: hard
+
+"@otplib/plugin-thirty-two@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "@otplib/plugin-thirty-two@npm:12.0.1"
+  dependencies:
+    "@otplib/core": ^12.0.1
+    thirty-two: ^1.0.2
+  checksum: 920099e40d3e8c2941291c84c70064c2d86d0d1ed17230d650445d5463340e406bc413ddf2e40c374ddc4ee988ef1e3facacab9b5248b1ff361fd13df52bf88f
+  languageName: node
+  linkType: hard
+
+"@otplib/preset-default@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "@otplib/preset-default@npm:12.0.1"
+  dependencies:
+    "@otplib/core": ^12.0.1
+    "@otplib/plugin-crypto": ^12.0.1
+    "@otplib/plugin-thirty-two": ^12.0.1
+  checksum: 8133231384f6277f77eb8e42ef83bc32a8b01059bef147d1c358d9e9bfd292e1c239f581fe008367a48489dd68952b7ac0948e6c41412fc06079da2c91b71d16
+  languageName: node
+  linkType: hard
+
+"@otplib/preset-v11@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "@otplib/preset-v11@npm:12.0.1"
+  dependencies:
+    "@otplib/core": ^12.0.1
+    "@otplib/plugin-crypto": ^12.0.1
+    "@otplib/plugin-thirty-two": ^12.0.1
+  checksum: 367cb09397e617c21ec748d54e920ab43f1c5dfba70cbfd88edf73aecca399cf0c09fefe32518f79c7ee8a06e7058d14b200da378cc7d46af3cac4e22a153e2f
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -2527,10 +2575,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/engines@npm:5.2.0":
-  version: 5.2.0
-  resolution: "@prisma/engines@npm:5.2.0"
-  checksum: c4d0a424b211ab5f02c977bd87e03a151a7d297d8448b08ef9de931a0dcebbbea76cdefc15a17fd06dacac692b164fd88b32c23eb84f7822dbaf3d0885b700a7
+"@prisma/engines@npm:5.3.0":
+  version: 5.3.0
+  resolution: "@prisma/engines@npm:5.3.0"
+  checksum: 4735c7a2b1f01a47f5a870cc4bbfaca5632df8a712d20d371e707e9a8d32f92fb808a2031c78504459bdebc562f67156fa8334c258ea47adf073ef4143b52e7f
   languageName: node
   linkType: hard
 
@@ -5029,6 +5077,15 @@ __metadata:
   version: 1.2.4
   resolution: "@types/range-parser@npm:1.2.4"
   checksum: b7c0dfd5080a989d6c8bb0b6750fc0933d9acabeb476da6fe71d8bdf1ab65e37c136169d84148034802f48378ab94e3c37bb4ef7656b2bec2cb9c0f8d4146a95
+  languageName: node
+  linkType: hard
+
+"@types/react-avatar-editor@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "@types/react-avatar-editor@npm:13.0.0"
+  dependencies:
+    "@types/react": "*"
+  checksum: bdad95a125f96acd6fefec4fc8158db8213ed20c6ab830c01803b5d500c606e2f6899cf80b694c1c0aba8bd271e1ee986317643fc76d4c8f57f908df9c6e9938
   languageName: node
   linkType: hard
 
@@ -9516,6 +9573,7 @@ eslint-plugin-react-hooks@experimental:
     "@types/jsonwebtoken": ^9.0.2
     "@types/node": 20.6.0
     "@types/react": ^18.2.21
+    "@types/react-avatar-editor": ^13.0.0
     "@types/react-dom": ^18.2.7
     "@typescript-eslint/eslint-plugin": ^6.3.0
     "@typescript-eslint/parser": ^6.3.0
@@ -9540,15 +9598,18 @@ eslint-plugin-react-hooks@experimental:
     jsonwebtoken: ^9.0.2
     lodash: ^4.17.21
     next: 13.4.19
+    otplib: ^12.0.1
     pg: ^8.11.3
     prettier: ^3.0.3
-    prisma: ^5.2.0
+    prisma: latest
     prisma-field-encryption: ^1.5.0
+    qr-code-styling: ^1.6.0-rc.1
     qs: ^6.11.2
     query-string: ^8.1.0
     random-word-slugs: ^0.1.7
     raw-loader: ^4.0.2
     react: experimental
+    react-avatar-editor: ^13.0.0
     react-dom: experimental
     react-i18next: ^13.2.2
     react-json-view: ^1.21.3
@@ -12817,6 +12878,17 @@ eslint-plugin-react-hooks@experimental:
   languageName: node
   linkType: hard
 
+"otplib@npm:^12.0.1":
+  version: 12.0.1
+  resolution: "otplib@npm:12.0.1"
+  dependencies:
+    "@otplib/core": ^12.0.1
+    "@otplib/preset-default": ^12.0.1
+    "@otplib/preset-v11": ^12.0.1
+  checksum: 4a1b91cf1b8e920b50ad4bac2ef2a89126630c62daf68e9b32ff15106b2551db905d3b979955cf5f8f114da0a8883cec3d636901d65e793c1745bb4174e2a572
+  languageName: node
+  linkType: hard
+
 "p-limit@npm:^2.0.0, p-limit@npm:^2.2.0":
   version: 2.3.0
   resolution: "p-limit@npm:2.3.0"
@@ -13574,14 +13646,14 @@ eslint-plugin-react-hooks@experimental:
   languageName: node
   linkType: hard
 
-"prisma@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "prisma@npm:5.2.0"
+"prisma@npm:latest":
+  version: 5.3.0
+  resolution: "prisma@npm:5.3.0"
   dependencies:
-    "@prisma/engines": 5.2.0
+    "@prisma/engines": 5.3.0
   bin:
     prisma: build/index.js
-  checksum: 8b99ab5a5f801c72b2eb1809db980bd104dfd699cb14c5d5db5b675566c89e46501267399bb2f02bc3ea8fb86fc2f029cccd7178768109dc4d198bc93552b1da
+  checksum: e33cb0b7cb6f10693131782d82dec178a4f13d9f8ea5ac39c206e41d3c1957c3e41c3a16bab95ef6572fde1e852f68b780b351a11204e989bcee7d1b91276dfb
   languageName: node
   linkType: hard
 
@@ -13763,6 +13835,22 @@ eslint-plugin-react-hooks@experimental:
   languageName: node
   linkType: hard
 
+"qr-code-styling@npm:^1.6.0-rc.1":
+  version: 1.6.0-rc.1
+  resolution: "qr-code-styling@npm:1.6.0-rc.1"
+  dependencies:
+    qrcode-generator: ^1.4.3
+  checksum: 778754790fe0b586ecd38fb02de777c7dd9cf844cf6e3c88f9a23ad85b122200a8567c946e3c41dba84ddd2f0016aa31ddfd1507150e1dbfea8a58323b62d944
+  languageName: node
+  linkType: hard
+
+"qrcode-generator@npm:^1.4.3":
+  version: 1.4.4
+  resolution: "qrcode-generator@npm:1.4.4"
+  checksum: 860cfdd2a7a608d34e92cab99774cc08182e1911432f30ed36d16f8a5cdabd7fdf40239caed91fa2691cfe66c8d95c1340a2fc9cc439eed07a9f2eb328c6f527
+  languageName: node
+  linkType: hard
+
 "qs@npm:6.11.0":
   version: 6.11.0
   resolution: "qs@npm:6.11.0"
@@ -13897,6 +13985,20 @@ eslint-plugin-react-hooks@experimental:
   bin:
     rc: ./cli.js
   checksum: 2e26e052f8be2abd64e6d1dabfbd7be03f80ec18ccbc49562d31f617d0015fbdbcf0f9eed30346ea6ab789e0fdfe4337f033f8016efdbee0df5354751842080e
+  languageName: node
+  linkType: hard
+
+"react-avatar-editor@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "react-avatar-editor@npm:13.0.0"
+  dependencies:
+    "@babel/plugin-transform-runtime": ^7.12.1
+    "@babel/runtime": ^7.12.5
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ^0.14.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^0.14.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: e23b717c5a70f4ae2dbbdba359b83a15c89d758ef388c6a1114d3c355edfc423bfdb72b5667822bfa97f6903656d969ee8b324fc09c15d956c84bb71ee16195e
   languageName: node
   linkType: hard
 
@@ -15988,6 +16090,13 @@ react@experimental:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
+  languageName: node
+  linkType: hard
+
+"thirty-two@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "thirty-two@npm:1.0.2"
+  checksum: f6700b31d16ef942fdc0d14daed8a2f69ea8b60b0e85db8b83adf58d84bbeafe95a17d343ab55efaae571bb5148b62fc0ee12b04781323bf7af7d7e9693eec76
   languageName: node
   linkType: hard
 

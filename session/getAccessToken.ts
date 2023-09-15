@@ -36,6 +36,22 @@ export const setRefreshToken = (token: string, expiresIn: number) => {
   });
 };
 
+export const totpTokenName = "authTotp";
+
+export const getTotpToken = () => cookies().get(totpTokenName)?.value;
+
+export const setTotpToken = (token: string, expiresIn: number) => {
+  cookies().set(totpTokenName, token, {
+    path: "/",
+    httpOnly: true,
+    expires: new Date(Date.now() + expiresIn * 1000),
+  });
+};
+
+export const dropTotpToken = () => {
+  cookies().delete(totpTokenName);
+};
+
 export const dropRefreshToken = () => {
   cookies().delete(refreshTokenName);
 };

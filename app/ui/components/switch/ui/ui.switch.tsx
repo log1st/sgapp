@@ -15,29 +15,38 @@ export function UiSwitch({
   disabled,
   size = UiSwitchSize.base,
 }: UiSwitchProps) {
-  const handleClick = () => {
-    onChange?.({
-      target: {
-        name,
-        value,
-        checked: !checked,
-      },
-    });
+  const handleClick: typeof onChange = (event) => {
+    if (disabled) {
+      return;
+    }
+    onChange?.(event);
   };
 
   return (
-    <UiPureButton
-      onClick={handleClick}
-      disabled={disabled}
+    <div
+      className={clsx([styles.wrapper, className])}
       data-e2e={e2e}
       style={style}
-      className={clsx([
-        styles.root,
-        className,
-        checked && styles.checked,
-        disabled && styles.disabled,
-        styles[`${size}Size`],
-      ])}
-    />
+    >
+      <UiPureButton
+        disabled={disabled}
+        span="label"
+        className={clsx([
+          styles.root,
+          checked && styles.checked,
+          disabled && styles.disabled,
+          styles[`${size}Size`],
+        ])}
+      >
+        <input
+          checked={checked}
+          value={value}
+          onChange={handleClick}
+          name={name}
+          type="checkbox"
+          className={styles.input}
+        />
+      </UiPureButton>
+    </div>
   );
 }

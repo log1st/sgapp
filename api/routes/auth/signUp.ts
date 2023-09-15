@@ -1,13 +1,12 @@
-"use server";
-
 import { TRPCError } from "@trpc/server";
-import { publicProcedure } from "@/api/trpc";
-import { AuthTokens } from "@/api/types/auth/AuthToken";
-import { generateTokens } from "@/api/services/auth/generateToken";
-import { authSignUpInput } from "@/api/types/auth/AuthSignUp";
+import { publicProcedure } from "../../trpc";
+import { AuthTokens } from "../../types/auth/AuthToken";
+import { generateTokens } from "../../services/auth/generateToken";
+import { authSignUpRequest } from "../../types/auth/AuthSignUpRequest";
+import { generateTotpSecret } from "../../utils/totp/generateTotpSecret";
 
 export const signUp = publicProcedure
-  .input(authSignUpInput)
+  .input(authSignUpRequest)
   .mutation<AuthTokens>(async ({ ctx: { db }, input }) => {
     const existingUser = await db.user.findFirst({
       where: {
@@ -24,6 +23,7 @@ export const signUp = publicProcedure
         data: {
           login: input.login,
           password: input.password,
+          totpSecret: generateTotpSecret(),
         },
       }),
       db,

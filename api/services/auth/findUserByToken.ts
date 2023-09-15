@@ -1,7 +1,7 @@
 import { PrismaClient, TokenType } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import jwt from "jsonwebtoken";
-import { config } from "@/api/config";
+import { config } from "../../config";
 
 export const findUserByToken = async (
   db: PrismaClient,
@@ -18,6 +18,7 @@ export const findUserByToken = async (
       {
         [TokenType.access]: config.jwtAccessTokenSecret,
         [TokenType.refresh]: config.jwtRefreshTokenSecret,
+        [TokenType.totp]: config.jwtAccessTokenSecret,
       }[type],
     );
   } catch {

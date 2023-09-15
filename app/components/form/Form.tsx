@@ -5,6 +5,7 @@ import {
   FormikValues,
   useFormik,
   Form as BaseForm,
+  FormikHelpers,
 } from "formik";
 import {
   CSSProperties,
@@ -30,12 +31,14 @@ export type FormProps<
 
   mutate?(
     payload: Payload,
-  ): Promise<ApiResponse<Response>> | ApiResponse<Response> | void;
+  ): Promise<ApiResponse<Response, any>> | ApiResponse<Response, any> | void;
   initialValues?: Payload;
   watchInitialValues?: boolean;
-  onSuccess?(response: Response): void;
+  onSuccess?(response: Response, helpers: FormikHelpers<Payload>): void;
+  onError?(response: ApiResponse<Response, any>): void;
   namespace?: string | string[];
   keyPrefix?: string;
+  resetOnSuccess?: boolean;
   disabled?: boolean;
   submitOnChange?: boolean;
   delay?: number;
@@ -64,6 +67,8 @@ export function Form<Payload extends FormikValues, Response>({
   children,
   dev,
   lng,
+  resetOnSuccess,
+  onError,
 }: FormProps<Payload, Response>) {
   const [submitting, toggleSubmitting] = useToggle(false);
 
@@ -71,7 +76,7 @@ export function Form<Payload extends FormikValues, Response>({
 
   const formik = useFormik<Payload>({
     initialValues,
-    async onSubmit(values, { setFieldError }) {
+    async onSubmit(values, helpers) {
       setError(null);
 
       if (submitting || disabled || !mutate) {
@@ -88,22 +93,39 @@ export function Form<Payload extends FormikValues, Response>({
       }
 
       if (response.success) {
-        onSuccess?.(response.data);
+        if (resetOnSuccess) {
+          helpers.resetForm();
+        }
+        onSuccess?.(response.data, helpers);
         toggleSubmitting(false);
         return;
       }
+
+      onError?.(response);
 
       if (response.error) {
         setError(transformResponseError(response.error, namespace, keyPrefix));
       }
 
       response.errors?.forEach((e) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        setFieldError(...transformResponseError(e, namespace, keyPrefix));
+        helpers.setFieldError(
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          ...transformResponseError(e, namespace, keyPrefix),
+        );
       });
 
       toggleSubmitting(false);
+
+      requestAnimationFrame(() => {
+        const errorElement = document.querySelector<HTMLElement>(
+          '[data-e2e="has-error"]',
+        );
+        errorElement?.scrollIntoView({
+          block: "nearest",
+          behavior: "smooth",
+        });
+      });
     },
   });
 

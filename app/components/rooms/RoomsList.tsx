@@ -10,10 +10,10 @@ import { RoomsListOutput, RoomType } from "@/api";
 import { filteredArray } from "@/utils";
 import { useClientTranslation } from "@/i18n/useClientTranslation";
 import { UiGameTypeLayout } from "@/ui/layouts/game-type-layout";
-import { UiUserLayout } from "@/ui/layouts/user-layout";
-import { UiAvatar, UiAvatarSize } from "@/ui/components/avatar";
 import { getRoomTypeIcon } from "@/app/components/rooms/utils/getRoomTypeIcon";
 import RoomStatus from "./status/RoomStatus";
+import UserCard from "@/app/components/user/UserCard";
+import RoomInfoCard from "@/app/components/rooms/info/RoomInfoCard";
 
 export type RoomsListProps = RoomsListOutput & {
   lng?: string;
@@ -39,21 +39,15 @@ export default function RoomsList({ lng = "en", data }: RoomsListProps) {
     },
     {
       key: "creator",
+      width: "auto",
       label: t("field.creator"),
-      render: (record) =>
-        record.creator ? (
-          <UiUserLayout
-            avatar={
-              <UiAvatar
-                size={UiAvatarSize.base}
-                image={record.creator.avatar}
-                letters={record.creator.login[0]}
-              />
-            }
-          >
-            {record.creator.login}
-          </UiUserLayout>
-        ) : null,
+      render: (record) => <UserCard user={record.creator} />,
+    },
+    {
+      key: "info",
+      width: "auto",
+      label: t("field.info"),
+      render: (record) => <RoomInfoCard room={record} lng={lng} />,
     },
     {
       key: "status",

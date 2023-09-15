@@ -31,6 +31,7 @@ export function UiFlyoutRow({
   onClick,
   danger,
   loading,
+  interactive = true,
   ...pureButtonProps
 }: FlyoutRowProps) {
   return (
@@ -42,6 +43,7 @@ export function UiFlyoutRow({
         checked && styles.checked,
         pureButtonProps.disabled && styles.disabled,
         danger && styles.danger,
+        interactive && styles.interactive,
       ])}
       {...pureButtonProps}
     >

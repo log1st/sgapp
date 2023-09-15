@@ -55,10 +55,16 @@ export type UiSelectProps<
     hintIndex?: string | string[];
     displayIndex?: string | string[];
     renderOption?(option: Option): ReactNode;
+    renderDisplayValue?(value?: Value, ...option: Option[]): ReactNode;
+
     query?: string | undefined;
     onQueryChange?(query: string): void;
+    onPageChange?(page: number): void;
     queryPlaceholder?: string;
-    renderDisplayValue?(value?: Value, ...option: Option[]): ReactNode;
+    loading?: boolean;
+    page?: number;
+    totalPages?: number;
+
     placeholder?: ReactNode;
     loadMore?(): void;
     placement?: PopperProps<unknown>["placement"];

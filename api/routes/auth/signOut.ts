@@ -1,4 +1,4 @@
-import { refreshTokenProcedure } from "@/api/services/auth/refreshTokenProcedure";
+import { refreshTokenProcedure } from "../../services/auth/refreshTokenProcedure";
 
 export const signOut = refreshTokenProcedure.mutation(
   async ({ ctx: { db, user } }) => {

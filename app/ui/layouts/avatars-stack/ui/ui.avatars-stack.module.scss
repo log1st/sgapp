@@ -1,0 +1,15 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: rm(-10);
+
+  > * {
+    flex-shrink: 0;
+
+    + * {
+      margin-inline-start: rm(-16);
+    }
+  }
+}

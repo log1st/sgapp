@@ -5,7 +5,10 @@ import { UiDialog } from "@/ui/components/dialog";
 import { UiInput, UiInputType } from "@/app/ui/components/input";
 import { UiButton, UiButtonVariant } from "@/ui/components/button";
 import { Field, Form, FormError, Submit } from "@/app/components/form";
-import { signInAction } from "@/app/api/auth/signInAction";
+import {
+  handleSignInRedirect,
+  signInAction,
+} from "@/app/api/auth/signInAction";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const { t } = await getServerTranslation(["auth", "meta"]);
@@ -30,6 +33,7 @@ export default async function AuthSignInPage() {
       <UiAuthSignInFormLayout>
         <Form
           mutate={signInAction}
+          onError={handleSignInRedirect}
           lng={language}
           namespace="auth"
           keyPrefix="signIn"

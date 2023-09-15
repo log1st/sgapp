@@ -1,0 +1,21 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: rm(20);
+
+  flex-grow: 1;
+}
+
+.icon {
+  @include size(50);
+}
+
+.title {
+  @include text-large();
+}
+
+.creator {
+  margin-inline-start: auto;
+}

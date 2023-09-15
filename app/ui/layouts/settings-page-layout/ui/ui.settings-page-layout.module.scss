@@ -1,0 +1,33 @@
+@import "../../../assets/utils";
+
+.root {
+  block-size: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+
+  padding: rm(20);
+  block-size: 0;
+  flex-grow: 1;
+
+  inline-size: 100%;
+
+  overflow: auto;
+  @include noScrollbars();
+}
+
+.content {
+  max-width: rm(700);
+  margin: 0 auto;
+  inline-size: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+  gap: rm(20);
+}

@@ -1,8 +1,6 @@
-"use server";
-
-import { omit } from "lodash";
-import { accessTokenProcedure } from "@/api/services/auth/accessTokenProcedure";
+import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
+import { omitUser } from "@/api/utils/omit/omitUser";
 
 export const profile = accessTokenProcedure.mutation(
-  async ({ ctx: { user } }) => omit(user, "password"),
+  async ({ ctx: { user } }) => omitUser(user),
 );

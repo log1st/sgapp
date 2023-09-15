@@ -2,7 +2,7 @@ import { clsx, arrayFrom } from "@/utils";
 import { UiProgressTabsGroupProps } from "..";
 
 import styles from "./ui.progress-tabs-group.module.scss";
-import { UiProgressTab } from "../../../components/progress-tab";
+import { UiProgressTab } from "@/ui/components/progress-tab";
 
 export function UiProgressTabsGroup({
   className,

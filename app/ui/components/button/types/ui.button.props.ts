@@ -8,6 +8,7 @@ export enum UiButtonVariant {
   danger = "danger",
   transparent = "transparent",
   link = "link",
+  pure = "pure",
 }
 
 export enum UiButtonSize {

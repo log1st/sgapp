@@ -1,0 +1,17 @@
+@import "../../../assets/utils";
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: rm(20);
+}
+
+.content {
+  position: relative;
+}
+
+.action {
+  flex-shrink: 0;
+}

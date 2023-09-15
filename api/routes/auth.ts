@@ -1,9 +1,10 @@
-import { router } from "@/api/trpc";
-import { signIn } from "@/api/routes/auth/signIn";
-import { refreshToken } from "@/api/routes/auth/refreshToken";
-import { signUp } from "@/api/routes/auth/signUp";
-import { signOut } from "@/api/routes/auth/signOut";
-import { profile } from "@/api/routes/auth/profile";
+import { router } from "../trpc";
+import { signIn } from "./auth/signIn";
+import { refreshToken } from "./auth/refreshToken";
+import { signUp } from "./auth/signUp";
+import { signOut } from "./auth/signOut";
+import { profile } from "./auth/profile";
+import { submit2fa } from "@/api/routes/auth/submit2fa";
 
 export const auth = router({
   signIn,
@@ -11,4 +12,5 @@ export const auth = router({
   signOut,
   refreshToken,
   profile,
+  submit2fa,
 });

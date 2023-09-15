@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { fieldEncryptionExtension } from "prisma-field-encryption";
-import { config } from "@/api/config";
+import { config } from "./config";
 
 export const db = new PrismaClient().$extends(
   fieldEncryptionExtension({

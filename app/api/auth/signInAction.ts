@@ -1,12 +1,25 @@
 "use server";
 
-import { ApiResponse, AuthSignInInput, makeRequest } from "@/api";
+import { ApiResponse, AuthSignInInput, AuthToken, makeRequest } from "@/api";
 import { getApiCaller } from "@/session/getApiCaller";
-import { setAccessToken, setRefreshToken } from "@/session/getAccessToken";
+import {
+  setAccessToken,
+  setRefreshToken,
+  setTotpToken,
+} from "@/session/getAccessToken";
+import { appRedirect } from "@/utils";
+
+export const handleSignInRedirect = (
+  payload: ApiResponse<any, { totp: boolean }>,
+) => {
+  if (payload.meta?.totp) {
+    appRedirect("/auth/2fa");
+  }
+};
 
 export const signInAction = async (
   payload: AuthSignInInput,
-): Promise<ApiResponse<true>> => {
+): Promise<ApiResponse<true, { totp: boolean }>> => {
   const response = await makeRequest(
     () => getApiCaller().auth.signIn(payload),
     false,
@@ -26,6 +39,25 @@ export const signInAction = async (
       ...response,
       data: true,
     };
+  }
+
+  const totpError = response.errors?.find((error) => error[0] === "totp");
+
+  if (totpError) {
+    if (totpError[2] && totpError[2].params) {
+      const { token, expiresIn } = totpError[2].params as AuthToken;
+      setTotpToken(token, expiresIn);
+
+      return {
+        success: false,
+        data: null,
+        error: null,
+        errors: [],
+        meta: {
+          totp: true,
+        },
+      };
+    }
   }
 
   return response;

@@ -1,14 +1,16 @@
 import { TRPCError } from "@trpc/server";
 import { ZodError } from "zod";
 import { dropAccessToken, dropRefreshToken } from "@/session/getAccessToken";
-import { appRedirect, filteredArray } from "@/utils";
+import { filteredArray } from "@/utils";
 import { refreshTokenAction } from "@/app/api/auth/refreshTokenAction";
 
 export type ApiResponseError =
   | [string, string]
   | [string, string, Record<string, unknown>];
 
-export type ApiResponse<Output> =
+export type ApiResponse<Output, Meta = undefined> = {
+  meta?: Meta;
+} & (
   | {
       success: false;
       error: ApiResponseError | null;
@@ -20,7 +22,8 @@ export type ApiResponse<Output> =
       error: null;
       errors: null;
       data: Output;
-    };
+    }
+);
 
 export const makeRequest = async <Output>(
   request: () => Promise<Output>,
