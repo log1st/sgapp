@@ -5,6 +5,9 @@
     align-items: center;
     gap: rm(1);
     background-color: var(--border-base);
+
+    overflow: auto;
+    @include noScrollbars();
 }
 
 .tab {

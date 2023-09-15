@@ -52,4 +52,6 @@
 .label {
     @include text-compact-small-plus();
     color: var(--progress-tab-text-color);
+
+    white-space: nowrap;
 }
