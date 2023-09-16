@@ -1,17 +1,15 @@
 "use client";
 
-import { Key, ReactNode } from "react";
-import { Placement } from "@popperjs/core";
 import { filteredArray, formatAgo } from "@/utils";
 import { UiBadge, UiBadgeColor } from "@/ui/components/badge";
-import Flyout from "@/app/components/flyout/Flyout";
 import { GetRoomOutput } from "@/api";
 import { useClientTranslation } from "@/i18n/useClientTranslation";
-import { UseFlyoutOptions } from "@/ui/hooks/useFlyout";
-import { UiTooltip } from "@/ui/components/tooltip";
 import { Icon, UiIcon } from "@/ui/components/icon";
-import { UiRoomStatusLayout } from "@/ui/layouts/room-status-layout";
 import { UiTypography } from "@/ui/utils/typography";
+import Status, {
+  StatusFlyout,
+  StatusProps,
+} from "@/app/components/status/Status";
 
 export type RoomStatusProps = {
   room: Pick<
@@ -19,12 +17,8 @@ export type RoomStatusProps = {
     "status" | "finishedAt" | "hasPassword" | "createdAt" | "private"
   >;
   lng?: string;
-  placement?: Placement;
+  placement: StatusProps["placement"];
 };
-
-type RoomStatusFlyout =
-  | [Key, ReactNode, ReactNode]
-  | [Key, ReactNode, ReactNode, UseFlyoutOptions];
 
 export default function RoomStatus({
   room,
@@ -33,7 +27,7 @@ export default function RoomStatus({
 }: RoomStatusProps) {
   const { t } = useClientTranslation("rooms", undefined, lng);
 
-  const flyOuts = filteredArray<RoomStatusFlyout>([
+  const flyOuts = filteredArray<StatusFlyout>([
     [
       "status",
       <UiBadge
@@ -60,7 +54,7 @@ export default function RoomStatus({
               includeSeconds: true,
             }),
           }),
-      { placement: placement ?? "left" },
+      { placement: "left" },
     ],
     [
       "hasPassword",
@@ -73,7 +67,7 @@ export default function RoomStatus({
         />
       </UiTypography>,
       t(`password.${room.hasPassword}`),
-      { placement: placement ?? "top" },
+      { placement: "top" },
     ],
     room.private && [
       "private",
@@ -81,22 +75,9 @@ export default function RoomStatus({
         <UiIcon icon={room.private ? Icon.eyeSlash : Icon.eye} size={16} />
       </UiTypography>,
       t(`private.${room.private}`),
-      { placement: placement ?? "top" },
+      { placement: "top" },
     ],
   ]);
 
-  return (
-    <UiRoomStatusLayout>
-      {flyOuts.map(([key, trigger, tooltip, options]) => (
-        <Flyout
-          key={key}
-          flyout={<UiTooltip>{tooltip}</UiTooltip>}
-          options={options}
-          delay={0}
-        >
-          {trigger}
-        </Flyout>
-      ))}
-    </UiRoomStatusLayout>
-  );
+  return <Status flyOuts={flyOuts} placement={placement} />;
 }

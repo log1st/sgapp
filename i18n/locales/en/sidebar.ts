@@ -6,5 +6,9 @@ export default {
     dashboard: "Dashboard",
     rooms: "Rooms",
     createRoom: "Create room",
+    jeopardy: {
+      packs: "Packs",
+      createPack: "Create pack",
+    },
   },
 };

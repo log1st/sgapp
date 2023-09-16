@@ -12,3 +12,9 @@ export type JeopardyPacksListInput = AppRouterInput["jeopardy"]["packsList"];
 export type JeopardyPacksListOutput = AppRouterOutput["jeopardy"]["packsList"];
 
 export { type JeopardyConfig } from "@prisma/client";
+
+export { type JeopardyPack } from "@prisma/client";
+
+export type ListedJeopardyPack = NonNullable<
+  JeopardyPacksListOutput["data"]
+>[number];

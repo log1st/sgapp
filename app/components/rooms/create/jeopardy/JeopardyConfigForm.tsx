@@ -16,6 +16,8 @@ import { UiTypography, UiTypographyType } from "@/ui/utils/typography";
 import { UiTooltip } from "@/ui/components/tooltip";
 import { useSelect } from "@/hooks/useSelect";
 import { fetchJeopardyPacksList } from "@/app/api/jeopardy/fetchJeopardyPacksList";
+import RoomStatus from "@/app/components/rooms/status/RoomStatus";
+import { JeopardyPackStatus } from "@/app/components/jeopardy/pack/status/JeopardyPackStatus";
 
 export type JeopardyConfigFormProps = {
   lng?: string;
@@ -48,7 +50,7 @@ export const getJeopardyConfig = (): CreateRoomInput["config"] => ({
   answerValidationTime: 30,
   mediaPauseTime: 0,
   falseStartTime: 3,
-  questionPackId: null as any,
+  packId: null as any,
 });
 
 type TooltipProps = PropsWithChildren<{ label?: ReactNode }>;
@@ -87,33 +89,34 @@ export default function JeopardyConfigForm({
     lng,
   );
 
-  const packSelect = useSelect(fetchJeopardyPacksList, "query");
+  const { options, ...packSelect } = useSelect(fetchJeopardyPacksList, "query");
 
-  const [{ value: questionPackId }] = useField<number>("config.questionPackId");
+  const richOptions = options.map((option) => ({
+    ...option,
+    status: <JeopardyPackStatus pack={option} placement="bottom" />,
+  }));
+
+  const [{ value: packId }] = useField<number>("config.packId");
 
   const [selectedOption, setSelectedOption] = useState(
-    packSelect.options.find((pack) => pack.id === questionPackId),
+    richOptions.find((pack) => pack.id === packId),
   );
 
   useEffect(() => {
-    setSelectedOption(
-      packSelect.options.find((pack) => pack.id === questionPackId),
-    );
-  }, [questionPackId]);
+    setSelectedOption(richOptions.find((pack) => pack.id === packId));
+  }, [packId]);
 
   return (
     <UiJeopardyConfigForm>
       <UiJeopardyConfigFullField>
-        <Field
-          name="config.questionPackId"
-          label={t("field.config.questionPackId.label")}
-        >
+        <Field name="config.packId" label={t("field.config.packId.label")}>
           <UiSelect
-            queryPlaceholder={t("field.config.questionPackId.query")}
+            queryPlaceholder={t("field.config.packId.query")}
             {...packSelect}
             displayIndex="name"
             valueIndex="id"
-            hintIndex={["creator", "login"]}
+            options={richOptions}
+            hintIndex="status"
             renderDisplayValue={(_, option) =>
               option?.name ?? selectedOption?.name
             }

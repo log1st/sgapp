@@ -1,12 +1,12 @@
-import { Prisma } from ".prisma/client";
 import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
 import { jeopardyPacksListRequest } from "../../types/jeopardy/JeopardyPacksListRequest";
-import JeopardyQuestionPackWhereInput = Prisma.JeopardyQuestionPackWhereInput;
 
 export const packsList = accessTokenProcedure
   .input(jeopardyPacksListRequest)
-  .query(async ({ ctx: { db }, input }) => {
-    const where: JeopardyQuestionPackWhereInput = {
+  .query(async ({ ctx: { db, user }, input }) => {
+    const where: Required<
+      Parameters<typeof db.jeopardyPack.findMany>
+    >[0]["where"] = {
       OR: [
         {
           name: {
@@ -23,9 +23,20 @@ export const packsList = accessTokenProcedure
           },
         },
       ],
+      AND: {
+        OR: [
+          {
+            private: false,
+          },
+          {
+            private: true,
+            creatorId: user.id,
+          },
+        ],
+      },
     };
 
-    const data = await db.jeopardyQuestionPack.findMany({
+    const data = await db.jeopardyPack.findMany({
       where,
       skip: (input.page - 1) * input.limit,
       take: input.limit,
@@ -34,12 +45,19 @@ export const packsList = accessTokenProcedure
           select: {
             id: true,
             login: true,
+            avatar: true,
+          },
+        },
+        _count: {
+          select: {
+            rounds: true,
+            configs: true,
           },
         },
       },
     });
 
-    const total = await db.jeopardyQuestionPack.count({ where });
+    const total = await db.jeopardyPack.count({ where });
 
     return {
       total,

@@ -20,9 +20,11 @@ model User {
   tokens Token[]
 
   createdRooms Room[] @relation(name: "createdRooms")
-  jeopardyQuestionPacks JeopardyQuestionPack[]
+  jeopardyPacks JeopardyPack[]
 
   jeopardyUsersOnRooms JeopardyUsersOnRooms[]
+
+  medias Media[]
 }
 
 enum TokenType {
@@ -108,8 +110,8 @@ model JeopardyConfig {
 
   room Room[]
 
-  questionPackId Int?
-  questionPack JeopardyQuestionPack? @relation(fields: [questionPackId], references: [id], onDelete: SetNull)
+  packId Int?
+  pack JeopardyPack? @relation(fields: [packId], references: [id], onDelete: SetNull)
 
   maxPlayers Int
   answerType JeopardyAnswerType @default(voice)
@@ -138,7 +140,7 @@ model JeopardyConfig {
   falseStartTime Int @default(3)
 }
 
-model JeopardyQuestionPack {
+model JeopardyPack {
   id Int @id @default(autoincrement())
 
   name String
@@ -146,5 +148,108 @@ model JeopardyQuestionPack {
   creatorId Int?
   creator User? @relation(fields: [creatorId], references: [id], onDelete: SetNull)
 
+  createdAt DateTime @default(now())
+
+  difficulty Int
+
+  private Boolean @default(false)
+
   configs JeopardyConfig[]
+  rounds JeopardyPackRound[]
+}
+
+enum JeopardyPackRoundType {
+  normal
+  final
+}
+
+model JeopardyPackRound {
+  id Int @id @default(autoincrement())
+
+  name String
+  type JeopardyPackRoundType
+
+  packId Int
+  pack JeopardyPack @relation(fields: [packId], references: [id], onDelete: Cascade)
+
+  order Int @default(0)
+
+  questions JeopardyPackQuestion[]
+}
+
+enum JeopardyPackQuestionType {
+  normal
+  stake
+  secret
+  commonSecret
+  noRisk
+}
+
+enum JeopardyQuestionSecretCostRevealType {
+  before
+  after
+  never
+}
+
+enum JeopardyQuestionSecretCostType {
+  fixed
+  minMax
+  roundMinMax
+}
+
+model JeopardyPackQuestion {
+  id Int @id @default(autoincrement())
+
+  roundId Int
+  round JeopardyPackRound @relation(fields: [roundId], references: [id], onDelete: Cascade)
+
+  text String?
+
+  order Int @default(0)
+  cost Int
+
+  type JeopardyPackRoundType @default(normal)
+
+  secretTopic String?
+  secretCost Int?
+
+  selfSecret Boolean @default(false)
+  commonSecretCostReveal JeopardyQuestionSecretCostRevealType @default(before)
+
+  secretMinMaxCost Int[]
+
+  answers String[]
+
+  mediasOnQuestion MediasOnJeopardyPackQuestions[]
+}
+
+model MediasOnJeopardyPackQuestions {
+  questionId Int
+  question JeopardyPackQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  mediaId Int
+  media Media @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, mediaId])
+}
+
+enum MediaType {
+  audio
+  video
+  image
+  youtubeVideo
+}
+
+model Media {
+  id Int @id @default(autoincrement())
+
+  creatorId Int?
+  creator User? @relation(fields: [creatorId], references: [id], onDelete: SetNull)
+
+  type MediaType
+  src String
+
+  name String
+
+  mediasOnJeopardyQuestion MediasOnJeopardyPackQuestions[]
 }

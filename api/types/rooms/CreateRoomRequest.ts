@@ -53,7 +53,7 @@ export const createRoomRequest = z.object({
       answerValidationTime: z.number(),
       mediaPauseTime: z.number(),
       falseStartTime: z.number(),
-      questionPackId: z.number(),
+      packId: z.number(),
     }),
     z.object({
       type: z.literal(RoomType.sixMinds),

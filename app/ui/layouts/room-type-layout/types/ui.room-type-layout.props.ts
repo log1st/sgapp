@@ -1,8 +1,9 @@
 import { CSSProperties, PropsWithChildren, ReactNode } from "react";
+import { Icon } from "@/ui/components/icon";
 
-export type UiRoomsListPageLayoutProps = PropsWithChildren<{
+export type UiRoomTypeLayoutProps = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
   e2e?: string;
-  filter?: ReactNode;
+  icon?: ReactNode | Icon;
 }>;

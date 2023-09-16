@@ -14,7 +14,7 @@ export const get = accessTokenProcedure
       include: {
         jeopardyConfig: {
           include: {
-            questionPack: true,
+            pack: true,
           },
         },
         creator: {

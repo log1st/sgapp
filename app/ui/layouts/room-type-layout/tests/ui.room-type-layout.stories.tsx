@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { UiRoomsListPageLayout } from "../index";
+import { UiRoomTypeLayout } from "../index";
 
 const meta = {
-  title: "Layouts/UiRoomsListPageLayout",
-  component: UiRoomsListPageLayout,
+  title: "Layouts/UiRoomTypeLayout",
+  component: UiRoomTypeLayout,
   parameters: {
     layout: "centered",
   },
   argTypes: {},
-} satisfies Meta<typeof UiRoomsListPageLayout>;
+} satisfies Meta<typeof UiRoomTypeLayout>;
 
 export const Story = {
   args: {
@@ -16,7 +16,7 @@ export const Story = {
     className: "some-class",
     style: {},
   },
-  name: "UiRoomsListPageLayout",
+  name: "UiRoomTypeLayout",
 } satisfies StoryObj<typeof meta>;
 
 export default meta;

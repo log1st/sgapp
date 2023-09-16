@@ -18,16 +18,14 @@ export const create = accessTokenProcedure
     }
 
     if (config.type === RoomType.jeopardy) {
-      const pack = await db.jeopardyQuestionPack.findFirst({
-        where: { id: config.questionPackId },
+      const pack = await db.jeopardyPack.findFirst({
+        where: { id: config.packId },
       });
 
       if (!pack) {
-        await dropCustomValidationError(
-          "exists",
-          ["config", "questionPackId"],
-          { config },
-        );
+        await dropCustomValidationError("exists", ["config", "packId"], {
+          config,
+        });
       }
     }
 

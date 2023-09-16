@@ -1,16 +1,16 @@
 import { clsx } from "@clsx";
-import { UiGameTypeLayoutProps } from "..";
+import { UiRoomTypeLayoutProps } from "..";
 
-import styles from "./ui.game-type-layout.module.scss";
+import styles from "./ui.room-type-layout.module.scss";
 import { NodeOrIcon } from "@/ui/utils/nodeOrIcon";
 
-export function UiGameTypeLayout({
+export function UiRoomTypeLayout({
   className,
   style,
   e2e,
   children,
   icon,
-}: UiGameTypeLayoutProps) {
+}: UiRoomTypeLayoutProps) {
   return (
     <div
       data-e2e={e2e}

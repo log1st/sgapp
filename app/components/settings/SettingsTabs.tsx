@@ -33,7 +33,7 @@ export default function SettingsTabs({ lng }: SettingsTabProps) {
     },
   ]).map((tab) => ({
     ...tab,
-    selected: !!tab.href && routeMatching(pathname, tab.href) >= 2,
+    selected: !!tab.href && routeMatching(pathname, tab.href, 2),
   }));
 
   return <UiProgressTabsGroup tabs={tabs} />;

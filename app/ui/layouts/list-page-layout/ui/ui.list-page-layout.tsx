@@ -1,15 +1,15 @@
 import { clsx } from "@clsx";
-import { UiRoomsListPageLayoutProps } from "..";
+import { UiListPageLayoutProps } from "..";
 
-import styles from "./ui.rooms-list-page-layout.module.scss";
+import styles from "./ui.list-page-layout.module.scss";
 
-export function UiRoomsListPageLayout({
+export function UiListPageLayout({
   className,
   style,
   e2e,
   children,
   filter,
-}: UiRoomsListPageLayoutProps) {
+}: UiListPageLayoutProps) {
   return (
     <div
       data-e2e={e2e}

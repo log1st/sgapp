@@ -18,7 +18,7 @@ void i18next
   });
 
 export const useClientTranslation = (
-  ns?: string,
+  ns?: string | string[],
   options: Partial<UseTranslationOptions<string>> = {},
   lng: string | undefined = undefined,
 ) =>

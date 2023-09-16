@@ -217,7 +217,7 @@ export default {
             invalid_type: "Required",
           },
         },
-        questionPackId: {
+        packId: {
           label: "Question pack",
           query: "Search question pack",
           validation: {

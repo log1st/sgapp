@@ -15,7 +15,7 @@ export default async function RoomSlugPage({
 
   return (
     <UiRoomPageLayout header={<RoomHeader room={data} />}>
-      {JSON.stringify(data, null, 2)}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </UiRoomPageLayout>
   );
 }

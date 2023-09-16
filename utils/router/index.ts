@@ -1,2 +1,2 @@
-export * from './appRedirect';
-export * from './routeMatching';
+export * from "./appRedirect";
+export * from "./routeMatching";

@@ -27,6 +27,7 @@ export type UiActiveTableRowPayload<Entity> = {
 export enum UiActiveTableType {
   primary = "primary",
   rooms = "rooms",
+  jeopardyPacks = "rooms",
 }
 
 export type UiActiveTableProps<Entity> = {

@@ -9,11 +9,11 @@ import {
 import { RoomsListOutput, RoomType } from "@/api";
 import { filteredArray } from "@/utils";
 import { useClientTranslation } from "@/i18n/useClientTranslation";
-import { UiGameTypeLayout } from "@/ui/layouts/game-type-layout";
 import { getRoomTypeIcon } from "@/app/components/rooms/utils/getRoomTypeIcon";
 import RoomStatus from "./status/RoomStatus";
 import UserCard from "@/app/components/user/UserCard";
 import RoomInfoCard from "@/app/components/rooms/info/RoomInfoCard";
+import { UiRoomTypeLayout } from "@/ui/layouts/room-type-layout";
 
 export type RoomsListProps = RoomsListOutput & {
   lng?: string;
@@ -28,9 +28,9 @@ export default function RoomsList({ lng = "en", data }: RoomsListProps) {
       label: t(`field.type`),
       width: "auto",
       render: (_, value: RoomType) => (
-        <UiGameTypeLayout icon={getRoomTypeIcon(value)}>
+        <UiRoomTypeLayout icon={getRoomTypeIcon(value)}>
           {t(`type.${value}`)}
-        </UiGameTypeLayout>
+        </UiRoomTypeLayout>
       ),
     },
     {

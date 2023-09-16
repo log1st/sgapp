@@ -3,7 +3,7 @@ import { UiRoomStatusLayoutProps } from "..";
 
 import styles from "./ui.room-status-layout.module.scss";
 
-export function UiRoomStatusLayout({
+export function UiStatusLayout({
   className,
   style,
   e2e,

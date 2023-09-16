@@ -1,14 +1,13 @@
-import { Prisma, RoomStatus } from "@prisma/client";
+import { RoomStatus } from "@prisma/client";
 import { addMinutes } from "date-fns";
 import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
 import { roomsListRequest } from "../../types/rooms/RoomsListRequest";
-import RoomWhereInput = Prisma.RoomWhereInput;
 import { omitRoom } from "@/api/utils/omit/omitRoom";
 
 export const list = accessTokenProcedure
   .input(roomsListRequest)
   .query(async ({ ctx: { db, user }, input }) => {
-    const where: RoomWhereInput = {
+    const where: Required<Parameters<typeof db.room.findMany>>[0]["where"] = {
       OR: input.filter.status.length
         ? undefined
         : [
