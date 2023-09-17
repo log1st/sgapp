@@ -1,14 +1,14 @@
 import { clsx } from "@clsx";
-import { UiCreateRoomPageLayoutProps } from "..";
+import { UiCreatePageLayoutProps } from "..";
 
-import styles from "./ui.create-room-page-layout.module.scss";
+import styles from "./ui.create-page-layout.module.scss";
 
-export function UiCreateRoomPageLayout({
+export function UiCreatePageLayout({
   className,
   style,
   e2e,
   children,
-}: UiCreateRoomPageLayoutProps) {
+}: UiCreatePageLayoutProps) {
   return (
     <div
       data-e2e={e2e}

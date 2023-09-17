@@ -13,7 +13,7 @@ export type DropZoneChangeHandler = (payload: DropZoneChangePayload) => void;
 export type UiDropZoneProps = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   label?: ReactNode;
   icon?: Icon | ReactNode;

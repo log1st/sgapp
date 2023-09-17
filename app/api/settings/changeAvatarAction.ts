@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { ApiResponse, makeRequest } from "@/api";
+import { ApiResponse, makeRequest } from "@/api/client";
 import { getApiCaller } from "@/session/getApiCaller";
 
 export const changeAvatarAction = async (

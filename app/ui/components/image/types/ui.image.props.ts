@@ -20,7 +20,7 @@ export enum UiImageFit {
 export type UiImageProps = {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
   imageClassName?: string;
   src: string | Array<UiImageSrcSetItem>;
   alt: string;

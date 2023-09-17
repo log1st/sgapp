@@ -8,7 +8,7 @@ import {
   generateToken,
   generateTokens,
 } from "../../services/auth/generateToken";
-import { dropCustomValidationError } from "@/api/utils/dropCustomValidationError";
+import { dropCustomValidationError } from "../../utils/dropCustomValidationError";
 
 export const signIn = publicProcedure
   .input(authSignInRequest)

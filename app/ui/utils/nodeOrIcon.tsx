@@ -3,7 +3,7 @@ import { clsx } from "@clsx";
 import { Icon, icons, UiIcon } from "../components/icon";
 
 export type NodeOrIconProps = PropsWithChildren<{
-  e2e?: string;
+  e2e?: string | boolean;
   className?: string;
   style?: CSSProperties;
   iconClassName?: string;

@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useField } from "formik";
 import { Field } from "@/app/components/form";
 import {
@@ -10,14 +10,10 @@ import { useClientTranslation } from "@/i18n/useClientTranslation";
 import { UiSelect } from "@/ui/components/select";
 import { UiCheckbox } from "@/ui/components/checkbox";
 import { CreateRoomInput } from "@/api";
-import Flyout from "@/app/components/flyout/Flyout";
-import { Icon, UiIcon } from "@/ui/components/icon";
-import { UiTypography, UiTypographyType } from "@/ui/utils/typography";
-import { UiTooltip } from "@/ui/components/tooltip";
 import { useSelect } from "@/hooks/useSelect";
 import { fetchJeopardyPacksList } from "@/app/api/jeopardy/fetchJeopardyPacksList";
-import RoomStatus from "@/app/components/rooms/status/RoomStatus";
 import { JeopardyPackStatus } from "@/app/components/jeopardy/pack/status/JeopardyPackStatus";
+import IconTooltip from "@/app/components/iconTooltip/IconTooltip";
 
 export type JeopardyConfigFormProps = {
   lng?: string;
@@ -52,31 +48,6 @@ export const getJeopardyConfig = (): CreateRoomInput["config"] => ({
   falseStartTime: 3,
   packId: null as any,
 });
-
-type TooltipProps = PropsWithChildren<{ label?: ReactNode }>;
-
-function Tooltip({ label, children }: TooltipProps) {
-  return (
-    <Flyout
-      flyout={
-        <UiTooltip>
-          <UiTypography color="fg-base" type={UiTypographyType.mediumPlus}>
-            {label}
-          </UiTypography>
-          <UiTypography type={UiTypographyType.compactSmall}>
-            {children}
-          </UiTypography>
-        </UiTooltip>
-      }
-      options={{ placement: "top" }}
-      delay={0}
-    >
-      <UiTypography color="fg-muted">
-        <UiIcon size={16} icon={Icon.informationCircleSolid} />
-      </UiTypography>
-    </Flyout>
-  );
-}
 
 export default function JeopardyConfigForm({
   lng = "en",
@@ -140,7 +111,7 @@ export default function JeopardyConfigForm({
           <Field
             key={field}
             name={`config.${field}`}
-            icon={hint && <Tooltip label={label}>{hint}</Tooltip>}
+            icon={hint && <IconTooltip label={label}>{hint}</IconTooltip>}
             valuePropName="checked"
             fixedSize={30}
             label={t(`field.config.${field}.label`)}
@@ -190,7 +161,7 @@ export default function JeopardyConfigForm({
             key={field}
             name={`config.${field}`}
             label={t(`field.config.${field}.label`)}
-            icon={hint && <Tooltip label={label}>{hint}</Tooltip>}
+            icon={hint && <IconTooltip label={label}>{hint}</IconTooltip>}
           >
             <UiInput htmlType={UiInputType.number} />
           </Field>

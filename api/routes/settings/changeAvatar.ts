@@ -1,7 +1,7 @@
 import * as crypto from "crypto";
-import { accessTokenProcedure } from "@/api/services/auth/accessTokenProcedure";
-import { changeAvatarRequest } from "@/api/types/settings/ChangeAvatarRequest";
-import { saveUpload } from "@/nodeUtils/saveUpload";
+import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
+import { changeAvatarRequest } from "../../types/settings/ChangeAvatarRequest";
+import { saveUpload } from "../../../nodeUtils/saveUpload";
 
 export const changeAvatar = accessTokenProcedure
   .input(changeAvatarRequest)

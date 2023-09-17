@@ -5,7 +5,7 @@ import { UiActiveActionConfig } from "../../active-actions";
 export type UiDialogProps<Entity> = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   header?: ReactNode;
   title?: ReactNode;
@@ -14,4 +14,5 @@ export type UiDialogProps<Entity> = PropsWithChildren<{
   extended?: boolean;
   record?: Entity;
   actions?: ArrayFrom<UiActiveActionConfig<Entity>>;
+  overflow?: boolean;
 }>;

@@ -1,6 +1,6 @@
 "use server";
 
-import { makeRequest, Submit2faInput } from "@/api";
+import { makeRequest } from "@/api/client";
 import { getApiCaller } from "@/session/getApiCaller";
 import {
   dropTotpToken,
@@ -8,6 +8,7 @@ import {
   setAccessToken,
   setRefreshToken,
 } from "@/session/getAccessToken";
+import { Submit2faInput } from "@/api";
 
 export const submit2faAction = async (payload: Submit2faInput) => {
   const response = await makeRequest(() =>

@@ -6,7 +6,7 @@ export type UiPillProps = PropsWithChildren<
   UiPureButtonCommonProps & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
 
     label?: ReactNode | Icon;
     selected?: boolean;

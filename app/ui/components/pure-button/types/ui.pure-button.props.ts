@@ -39,6 +39,6 @@ export type UiPureButtonProps = PropsWithChildren<
   UiPureButtonCommonProps & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
   }
 >;

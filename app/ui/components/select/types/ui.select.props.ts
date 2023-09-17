@@ -38,7 +38,7 @@ export type UiSelectProps<
   Pick<UiFieldProps, "onFocus" | "onBlur"> & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
     clearable?: boolean;
     clearValue?: Multiple extends true ? Array<Value> : Value;
     value?: Multiple extends true ? Array<Value> : Value;

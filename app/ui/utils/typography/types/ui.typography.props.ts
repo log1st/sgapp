@@ -32,8 +32,9 @@ export enum UiTypographyType {
 export type UiTypographyProps = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   type?: UiTypographyType;
   color?: string;
+  align?: CSSProperties["textAlign"];
 }>;

@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { renderTrpcPanel } from "trpc-panel";
-import { apiRouter } from "@/api/apiRouter";
+import { apiRouter } from "../../api/apiRouter";
 
 export const GET = () =>
   new Response(

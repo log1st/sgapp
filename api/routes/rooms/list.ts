@@ -2,7 +2,7 @@ import { RoomStatus } from "@prisma/client";
 import { addMinutes } from "date-fns";
 import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
 import { roomsListRequest } from "../../types/rooms/RoomsListRequest";
-import { omitRoom } from "@/api/utils/omit/omitRoom";
+import { omitRoom } from "../../utils/omit/omitRoom";
 
 export const list = accessTokenProcedure
   .input(roomsListRequest)

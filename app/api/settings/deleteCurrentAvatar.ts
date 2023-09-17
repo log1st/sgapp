@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { makeRequest } from "@/api";
+import { makeRequest } from "@/api/client";
 import { getApiCaller } from "@/session/getApiCaller";
 
 export const deleteCurrentAvatarAction = async () => {

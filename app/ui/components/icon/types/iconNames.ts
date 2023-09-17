@@ -177,6 +177,7 @@ export enum Icon {
   klarnaEx = "klarna-ex",
   klarna = "klarna",
   lb = "lb",
+  leftRight = "left-right",
   lightBulbSolid = "light-bulb-solid",
   lightBulb = "light-bulb",
   link = "link",

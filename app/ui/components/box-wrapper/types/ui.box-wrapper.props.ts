@@ -18,7 +18,7 @@ export type UiBoxWrapperProps = PropsWithChildren<
   UiBoxWrapperCommonProps & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
     active?: boolean;
     onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
   }

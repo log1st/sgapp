@@ -29,7 +29,6 @@
 
         &:focus-visible {
             --progress-tab-border: var(--border-interactive);
-            box-shadow: var(--borders-focus);
         }
     }
 
@@ -42,6 +41,10 @@
     &.active {
         --progress-tab-icon-color: var(--fg-interactive);
     }
+}
+
+.before {
+  flex-shrink: 0;
 }
 
 .icon {

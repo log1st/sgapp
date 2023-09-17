@@ -1,6 +1,6 @@
 "use server";
 
-import { ApiResponse, AuthSignInInput, AuthToken, makeRequest } from "@/api";
+import { ApiResponse, makeRequest } from "@/api/client";
 import { getApiCaller } from "@/session/getApiCaller";
 import {
   setAccessToken,
@@ -8,6 +8,7 @@ import {
   setTotpToken,
 } from "@/session/getAccessToken";
 import { appRedirect } from "@/utils";
+import { AuthSignInInput, AuthToken } from "@/api";
 
 export const handleSignInRedirect = (
   payload: ApiResponse<any, { totp: boolean }>,

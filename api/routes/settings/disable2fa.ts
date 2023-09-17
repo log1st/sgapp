@@ -1,7 +1,7 @@
-import { accessTokenProcedure } from "@/api/services/auth/accessTokenProcedure";
-import { validateTotp } from "@/api/utils/totp/generateTotpSecret";
-import { dropCustomValidationError } from "@/api/utils/dropCustomValidationError";
-import { disable2faRequest } from "@/api/types/settings/Disable2faRequest";
+import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
+import { validateTotp } from "../../utils/totp/generateTotpSecret";
+import { dropCustomValidationError } from "../../utils/dropCustomValidationError";
+import { disable2faRequest } from "../../types/settings/Disable2faRequest";
 
 export const disable2fa = accessTokenProcedure
   .input(disable2faRequest)

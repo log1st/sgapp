@@ -12,7 +12,7 @@ export type UiSidebarItemProps = PropsWithChildren<
   UiPureButtonCommonProps & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
 
     icon?: Icon | ReactNode;
     label?: ReactNode;

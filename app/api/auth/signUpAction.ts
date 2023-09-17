@@ -1,9 +1,9 @@
 "use server";
 
-import { ApiResponse, makeRequest } from "@/api";
+import { ApiResponse, makeRequest } from "@/api/client";
 import { getApiCaller } from "@/session/getApiCaller";
 import { setAccessToken, setRefreshToken } from "@/session/getAccessToken";
-import { AuthSignUpInput } from "@/api/types/auth/AuthSignUpRequest";
+import { AuthSignUpInput } from "../../../api/types/auth/AuthSignUpRequest";
 
 export const signUpAction = async (
   payload: AuthSignUpInput,

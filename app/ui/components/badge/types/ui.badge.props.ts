@@ -25,7 +25,7 @@ export enum UiBadgeType {
 export type UiBadgeProps = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   before?: Icon | ReactNode;
   after?: Icon | ReactNode;

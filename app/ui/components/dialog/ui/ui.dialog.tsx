@@ -16,12 +16,18 @@ export function UiDialog<Entity>({
   children,
   actions,
   record,
+  overflow,
 }: UiDialogProps<Entity>) {
   return (
     <div
       data-e2e={e2e}
       style={style}
-      className={clsx([styles.root, className, extended && styles.extended])}
+      className={clsx([
+        styles.root,
+        className,
+        extended && styles.extended,
+        overflow && styles.overflow,
+      ])}
     >
       {header && <div className={styles.top}>{header}</div>}
       {(title || description) && (

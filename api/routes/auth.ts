@@ -4,7 +4,7 @@ import { refreshToken } from "./auth/refreshToken";
 import { signUp } from "./auth/signUp";
 import { signOut } from "./auth/signOut";
 import { profile } from "./auth/profile";
-import { submit2fa } from "@/api/routes/auth/submit2fa";
+import { submit2fa } from "./auth/submit2fa";
 
 export const auth = router({
   signIn,

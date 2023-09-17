@@ -17,16 +17,18 @@ import {
 } from "react";
 import { useToggle } from "react-use";
 import dynamic from "next/dynamic";
+import { cloneDeep, set } from "lodash";
 import { FormProvider } from "./FormContext";
 import { transformResponseError, TranslatedResponseError } from ".";
-import { ApiResponse } from "@/api";
+import { ApiResponse } from "@/api/client";
+import { DataIndex } from "@/utils";
 
 export type FormProps<
   Payload extends FormikValues,
   Response,
 > = PropsWithChildren<{
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
   style?: CSSProperties;
 
   mutate?(
@@ -164,9 +166,20 @@ export function Form<Payload extends FormikValues, Response>({
     }, delay);
   };
 
+  const [state, setStateObj] = useState<Record<string, unknown>>({});
+  const setState = (key: DataIndex<any>, value?: any) => {
+    setStateObj((oldState) => {
+      const clonedState = cloneDeep(oldState);
+      set(clonedState, key, value);
+      return clonedState;
+    });
+  };
+
   return (
     <FormikProvider value={formik}>
-      <FormProvider value={{ disabled, error, submitting, lng }}>
+      <FormProvider
+        value={{ disabled, error, submitting, lng, state, setState }}
+      >
         <BaseForm
           onChange={onChange}
           className={className}

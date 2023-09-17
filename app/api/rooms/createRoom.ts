@@ -1,9 +1,10 @@
 "use server";
 
 import { Route } from "next";
-import { CreateRoomInput, makeRequest } from "@/api";
+import { makeRequest } from "@/api/client";
 import { getApiCaller } from "@/session/getApiCaller";
 import { appRedirect } from "@/utils";
+import { CreateRoomInput } from "@/api";
 
 export const createRoom = async (payload: CreateRoomInput) => {
   const response = await makeRequest(() =>

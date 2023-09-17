@@ -3,7 +3,7 @@ import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
 import {
   generateTotpSecret,
   generateTotpUri,
-} from "@/api/utils/totp/generateTotpSecret";
+} from "../../utils/totp/generateTotpSecret";
 
 export const totpSecret = accessTokenProcedure.query(
   async ({ ctx: { user, db } }) => {

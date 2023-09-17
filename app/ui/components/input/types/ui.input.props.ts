@@ -11,7 +11,7 @@ export enum UiInputType {
 export type UiInputProps<Type extends UiInputType> = UiFieldCommonProps & {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;

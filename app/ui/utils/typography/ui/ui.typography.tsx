@@ -10,6 +10,7 @@ export function UiTypography({
   type = UiTypographyType.medium,
   children,
   color,
+  align,
 }: UiTypographyProps) {
   return (
     <span
@@ -17,6 +18,7 @@ export function UiTypography({
       style={{
         ...style,
         color: color && `var(--${color})`,
+        textAlign: align,
       }}
       className={clsx([styles.root, className, styles[type]])}
     >

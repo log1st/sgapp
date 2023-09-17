@@ -1,1 +1,1 @@
-export * from "./randomBoolean";
+export * from './randomBoolean';

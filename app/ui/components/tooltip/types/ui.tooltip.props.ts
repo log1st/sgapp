@@ -10,7 +10,7 @@ export type UiTooltipKbd = Keyed<UiKbdProps>;
 export type UiTooltipProps = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   label?: ReactNode;
   action?: ArrayFrom<UiTooltipAction>;

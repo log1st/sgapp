@@ -33,7 +33,7 @@ export enum UiActiveTableType {
 export type UiActiveTableProps<Entity> = {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   columns?: Array<UiActiveTableColumn<Entity>>;
   actions?: Array<UiActiveActionConfig<Entity>>;

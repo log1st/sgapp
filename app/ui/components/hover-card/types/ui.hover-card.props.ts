@@ -5,7 +5,7 @@ import { UiPureButtonCommonProps } from "../../pure-button";
 export type UiHoverCardProps = UiPureButtonCommonProps & {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   avatar?: UiAvatarProps | string;
   title?: ReactNode;

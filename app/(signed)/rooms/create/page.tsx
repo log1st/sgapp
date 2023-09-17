@@ -1,4 +1,4 @@
-import { UiCreateRoomPageLayout } from "@/ui/layouts/create-room-page-layout";
+import { UiCreatePageLayout } from "@/ui/layouts/create-page-layout";
 import { Form, FormError, Submit } from "@/app/components/form";
 import { UiDialog } from "@/ui/components/dialog";
 import { getServerTranslation } from "@/i18n/getServerTranslation";
@@ -12,7 +12,7 @@ export default async function RoomsCreatePage() {
   });
 
   return (
-    <UiCreateRoomPageLayout>
+    <UiCreatePageLayout>
       <Form
         mutate={createRoom}
         initialValues={{
@@ -42,6 +42,6 @@ export default async function RoomsCreatePage() {
           <RoomForm />
         </UiDialog>
       </Form>
-    </UiCreateRoomPageLayout>
+    </UiCreatePageLayout>
   );
 }

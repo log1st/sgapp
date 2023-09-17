@@ -17,7 +17,7 @@ export enum UiAvatarSize {
 export type UiAvatarProps = {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   image?: string | null;
   alt?: string;

@@ -20,7 +20,7 @@ export type UiRadioProps = PropsWithChildren<
   UiBoxWrapperCommonProps & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
 
     value?: string;
     checked?: boolean;

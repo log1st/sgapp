@@ -10,7 +10,7 @@ export enum UiSwitchSize {
 export type UiSwitchProps = {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   value?: string;
   checked?: boolean;

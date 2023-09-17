@@ -1,6 +1,6 @@
 "use server";
 
-import { makeRequest } from "@/api";
+import { makeRequest } from "@/api/client";
 import { getApiCaller } from "@/session/getApiCaller";
 import {
   dropAccessToken,

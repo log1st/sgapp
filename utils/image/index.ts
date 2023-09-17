@@ -1,1 +1,1 @@
-export * from "./getMockImageUrl";
+export * from './getMockImageUrl';

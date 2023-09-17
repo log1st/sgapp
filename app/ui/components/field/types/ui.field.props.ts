@@ -40,7 +40,7 @@ export type UiFieldProps = PropsWithChildren<
   UiFieldCommonProps & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
     focused?: boolean;
     onBlur?: FocusEventHandler<HTMLLabelElement>;
     onFocus?: FocusEventHandler<HTMLLabelElement>;

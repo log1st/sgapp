@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
 import { getRoomRequest } from "../../types/rooms/GetRoomRequest";
-import { omitRoom } from "@/api/utils/omit/omitRoom";
+import { omitRoom } from "../../utils/omit/omitRoom";
 
 export const get = accessTokenProcedure
   .input(getRoomRequest)

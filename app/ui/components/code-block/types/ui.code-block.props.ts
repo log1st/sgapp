@@ -29,7 +29,7 @@ export enum UiCodeBlockType {
 export type UiCodeBlockProps = {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   theme?: UiCodeBlockTheme;
   type?: UiCodeBlockType;

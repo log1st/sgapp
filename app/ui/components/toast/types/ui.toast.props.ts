@@ -21,7 +21,7 @@ export type UiToastAction = Keyed<
 export type UiToastProps = {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   title?: ReactNode;
   message?: ReactNode;

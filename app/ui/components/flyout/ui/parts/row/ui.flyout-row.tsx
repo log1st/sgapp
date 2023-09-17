@@ -45,6 +45,7 @@ export function UiFlyoutRow({
         danger && styles.danger,
         interactive && styles.interactive,
       ])}
+      e2e={checked && "checked"}
       {...pureButtonProps}
     >
       {checked && (

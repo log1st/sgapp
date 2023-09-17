@@ -41,7 +41,7 @@ export enum UiDatePickerLevel {
 export type UiDatePickerProps<Range extends boolean> = {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   name?: string;
   value?: Range extends true ? [Date, Date] : Date;

@@ -6,9 +6,9 @@ export type UiProgressTabProps = PropsWithChildren<
   UiPureButtonCommonProps & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
 
-    icon?: Icon;
+    icon?: Icon | ReactNode;
     label?: ReactNode;
     selected?: boolean;
   }

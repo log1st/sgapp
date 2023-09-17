@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { AppRouterInput, AppRouterOutput } from "@/api/apiRouter";
+import { AppRouterInput, AppRouterOutput } from "../../apiRouter";
 
 export const disable2faRequest = z.object({
   code: z.string().min(6).max(6),

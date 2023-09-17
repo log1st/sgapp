@@ -20,6 +20,7 @@
     "@prisma/client": "latest",
     "@trpc/server": "^10.38.1",
     "accept-language": "^3.0.18",
+    "array-move": "^4.0.0",
     "date-fns": "^2.30.0",
     "formik": "^2.4.4",
     "i18next": "^23.5.1",
@@ -40,6 +41,7 @@
     "react-dom": "experimental",
     "react-i18next": "^13.2.2",
     "react-popper": "^2.3.0",
+    "react-sortable-hoc": "^2.0.0",
     "react-use": "^17.4.0",
     "superjson": "^1.13.1",
     "zod": "^3.22.2"

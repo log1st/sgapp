@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createApiCaller } from "@/api";
+import { createApiCaller } from "@/api/client";
 import { newSearchParams } from "@/utils/search/SearchParams";
 
 export const GET = async (req: NextRequest) => {

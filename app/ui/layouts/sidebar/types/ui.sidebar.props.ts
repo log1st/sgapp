@@ -8,7 +8,7 @@ import {
 export type UiSidebarProps = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   avatar?: ReactNode;
   expandable?: boolean | ReactNode;

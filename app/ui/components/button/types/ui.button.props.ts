@@ -25,7 +25,7 @@ export type UiButtonProps = PropsWithChildren<
   UiPureButtonCommonProps & {
     style?: CSSProperties;
     className?: string;
-    e2e?: string;
+    e2e?: string | boolean;
 
     variant?: UiButtonVariant;
     size?: UiButtonSize;

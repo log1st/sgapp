@@ -10,7 +10,7 @@ export enum UiSidebarLabelType {
 export type UiSidebarLabelProps = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
   icon?: ReactNode | Icon;
   appendIcon?: ReactNode | Icon;
   label?: ReactNode;

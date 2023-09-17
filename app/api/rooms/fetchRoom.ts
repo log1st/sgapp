@@ -1,8 +1,9 @@
 "use server";
 
-import { GetRoomInput, GetRoomOutput, makeRequest } from "@/api";
+import { makeRequest } from "@/api/client";
 import { getApiCaller } from "@/session/getApiCaller";
 import { appRedirect } from "@/utils";
+import { GetRoomInput, GetRoomOutput } from "@/api";
 
 export const fetchRoom = async (
   input: GetRoomInput,

@@ -1,8 +1,8 @@
-import { totpTokenProcedure } from "@/api/services/auth/totpTokenProcedure";
-import { submit2faRequest } from "@/api/types/auth/Submit2faRequest";
-import { generateTokens } from "@/api/services/auth/generateToken";
-import { validateTotp } from "@/api/utils/totp/generateTotpSecret";
-import { dropCustomValidationError } from "@/api/utils/dropCustomValidationError";
+import { totpTokenProcedure } from "../../services/auth/totpTokenProcedure";
+import { submit2faRequest } from "../../types/auth/Submit2faRequest";
+import { generateTokens } from "../../services/auth/generateToken";
+import { validateTotp } from "../../utils/totp/generateTotpSecret";
+import { dropCustomValidationError } from "../../utils/dropCustomValidationError";
 
 export const submit2fa = totpTokenProcedure
   .input(submit2faRequest)

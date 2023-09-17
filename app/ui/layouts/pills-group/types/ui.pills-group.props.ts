@@ -5,7 +5,7 @@ import { UiPillProps } from "../../../components/pill";
 export type UiPillsGroupProps = PropsWithChildren<{
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   pills?: ArrayFrom<Keyed<UiPillProps>>;
 }>;

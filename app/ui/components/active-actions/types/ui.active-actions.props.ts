@@ -32,7 +32,7 @@ export type UiActiveActionConfig<Entity> = Keyed<
 export type UiActiveActionsProps<Entity> = {
   style?: CSSProperties;
   className?: string;
-  e2e?: string;
+  e2e?: string | boolean;
 
   block?: boolean;
   actions?: ArrayFrom<UiActiveActionConfig<Entity>>;

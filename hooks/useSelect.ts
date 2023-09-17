@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useToggle } from "react-use";
-import { ApiResponse, ListingRequest, ListingResponse } from "@/api";
+import { ListingRequest, ListingResponse } from "@/api";
+import { ApiResponse } from "@/api/client";
 
 export type SelectFetch<Payload extends Record<string, unknown>, Entity> = (
   request: ListingRequest<Payload>,

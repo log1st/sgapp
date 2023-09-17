@@ -17,7 +17,7 @@ export type JeopardyPackStatusProps = {
   placement?: StatusProps["placement"];
 };
 
-const getBadgeColorByJeopardyPackDifficulty = (
+export const getBadgeColorByJeopardyPackDifficulty = (
   difficulty: number,
 ): UiBadgeColor =>
   difficulty < 4
