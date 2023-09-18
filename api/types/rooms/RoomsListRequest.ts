@@ -8,7 +8,7 @@ export const roomsListRequest = getListingRequest({
     .object({
       type: z.array(z.nativeEnum(RoomType)).optional().default([]),
       status: z.array(z.nativeEnum(RoomStatus)).optional().default([]),
-      query: z.string().optional(),
+      query: z.string().optional().default(""),
       password: z
         .array(
           z.union([

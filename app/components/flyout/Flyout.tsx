@@ -24,6 +24,7 @@ export type FlyoutProps = PropsWithChildren<{
   delay?: number;
   trigger?: FlyoutTrigger;
   interactive?: boolean;
+  span?: boolean;
 }>;
 
 const Trigger = forwardRef(UiPureButton);
@@ -37,6 +38,7 @@ export default function Flyout({
   delay = 350,
   trigger = FlyoutTrigger.hover,
   interactive = false,
+  span = false,
 }: FlyoutProps) {
   const { placement, sameWidth, offset } = { sameWidth: false, ...options };
 
@@ -91,6 +93,7 @@ export default function Flyout({
         ref={setReferenceElement}
         interactive={interactive}
         stop
+        span={span}
       >
         {children}
       </Trigger>

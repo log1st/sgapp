@@ -13,9 +13,14 @@ export type StatusFlyout =
 export type StatusProps = {
   flyOuts: Array<StatusFlyout>;
   placement?: Placement;
+  span?: boolean;
 };
 
-export default function Status({ flyOuts, placement = "top" }: StatusProps) {
+export default function Status({
+  flyOuts,
+  placement = "top",
+  span,
+}: StatusProps) {
   return (
     <UiStatusLayout>
       {flyOuts.map(([key, trigger, tooltip, options]) => (
@@ -27,6 +32,7 @@ export default function Status({ flyOuts, placement = "top" }: StatusProps) {
             placement: options?.placement ?? placement,
           }}
           delay={0}
+          span={span}
         >
           {trigger}
         </Flyout>

@@ -64,7 +64,7 @@ export default function JeopardyConfigForm({
 
   const richOptions = options.map((option) => ({
     ...option,
-    status: <JeopardyPackStatus pack={option} placement="bottom" />,
+    status: <JeopardyPackStatus pack={option} placement="bottom" span />,
   }));
 
   const [{ value: packId }] = useField<number>("config.packId");

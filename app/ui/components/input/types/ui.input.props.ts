@@ -1,4 +1,9 @@
-import {ChangeEventHandler, CSSProperties, FocusEventHandler, KeyboardEventHandler} from "react";
+import {
+  ChangeEventHandler,
+  CSSProperties,
+  FocusEventHandler,
+  KeyboardEventHandler,
+} from "react";
 import { UiFieldCommonProps } from "../../field";
 
 export enum UiInputType {

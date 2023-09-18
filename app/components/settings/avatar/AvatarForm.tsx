@@ -200,6 +200,9 @@ export default function AvatarForm({ lng = "en", hasAvatar }: AvatarFormProps) {
           modifier={UiButtonModifier.block}
           onClick={deleteAvatar}
           loading={pending}
+          style={{
+            marginBlockStart: "20px",
+          }}
         />
       )}
     </Form>

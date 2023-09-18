@@ -5,10 +5,11 @@ export const getListingRequest = <
   Output extends z.ZodObject<Shape> = z.ZodObject<Shape>,
 >(
   schema: Shape,
+  limit = 30,
 ) =>
   z.object(schema).extend({
     page: z.coerce.number().min(1).catch(1),
-    limit: z.coerce.number().catch(30),
+    limit: z.coerce.number().catch(limit),
   });
 
 export type ListingRequest<Payload> = z.infer<

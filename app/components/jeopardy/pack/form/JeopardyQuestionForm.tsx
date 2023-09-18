@@ -4,7 +4,7 @@ import {
   SortableElement,
   SortableHandle,
 } from "react-sortable-hoc";
-import { CSSProperties, forwardRef, useEffect } from "react";
+import { CSSProperties, forwardRef } from "react";
 import { useField, useFormikContext } from "formik";
 import { cloneDeep, omit } from "lodash";
 import { UiHoverCard } from "@/ui/components/hover-card";

@@ -15,6 +15,7 @@ export type JeopardyPackStatusProps = {
   pack: ListedJeopardyPack;
   lng?: string;
   placement?: StatusProps["placement"];
+  span?: boolean;
 };
 
 export const getBadgeColorByJeopardyPackDifficulty = (
@@ -30,6 +31,7 @@ export function JeopardyPackStatus({
   pack,
   lng = "en",
   placement = "top",
+  span,
 }: JeopardyPackStatusProps) {
   const { t } = useClientTranslation(
     "jeopardy",
@@ -73,5 +75,5 @@ export function JeopardyPackStatus({
     ],
   ]);
 
-  return <Status flyOuts={flyOuts} placement={placement} />;
+  return <Status flyOuts={flyOuts} placement={placement} span={span} />;
 }

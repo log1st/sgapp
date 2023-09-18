@@ -1,5 +1,4 @@
 import { clsx } from "@clsx";
-import { Ref } from "react";
 import { UiIconProps } from "..";
 
 import styles from "./ui.icon.module.scss";

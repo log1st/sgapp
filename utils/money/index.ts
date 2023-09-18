@@ -1,1 +1,1 @@
-export * from './formatMoney';
+export * from "./formatMoney";

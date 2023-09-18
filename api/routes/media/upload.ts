@@ -1,8 +1,8 @@
 import crypto from "crypto";
 import { MediaType } from "@prisma/client";
 import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
-import { uploadMediaRequest } from "@/api/types/media/UploadMediaRequest";
-import { saveUpload } from "@/nodeUtils/saveUpload";
+import { uploadMediaRequest } from "../../types/media/UploadMediaRequest";
+import { saveUpload } from "../../../nodeUtils/saveUpload";
 
 export const upload = accessTokenProcedure
   .input(uploadMediaRequest)

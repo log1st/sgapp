@@ -17,7 +17,7 @@ export type RoomStatusProps = {
     "status" | "finishedAt" | "hasPassword" | "createdAt" | "private"
   >;
   lng?: string;
-  placement: StatusProps["placement"];
+  placement?: StatusProps["placement"];
 };
 
 export default function RoomStatus({

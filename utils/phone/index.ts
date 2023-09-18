@@ -1,1 +1,1 @@
-export * from './phoneCodes';
+export * from "./phoneCodes";

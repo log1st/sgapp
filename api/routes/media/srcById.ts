@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
-import { srcByIdRequest } from "@/api/types/media/SrcByIdRequest";
+import { srcByIdRequest } from "../../types/media/SrcByIdRequest";
 
 export const srcById = accessTokenProcedure
   .input(srcByIdRequest)

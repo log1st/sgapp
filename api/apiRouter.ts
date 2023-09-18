@@ -5,6 +5,7 @@ import { rooms } from "./routes/rooms";
 import { jeopardy } from "./routes/jeopardy";
 import { settings } from "./routes/settings";
 import { media } from "./routes/media";
+import { users } from "./routes/users";
 
 export const apiRouter = router({
   auth,
@@ -12,6 +13,7 @@ export const apiRouter = router({
   jeopardy,
   settings,
   media,
+  users,
 });
 
 export type ApiRouter = typeof apiRouter;

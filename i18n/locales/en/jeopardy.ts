@@ -178,4 +178,7 @@ export default {
       "{count, plural, =0{No plays yet} =1{One time played} other{# times played}}",
     form,
   },
+  query: "Search...",
+  search: "Search",
+  creator: "All creators",
 };

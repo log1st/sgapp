@@ -10,14 +10,14 @@ export const packsList = accessTokenProcedure
       OR: [
         {
           name: {
-            contains: input.query,
+            contains: input.filter.query,
             mode: "insensitive",
           },
         },
         {
           creator: {
             login: {
-              contains: input.query,
+              contains: input.filter.query,
               mode: "insensitive",
             },
           },
@@ -33,6 +33,11 @@ export const packsList = accessTokenProcedure
             creatorId: user.id,
           },
         ],
+        creatorId: input.filter.creator.length
+          ? {
+              in: input.filter.creator,
+            }
+          : undefined,
       },
     };
 

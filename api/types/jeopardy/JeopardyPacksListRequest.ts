@@ -3,7 +3,13 @@ import { AppRouterInput, AppRouterOutput } from "../../apiRouter";
 import { getListingRequest } from "../listing/ListingRequest";
 
 export const jeopardyPacksListRequest = getListingRequest({
-  query: z.string().optional(),
+  filter: z
+    .object({
+      query: z.string().optional().default(""),
+      creator: z.array(z.coerce.number()).optional().default([]),
+    })
+    .optional()
+    .default({}),
 });
 
 export type JeopardyPacksListRequest = z.infer<typeof jeopardyPacksListRequest>;
