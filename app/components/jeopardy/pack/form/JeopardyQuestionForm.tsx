@@ -4,9 +4,9 @@ import {
   SortableElement,
   SortableHandle,
 } from "react-sortable-hoc";
-import { CSSProperties, forwardRef } from "react";
+import { CSSProperties, forwardRef, useEffect } from "react";
 import { useField, useFormikContext } from "formik";
-import { cloneDeep } from "lodash";
+import { cloneDeep, omit } from "lodash";
 import { UiHoverCard } from "@/ui/components/hover-card";
 import { UiGrid } from "@/ui/utils/grid";
 import { Field, HasError } from "@/app/components/form";
@@ -96,6 +96,8 @@ export const JeopardyQuestionForm = SortableElement<JeopardyQuestionFormProps>(
               key: randomString(),
               file,
               id: null as unknown as number,
+              from: 0,
+              to: 0,
             })),
         ),
       });
@@ -123,14 +125,11 @@ export const JeopardyQuestionForm = SortableElement<JeopardyQuestionFormProps>(
           return;
         }
         await setFieldValue(`${name}.medias.${index}`, {
-          key: value.medias[index].key,
+          ...omit(value.medias[index], "file"),
           id,
           type,
           file: null,
         });
-        // setFieldValue([name, "medias", index, "file"].join("."), null);
-        // setFieldValue([name, "medias", index, "id"].join("."), id);
-        // setFieldValue([name, "medias", index, "type"].join("."), type);
       };
 
     return (
@@ -362,24 +361,28 @@ export const JeopardyQuestionForm = SortableElement<JeopardyQuestionFormProps>(
                         <UiTooltip style={{ maxWidth: "200px" }}>
                           <UiGrid columns={2} gutter={10}>
                             <UiGrid.Span span={[1, 1]}>
-                              <Field name={`${name}.medias.${i}.from`}>
+                              <Field
+                                name={`${name}.medias.${i}.from`}
+                                label={t(
+                                  "field.rounds.questions.medias.from.label",
+                                )}
+                              >
                                 <UiInput
                                   htmlType={UiInputType.number}
                                   min={0}
-                                  placeholder={t(
-                                    "field.rounds.questions.medias.from.label",
-                                  )}
                                 />
                               </Field>
                             </UiGrid.Span>
                             <UiGrid.Span span={[2, 1]}>
-                              <Field name={`${name}.medias.${i}.to`}>
+                              <Field
+                                name={`${name}.medias.${i}.to`}
+                                label={t(
+                                  "field.rounds.questions.medias.to.label",
+                                )}
+                              >
                                 <UiInput
                                   min={0}
                                   htmlType={UiInputType.number}
-                                  placeholder={t(
-                                    "field.rounds.questions.medias.to.label",
-                                  )}
                                 />
                               </Field>
                             </UiGrid.Span>
