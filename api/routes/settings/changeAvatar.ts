@@ -18,7 +18,7 @@ export const changeAvatar = accessTokenProcedure
       return null;
     }
 
-    const avatar = await saveUpload(
+    const { src: avatar } = await saveUpload(
       input.file,
       `avatars/${crypto.randomUUID()}`,
       `${user.login}.${input.file.type.split("/")[1]}`,

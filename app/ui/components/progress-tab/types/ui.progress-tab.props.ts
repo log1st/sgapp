@@ -9,7 +9,9 @@ export type UiProgressTabProps = PropsWithChildren<
     e2e?: string | boolean;
 
     icon?: Icon | ReactNode;
+    after?: Icon | ReactNode;
     label?: ReactNode;
     selected?: boolean;
+    hasError?: boolean;
   }
 >;

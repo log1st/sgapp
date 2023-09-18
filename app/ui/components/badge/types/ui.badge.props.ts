@@ -34,4 +34,6 @@ export type UiBadgeProps = PropsWithChildren<{
   type?: UiBadgeType;
   size?: UiBadgeSize;
   color?: UiBadgeColor;
+
+  interactive?: boolean;
 }>;

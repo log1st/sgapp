@@ -25,6 +25,7 @@ export function UiField({
   tabIndex,
   action,
   modifier,
+  div,
 }: UiFieldProps) {
   const handleFocus: typeof onFocus = (event) => {
     if (disabled || readOnly) {
@@ -33,8 +34,10 @@ export function UiField({
     onFocus?.(event);
   };
 
+  const Tag: any = div ? "div" : "label";
+
   return (
-    <label
+    <Tag
       data-e2e={e2e}
       style={style}
       className={clsx([
@@ -67,6 +70,6 @@ export function UiField({
         )}
       </NodeOrIcon>
       {action && <div className={styles.action}>{action}</div>}
-    </label>
+    </Tag>
   );
 }

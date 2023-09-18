@@ -9,6 +9,7 @@ import { Icon } from "../../icon";
 
 export enum UiFieldType {
   primary = "primary",
+  pure = "pure",
 }
 
 export enum UiFieldSize {
@@ -44,5 +45,6 @@ export type UiFieldProps = PropsWithChildren<
     focused?: boolean;
     onBlur?: FocusEventHandler<HTMLLabelElement>;
     onFocus?: FocusEventHandler<HTMLLabelElement>;
+    div?: boolean;
   }
 >;

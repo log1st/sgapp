@@ -30,7 +30,7 @@ export type FieldProps = {
     hasError?: boolean;
     style?: CSSProperties;
   }>;
-  label?: ReactNode;
+  label?: ReactNode | boolean;
   hint?: ReactNode;
 
   submitOnBlur?: boolean;

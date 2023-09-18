@@ -263,6 +263,7 @@ export function UiSelect<
                   span
                   icon={Icon.magnifyingGlassMini}
                   interactive={false}
+                  className={styles.query}
                 >
                   <UiInput
                     placeholder={queryPlaceholder}

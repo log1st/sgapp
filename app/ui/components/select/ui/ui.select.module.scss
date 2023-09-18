@@ -30,6 +30,15 @@
   color: var(--field-placeholder-color);
 }
 
+.query {
+  position: sticky;
+  inset-block-start: 0;
+  translate: 0 rm(-4);
+  padding-block-start: rm(12);
+  border-radius: 0;
+  z-index: 1;
+}
+
 .value,
 .placeholder {
   @include ellipsis();

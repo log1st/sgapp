@@ -10,7 +10,6 @@ export function UiProgressTabsGroup({
   e2e,
   tabs,
   children,
-  sortable,
 }: UiProgressTabsGroupProps) {
   return (
     <div

@@ -1,4 +1,4 @@
-import { ChangeEventHandler, CSSProperties, FocusEventHandler } from "react";
+import {ChangeEventHandler, CSSProperties, FocusEventHandler, KeyboardEventHandler} from "react";
 import { UiFieldCommonProps } from "../../field";
 
 export enum UiInputType {
@@ -15,6 +15,7 @@ export type UiInputProps<Type extends UiInputType> = UiFieldCommonProps & {
 
   onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 
   clearable?: boolean;
   clearValue?: {

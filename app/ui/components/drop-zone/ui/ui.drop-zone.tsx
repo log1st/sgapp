@@ -8,6 +8,7 @@ import { UiDropZoneProps } from "..";
 import styles from "./ui.drop-zone.module.scss";
 import { NodeOrIcon } from "@/ui/utils/nodeOrIcon";
 import { Icon, UiIcon } from "@/ui/components/icon";
+import { arrayFrom } from "@/utils";
 
 export function UiDropZone({
   className,
@@ -21,6 +22,8 @@ export function UiDropZone({
   icon,
   children,
   hint,
+  accept,
+  multiple = false,
 }: UiDropZoneProps) {
   const handleDrop = (files: Array<File>) => {
     if (disabled) {
@@ -41,8 +44,11 @@ export function UiDropZone({
   const onClick: MouseEventHandler = () => {
     const input = document.createElement("input");
     input.type = "file";
+    input.accept = arrayFrom(accept).join(",");
+    input.multiple = multiple;
     input.addEventListener("change", () => {
       handleDrop(Array.from(input.files || []));
+      input.remove();
     });
     input.click();
   };

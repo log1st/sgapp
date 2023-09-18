@@ -10,6 +10,10 @@
     align-items: center;
   
     border: rm(1) solid var(--progress-tab-border);
+
+    &:first-child {
+        border-top-left-radius: var(--border-radius-medium);
+    }
   
     padding: rm(0) rm(16);
     gap: rm(12);
@@ -41,10 +45,18 @@
     &.active {
         --progress-tab-icon-color: var(--fg-interactive);
     }
+
+    &.hasError {
+        --progress-tab-border: var(--border-error);
+    }
 }
 
-.before {
+.before,
+.after {
   flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
 }
 
 .icon {

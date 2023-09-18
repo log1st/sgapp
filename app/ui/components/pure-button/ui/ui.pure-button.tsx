@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */
+
 "use client";
 
 import { clsx } from "@clsx";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Link from "next/link";
 import { ForwardedRef } from "react";
 import { UiPureButtonHtmlType, UiPureButtonProps } from "..";
@@ -60,6 +61,7 @@ export function UiPureButton(
     if (span === "label") {
       return (
         <label
+          onClick={handleOnClick as any}
           ref={ref}
           data-e2e={e2e}
           style={style}
@@ -70,7 +72,13 @@ export function UiPureButton(
       );
     }
     return (
-      <div ref={ref} data-e2e={e2e} style={style} className={finalClassName}>
+      <div
+        ref={ref}
+        data-e2e={e2e}
+        style={style}
+        className={finalClassName}
+        onClick={handleOnClick as any}
+      >
         {children}
       </div>
     );

@@ -1,1 +1,1 @@
-export * from "./transformResponseError";
+export * from './transformResponseError';

@@ -59,6 +59,7 @@
     "@storybook/react-vite": "^7.4.1",
     "@storybook/testing-library": "^0.2.0",
     "@turbo/gen": "^1.10.13",
+    "@types/fluent-ffmpeg": "^2.1.22",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "20.6.0",
     "@types/react": "^18.2.21",

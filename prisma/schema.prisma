@@ -210,6 +210,8 @@ model JeopardyPackQuestion {
 
   type JeopardyPackQuestionType @default(normal)
 
+  hint String?
+
   secretTopic String?
   secretCost Int?
 
@@ -230,6 +232,9 @@ model MediasOnJeopardyPackQuestions {
   mediaId Int
   media Media @relation(fields: [mediaId], references: [id], onDelete: Cascade)
 
+  from Float?
+  to Float?
+
   @@unique([questionId, mediaId])
 }
 
@@ -248,6 +253,9 @@ model Media {
 
   type MediaType
   src String
+  preview String?
+
+  private Boolean @default(false)
 
   name String
 

@@ -1,8 +1,9 @@
 import { clsx } from "@clsx";
+import { isValidElement } from "react";
 import { UiHoverCardProps } from "..";
 
 import styles from "./ui.hover-card.module.scss";
-import { UiAvatar, UiAvatarSize } from "../../avatar";
+import { UiAvatar, UiAvatarProps, UiAvatarSize } from "../../avatar";
 import { UiPureButton } from "../../pure-button";
 
 export function UiHoverCard({
@@ -10,6 +11,8 @@ export function UiHoverCard({
   hint,
   title,
   card = true,
+  children,
+  style,
   ...pureButtonProps
 }: UiHoverCardProps) {
   return (
@@ -21,17 +24,27 @@ export function UiHoverCard({
         card && styles.card,
         (pureButtonProps.href || pureButtonProps.onClick) && styles.interactive,
       ])}
+      style={style}
     >
-      {avatar && (
-        <UiAvatar
-          {...(typeof avatar === "string" ? { image: avatar } : avatar)}
-          className={styles.avatar}
-          size={UiAvatarSize.base}
-        />
-      )}
+      {avatar &&
+        (isValidElement(avatar) ? (
+          avatar
+        ) : (
+          <UiAvatar
+            {...(typeof avatar === "string"
+              ? { image: avatar }
+              : (avatar as UiAvatarProps))}
+            className={styles.avatar}
+            size={UiAvatarSize.base}
+          />
+        ))}
       <div className={styles.content}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.hint}>{hint}</div>
+        {children || (
+          <>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.hint}>{hint}</div>
+          </>
+        )}
       </div>
     </UiPureButton>
   );

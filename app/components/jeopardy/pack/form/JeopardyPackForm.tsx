@@ -74,6 +74,7 @@ export default function JeopardyPackForm({
         name: t("round", {
           number: values.rounds.length + 1,
         }),
+        questions: [],
       },
     ]);
     handleRound(key);
@@ -137,6 +138,7 @@ export default function JeopardyPackForm({
             addRound={addRound}
             lockToContainerEdges
             useDragHandle
+            removeRound={removeRound}
           />
         }
         actions={[
@@ -178,10 +180,13 @@ export default function JeopardyPackForm({
                 name={`rounds.${index}`}
                 remove={removeRound(index)}
                 lng={lng}
+                round={round}
+                index={index}
               />
             ) : null,
           )
         )}
+        <FormError name="rounds" style={{ justifyContent: "center" }} />
       </UiDialog>
     </UiGrid>
   );

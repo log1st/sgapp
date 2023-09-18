@@ -3,7 +3,6 @@ import { UiProgressTabProps } from "..";
 
 import styles from "./ui.progress-tab.module.scss";
 import { UiPureButton } from "../../pure-button";
-import { UiIcon } from "../../icon";
 import { NodeOrIcon } from "@/ui/utils/nodeOrIcon";
 
 export function UiProgressTab({
@@ -12,6 +11,8 @@ export function UiProgressTab({
   icon,
   label,
   children,
+  after,
+  hasError,
   ...pureButtonProps
 }: UiProgressTabProps) {
   return (
@@ -22,6 +23,7 @@ export function UiProgressTab({
         selected && styles.selected,
         pureButtonProps.active && styles.active,
         pureButtonProps.disabled && styles.disabled,
+        hasError && styles.hasError,
       ])}
       {...pureButtonProps}
     >
@@ -31,6 +33,9 @@ export function UiProgressTab({
       {(children || label) && (
         <div className={styles.label}>{children || label}</div>
       )}
+      <NodeOrIcon className={styles.after} iconClassName={styles.icon}>
+        {after}
+      </NodeOrIcon>
     </UiPureButton>
   );
 }

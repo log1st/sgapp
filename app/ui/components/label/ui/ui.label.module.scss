@@ -9,6 +9,8 @@
 .label {
     @include text-compact-medium-plus();
     color: var(--fg-base);
+
+    min-block-size: rm(20);
 }
 
 .hint {

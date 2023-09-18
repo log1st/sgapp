@@ -1,5 +1,6 @@
 import { CSSProperties, PropsWithChildren, ReactNode } from "react";
 import { Icon } from "@/ui/components/icon";
+import { ArrayFrom } from "@/utils";
 
 export type DropZoneChangePayload = {
   target: {
@@ -21,6 +22,8 @@ export type UiDropZoneProps = PropsWithChildren<{
   value?: Array<File>;
   name?: string;
   onChange?: DropZoneChangeHandler;
+  accept?: ArrayFrom<string>;
+  multiple?: boolean;
   hint?: ReactNode;
   fetchData?(data: string | URL): Promise<{
     headers: {

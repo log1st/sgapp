@@ -1,0 +1,79 @@
+@import "../../../assets/utils";
+
+.root {
+  position: relative;
+
+  aspect-ratio: 1;
+
+  border-radius: var(--border-radius-medium);
+
+  box-shadow: var(--elevation-card-rest);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  &.hasError {
+    border: rm(1) solid var(--border-error);
+    box-shadow: var(--borders-error);
+  }
+}
+
+.loader {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+  @include icon(42);
+  color: var(--fg-disabled);
+}
+
+.preview {
+  position: absolute;
+  inset: 0;
+  block-size: 100%;
+  inline-size: 100%;
+  opacity: .7;
+}
+
+.cancel {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+
+  color: var(--fg-subtle);
+
+  cursor: pointer;
+
+  padding: rm(4);
+
+  border-radius: var(--border-radius-xlarge);
+  background: var(--bg-subtle);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--fg-base);
+  }
+
+  &:active {
+    color: var(--fg-subtle);
+  }
+}
+
+.cancelIcon {
+  @include icon(16);
+}
+
+.icon {
+  @include icon(24);
+  position: absolute;
+  inset-block-end: rm(0);
+  inset-inline-end: rm(0);
+  color: var(--fg-subtle);
+  background: var(--bg-subtle);
+  border-radius: var(--spacing-small) 0 0 0;
+  padding: rm(6) rm(3) rm(3) rm(6);
+}

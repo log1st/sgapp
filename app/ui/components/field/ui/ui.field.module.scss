@@ -97,6 +97,13 @@
   }
 }
 
+.pureType {
+  padding: 0;
+  border: none;
+  --field-text-color: var(--fg-base);
+  --field-placeholder-color: var(--fg-muted);
+}
+
 .centeredModifier {
   .content {
     text-align: center;

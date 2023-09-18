@@ -17,6 +17,7 @@ export type FlyoutRowProps = PropsWithChildren<
     hint?: ReactNode;
     badge?: UiBadgeProps;
     danger?: boolean;
+    className?: string;
   }
 >;
 
@@ -32,6 +33,7 @@ export function UiFlyoutRow({
   danger,
   loading,
   interactive = true,
+  className,
   ...pureButtonProps
 }: FlyoutRowProps) {
   return (
@@ -44,6 +46,8 @@ export function UiFlyoutRow({
         pureButtonProps.disabled && styles.disabled,
         danger && styles.danger,
         interactive && styles.interactive,
+        className,
+        pureButtonProps.span && styles.span,
       ])}
       e2e={checked && "checked"}
       {...pureButtonProps}

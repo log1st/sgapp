@@ -1,5 +1,5 @@
-import { ApiResponseError } from "@/api";
 import { arrayFrom } from "@/utils";
+import { ApiResponseError } from "@/api/client";
 
 export type TranslatedResponseError = [
   string,
@@ -19,7 +19,10 @@ export const transformResponseError = (
       `${ns ? `${arrayFrom(ns)[0]}:` : ""}${keyPrefix ? `${keyPrefix}.` : ""}${
         field === "common"
           ? `error.${type}`
-          : `field.${field}.validation.${type}`
+          : `field.${field
+              .split(".")
+              .filter((f) => String(parseInt(f, 10)) !== f)
+              .join(".")}.validation.${type}`
       }`,
       payload,
     ],

@@ -8,5 +8,4 @@ export type UiProgressTabsGroupProps = PropsWithChildren<{
   e2e?: string | boolean;
 
   tabs?: ArrayFrom<Keyed<UiProgressTabProps>>;
-  sortable?: boolean;
 }>;

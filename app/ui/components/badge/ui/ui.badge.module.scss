@@ -15,7 +15,10 @@
     border: rm(1) solid var(--badge-border);
     color: var(--badge-color);
 
+    @include ellipsis();
+
     &.interactive {
+        cursor: pointer;
         &:hover,
         &:focus-visible {
             background-color: var(--badge-hover-background);

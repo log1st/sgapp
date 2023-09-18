@@ -13,10 +13,17 @@ import { useFlyout, UseFlyoutOptions } from "@/ui/hooks/useFlyout";
 import { contains } from "@/utils";
 import { UiPureButton } from "@/ui/components/pure-button";
 
+export enum FlyoutTrigger {
+  click = "click",
+  hover = "hover",
+}
+
 export type FlyoutProps = PropsWithChildren<{
   flyout?: ReactNode;
   options?: UseFlyoutOptions;
   delay?: number;
+  trigger?: FlyoutTrigger;
+  interactive?: boolean;
 }>;
 
 const Trigger = forwardRef(UiPureButton);
@@ -28,7 +35,11 @@ export default function Flyout({
     sameWidth: false,
   },
   delay = 350,
+  trigger = FlyoutTrigger.hover,
+  interactive = false,
 }: FlyoutProps) {
+  const { placement, sameWidth, offset } = { sameWidth: false, ...options };
+
   const {
     popperElement,
     referenceElement,
@@ -37,7 +48,7 @@ export default function Flyout({
     portalTarget,
     popperStyles,
     attributes,
-  } = useFlyout(options);
+  } = useFlyout({ placement, sameWidth, offset });
 
   const [active, toggleActive] = useToggle(false);
 
@@ -72,11 +83,14 @@ export default function Flyout({
   return (
     <>
       <Trigger
-        onMouseOver={focus}
+        onMouseOver={trigger === FlyoutTrigger.hover ? focus : undefined}
+        onClick={trigger === FlyoutTrigger.click ? focus : undefined}
         onFocus={focus}
         onBlur={close}
-        onMouseLeave={reset}
+        onMouseLeave={trigger === FlyoutTrigger.hover ? reset : undefined}
         ref={setReferenceElement}
+        interactive={interactive}
+        stop
       >
         {children}
       </Trigger>
