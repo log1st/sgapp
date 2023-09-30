@@ -10,7 +10,7 @@ export const createJeopardyPackAction = async (
   input: CreateJeopardyPackInput,
 ) => {
   const response = await makeRequest(() =>
-    getApiCaller().jeopardy.createPack(input),
+    getApiCaller().jeopardy.pack.create(input),
   );
 
   if (response.success) {

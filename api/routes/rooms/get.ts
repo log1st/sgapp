@@ -13,8 +13,12 @@ export const get = accessTokenProcedure
       },
       include: {
         jeopardyConfig: {
-          include: {
-            pack: true,
+          select: {
+            pack: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
         creator: {

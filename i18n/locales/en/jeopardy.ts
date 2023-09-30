@@ -181,4 +181,7 @@ export default {
   query: "Search...",
   search: "Search",
   creator: "All creators",
+  page: {
+    title: "Jeopardy pack: {name}",
+  },
 };

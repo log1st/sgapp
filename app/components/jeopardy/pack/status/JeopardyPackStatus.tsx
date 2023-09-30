@@ -1,5 +1,6 @@
 "use client";
 
+import { CSSProperties } from "react";
 import { ListedJeopardyPack } from "@/api";
 import { filteredArray } from "@/utils";
 import Status, {
@@ -16,6 +17,7 @@ export type JeopardyPackStatusProps = {
   lng?: string;
   placement?: StatusProps["placement"];
   span?: boolean;
+  style?: CSSProperties;
 };
 
 export const getBadgeColorByJeopardyPackDifficulty = (
@@ -32,6 +34,7 @@ export function JeopardyPackStatus({
   lng = "en",
   placement = "top",
   span,
+  style,
 }: JeopardyPackStatusProps) {
   const { t } = useClientTranslation(
     "jeopardy",
@@ -75,5 +78,7 @@ export function JeopardyPackStatus({
     ],
   ]);
 
-  return <Status flyOuts={flyOuts} placement={placement} span={span} />;
+  return (
+    <Status style={style} flyOuts={flyOuts} placement={placement} span={span} />
+  );
 }

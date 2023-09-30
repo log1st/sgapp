@@ -1,8 +1,8 @@
 import { router } from "../trpc";
-import { srcById } from "./media/srcById";
+import { get } from "./media/get";
 import { upload } from "./media/upload";
 
 export const media = router({
-  srcById,
+  get,
   upload,
 });

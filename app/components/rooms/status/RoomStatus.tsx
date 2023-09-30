@@ -14,7 +14,12 @@ import Status, {
 export type RoomStatusProps = {
   room: Pick<
     GetRoomOutput,
-    "status" | "finishedAt" | "hasPassword" | "createdAt" | "private"
+    | "status"
+    | "finishedAt"
+    | "hasPassword"
+    | "createdAt"
+    | "private"
+    | "jeopardyConfig"
   >;
   lng?: string;
   placement?: StatusProps["placement"];
@@ -76,6 +81,11 @@ export default function RoomStatus({
       </UiTypography>,
       t(`private.${room.private}`),
       { placement: "top" },
+    ],
+    !!room.jeopardyConfig?.pack && [
+      "pack",
+      <UiTypography>{room.jeopardyConfig?.pack?.name}</UiTypography>,
+      t(`pack`),
     ],
   ]);
 

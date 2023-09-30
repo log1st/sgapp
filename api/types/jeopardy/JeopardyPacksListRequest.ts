@@ -14,8 +14,9 @@ export const jeopardyPacksListRequest = getListingRequest({
 
 export type JeopardyPacksListRequest = z.infer<typeof jeopardyPacksListRequest>;
 
-export type JeopardyPacksListInput = AppRouterInput["jeopardy"]["packsList"];
-export type JeopardyPacksListOutput = AppRouterOutput["jeopardy"]["packsList"];
+export type JeopardyPacksListInput = AppRouterInput["jeopardy"]["pack"]["list"];
+export type JeopardyPacksListOutput =
+  AppRouterOutput["jeopardy"]["pack"]["list"];
 
 export { type JeopardyConfig } from "@prisma/client";
 

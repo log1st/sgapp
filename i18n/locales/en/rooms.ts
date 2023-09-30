@@ -26,6 +26,7 @@ export default {
   },
   startedAt: "Started {date}",
   finishedAt: "Finished {date}",
+  pack: "Question pack",
   query: "Search...",
   search: "Search",
   create: {

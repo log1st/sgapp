@@ -2,7 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
 import { srcByIdRequest } from "../../types/media/SrcByIdRequest";
 
-export const srcById = accessTokenProcedure
+export const get = accessTokenProcedure
   .input(srcByIdRequest)
   .query(async ({ ctx: { db, user }, input }) => {
     const media = await db.media.findFirst({
@@ -24,9 +24,5 @@ export const srcById = accessTokenProcedure
       throw new TRPCError({ code: "NOT_FOUND" });
     }
 
-    return {
-      src: media.src,
-      preview: media.preview,
-      type: media.type,
-    };
+    return media;
   });

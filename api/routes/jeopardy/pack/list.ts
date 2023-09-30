@@ -1,7 +1,7 @@
-import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
-import { jeopardyPacksListRequest } from "../../types/jeopardy/JeopardyPacksListRequest";
+import { jeopardyPacksListRequest } from "../../../types/jeopardy/JeopardyPacksListRequest";
+import { accessTokenProcedure } from "../../../services/auth/accessTokenProcedure";
 
-export const packsList = accessTokenProcedure
+export const list = accessTokenProcedure
   .input(jeopardyPacksListRequest)
   .query(async ({ ctx: { db, user }, input }) => {
     const where: Required<

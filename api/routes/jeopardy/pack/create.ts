@@ -1,8 +1,8 @@
 import { omit } from "lodash";
-import { accessTokenProcedure } from "../../services/auth/accessTokenProcedure";
-import { createJeopardyPackRequest } from "../../types/jeopardy/CreateJeopardyPackRequest";
+import { accessTokenProcedure } from "../../../services/auth/accessTokenProcedure";
+import { createJeopardyPackRequest } from "../../../types/jeopardy/CreateJeopardyPackRequest";
 
-export const createPack = accessTokenProcedure
+export const create = accessTokenProcedure
   .input(createJeopardyPackRequest)
   .mutation(async ({ ctx: { db, user }, input: { rounds, ...pack } }) => {
     const record = await db.jeopardyPack.create({

@@ -1,2 +1,2 @@
-export * from "./SrcByIdRequest";
-export * from "./UploadMediaRequest";
+export * from './SrcByIdRequest';
+export * from './UploadMediaRequest';

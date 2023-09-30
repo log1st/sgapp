@@ -66,7 +66,15 @@ export const list = accessTokenProcedure
             avatar: true,
           },
         },
-        jeopardyConfig: true,
+        jeopardyConfig: {
+          select: {
+            pack: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
         jeopardyUsersOnRooms: {
           include: {
             user: {

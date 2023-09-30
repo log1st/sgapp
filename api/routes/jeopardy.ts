@@ -1,8 +1,6 @@
 import { router } from "../trpc";
-import { createPack } from "./jeopardy/createPack";
-import { packsList } from "./jeopardy/packsList";
+import { pack } from "./jeopardy/pack";
 
 export const jeopardy = router({
-  packsList,
-  createPack,
+  pack,
 });

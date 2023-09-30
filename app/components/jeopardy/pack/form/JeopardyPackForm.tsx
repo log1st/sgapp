@@ -74,7 +74,7 @@ export default function JeopardyPackForm({
         name: t("round", {
           number: values.rounds.length + 1,
         }),
-        questions: [],
+        topics: [],
       },
     ]);
     handleRound(key);

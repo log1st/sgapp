@@ -5,4 +5,4 @@ import { getApiCaller } from "@/session/getApiCaller";
 import { JeopardyPacksListInput } from "@/api";
 
 export const fetchJeopardyPacksList = (payload: JeopardyPacksListInput) =>
-  makeRequest(() => getApiCaller().jeopardy.packsList(payload));
+  makeRequest(() => getApiCaller().jeopardy.pack.list(payload));

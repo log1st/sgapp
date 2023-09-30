@@ -1,4 +1,4 @@
-import { Key, ReactNode } from "react";
+import { CSSProperties, Key, ReactNode } from "react";
 import { Placement } from "@popperjs/core";
 import { UseFlyoutOptions } from "@/ui/hooks/useFlyout";
 import { UiStatusLayout } from "@/ui/layouts/room-status-layout";
@@ -14,15 +14,17 @@ export type StatusProps = {
   flyOuts: Array<StatusFlyout>;
   placement?: Placement;
   span?: boolean;
+  style?: CSSProperties;
 };
 
 export default function Status({
   flyOuts,
   placement = "top",
   span,
+  style,
 }: StatusProps) {
   return (
-    <UiStatusLayout>
+    <UiStatusLayout style={style}>
       {flyOuts.map(([key, trigger, tooltip, options]) => (
         <Flyout
           key={key}

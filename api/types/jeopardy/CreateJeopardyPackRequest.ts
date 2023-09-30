@@ -68,11 +68,17 @@ export const jeopardyPackQuestionRequest = z
     },
   );
 
+export const jeopardyPackTopicRequest = z.object({
+  key: z.string(),
+  topic: z.string(),
+  questions: z.array(jeopardyPackQuestionRequest).min(1),
+});
+
 export const jeopardyPackRoundRequest = z.object({
   key: z.string(),
   name: z.string().min(5),
   type: z.nativeEnum(JeopardyPackRoundType),
-  questions: z.array(jeopardyPackQuestionRequest).min(1),
+  topics: z.array(jeopardyPackTopicRequest).min(1),
 });
 
 export const createJeopardyPackRequest = z.object({
@@ -85,6 +91,7 @@ export const createJeopardyPackRequest = z.object({
   rounds: z.array(jeopardyPackRoundRequest).min(1),
 });
 
-export type CreateJeopardyPackInput = AppRouterInput["jeopardy"]["createPack"];
+export type CreateJeopardyPackInput =
+  AppRouterInput["jeopardy"]["pack"]["create"];
 export type CreateJeopardyPackOutput =
-  AppRouterOutput["jeopardy"]["createPack"];
+  AppRouterOutput["jeopardy"]["pack"]["create"];

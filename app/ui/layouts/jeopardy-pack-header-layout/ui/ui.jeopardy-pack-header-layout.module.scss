@@ -1,0 +1,20 @@
+@import "../../../assets/utils";
+
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: rm(20);
+
+  flex-grow: 1;
+
+  block-size: rm(60);
+}
+
+.title {
+  @include text-large();
+}
+
+.creator {
+  margin-inline-start: auto;
+}

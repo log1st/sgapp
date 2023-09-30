@@ -5,5 +5,5 @@ export const srcByIdRequest = z.object({
   id: z.number(),
 });
 
-export type MediaSrcByIdInput = AppRouterInput["media"]["srcById"];
-export type MediaSrcByIdOutput = AppRouterOutput["media"]["srcById"];
+export type MediaSrcByIdInput = AppRouterInput["media"]["get"];
+export type MediaSrcByIdOutput = AppRouterOutput["media"]["get"];
